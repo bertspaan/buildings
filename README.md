@@ -6,9 +6,7 @@ This README file explains how to get the data, create the map and export high-re
 
 # Download and import BAG data
 
-Install PostgreSQL and PostGIS, download data from [NLExtract](http://nlextract.nl/) and import into database `bag`.
-
-https://nlextract.readthedocs.org/en/latest/bagextract.html
+Install PostgreSQL and PostGIS, download data from [NLExtract](http://nlextract.nl/) and import into database `bag`. Details can be found in [NLExtract's documentation](https://nlextract.readthedocs.org/en/latest/bagextract.html).
 
 # Create buildings table
 
