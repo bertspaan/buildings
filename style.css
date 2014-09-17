@@ -1,0 +1,214 @@
+body {
+	padding: 0;
+  margin: 0;
+  
+  overflow: hidden;
+}
+
+html, body, #map {
+	height: 100%;
+  background-color: black;  
+  font-family: "Helvetica Neue", Helvetica, Arial, freesans, sans-serif;  
+  font-size: 12px;
+}
+
+#map {
+  cursor: pointer;
+}
+
+html, body, #map,
+a, a:visited, a:hover {
+  color: rgb(68, 68, 68);
+}
+
+.color1  { background-color: #A50026; }
+.color2  { background-color: #D73027; }
+.color3  { background-color: #F46D43; }
+.color4  { background-color: #FDAE61; }
+.color5  { background-color: #FEE090; }
+.color6  { background-color: #FFFFBF; }
+.color7  { background-color: #E0F3F8; }
+.color8  { background-color: #ABD9E9; }
+.color9  { background-color: #74ADD1; }
+.color10 { background-color: #4575B4; }
+.color11 { background-color: #313695; }
+
+
+#box {
+  background-color: rgba(255, 255, 255, 0.95);
+    
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.8);
+  
+  border-radius: 9px;
+  
+  padding: 10px;
+  
+  width: 230px;
+
+  top: 20px;  
+  right: 20px;
+  
+/*  bottom: 20px;  
+  max-height: 710px;*/
+  
+  position: absolute;
+  
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+#box h2 {
+  font-size: 24px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;  
+  font-style: italic;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#box #info h2 {
+  margin-top: 0;
+}
+
+.help {
+  padding-left: 10px;
+  color: #999;
+  font-size: 90%;
+  font-weight:normal;
+}
+
+h3 {
+  margin: 0px 0;
+  text-align: right;
+}
+
+#box h2:before,
+#box h2:after {
+  position:relative;
+  top: -4px;
+}
+
+#box h2:before {
+  content:url('images/tilde_left.png');
+  left: -4px;
+}
+
+#box h2:after {
+  content:url('images/tilde_right.png');
+  left: 4px;
+}
+
+#box h2 {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#waag img {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;  
+}
+
+#legend table tr td {
+  align: left;
+  text-align: left;
+}
+
+td {
+  white-space: nowrap
+}
+
+.data-table tr td {
+  height: 1.4em;
+  line-height: 1.4em;
+}
+
+.data-table {
+  border-collapse: collapse;
+}
+
+.data-table tr td.key {
+}
+
+.data-table tr td.value {
+  width: 99%;
+  text-align: left;
+  padding-left: 10px;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.key {
+  text-align: right;
+}
+
+#legend table tr td.key {
+  width: 20px;
+  border-style: solid;
+  border-width: 1px ;
+}
+
+#legend table tr td.value {
+  padding-left: 8px;
+}
+
+#legend table tr td.value.first {
+  padding-right: 15px;
+}
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+.close.closed {
+  background-image: url('images/i.png');
+}
+
+.close:before {  
+  display: block;
+  left: 0;
+  line-height: 20px;
+  position: absolute;
+  top: -2px;
+  width: 20px;
+}
+
+.close {
+  background-image: url('images/x.png');
+  background-position: center center;
+  background-color: black;
+  background-repeat: no-repeat;
+      
+  position: fixed;
+  top: 10px;
+  right: 10px;  
+
+  border: 2.27273px solid #FFFFFF;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0 0 6px #000000, 1.63636px 1.63636px 1.63636px rgba(0, 0, 0, 0.3), -1.63636px 1.63636px 1.63636px rgba(0, 0, 0, 0.3), 1.63636px -1.63636px 1.63636px rgba(0, 0, 0, 0.3), -1.63636px -1.63636px 1.63636px rgba(0, 0, 0, 0.3);
+  color: #FFFFFF;
+  cursor: pointer;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  padding: 20px 0 0;
+  width: 20px;
+  z-index: 999;
+}
+
+

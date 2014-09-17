@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buildings in the Netherlands by year of construction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="style.css" />
+  <script src="d3.v3.min.js"></script>
+  <script>
+
+    function roundLatLon(l) {
+      return Math.round(l * 10000) / 10000;
+    }
+
+    d3.json("municipalities.json", function(error, json) {
+
+      var li = d3.select("ol#municipalities").selectAll("li")
+          .data(json)
+        .enter().append("li")
+          .sort(function(a,b){
+            return a.name > b.name;
+          });
+
+      li.append("a")
+          .attr("class", "png")
+          .attr("href", function(d) { return "municipalities/" + d.filename + ".png"; })
+          .html(function(d) { return d.name; });
+
+      li.append("span")
+      .html(" ");
+
+      li.append("a")
+           .attr("class", "map")
+           .attr("href", function(d) {
+             var lat = roundLatLon(d.centroid[1]);
+             var lon = roundLatLon(d.centroid[0]);
+             return "../#" + [lat, lon, 13].join(",");
+           })
+          .html("&#8594;");
+
+    });
+
+  </script>
+</head>
+<body>
+  <article>
+  <h2>Aan de muur</h2>
+  <p>
+  Op veler verzoek zijn uitsnedes uit de <a href="../">gebouwenkaart</a> van een aantal steden en dorpen nu te koop via <a href="http://waagsociety.werkaandemuur.nl/">Werk aan de Muur</a>. Staat uw stad of dorp er niet tussen? <a href="mailto:bert@waag.org">Laat het ons weten</a>!
+  </p>
+  <p>
+    <a href="http://waagsociety.werkaandemuur.nl/index/132/nl/Maastricht/view/68592/0"><img class="example" src="maastricht_small.jpg" /></a>
+  </p>
+  <h2>Uitsnedes</h2>
+  <p>
+    Met behulp van tutorials en scripts kunt u via de volgende twee links ook zelf uitsnedes maken, eventueel in andere bestandsformaten en hogere resolutie:
+    <ul>
+      <li>
+        <a href="https://gist.github.com/bertspaan/6561176">
+          https://gist.github.com/bertspaan/6561176
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/waagsociety/buildings/tree/master">
+          https://github.com/bertspaan/waagsociety/tree/master
+        </a>
+      </li>
+    </ul>
+  </p>
+  <p>Van alle Nederlandse gemeenten zijn hieronder uitsnedes beschikbaar in een resolutie van ongeveer 6 meter per pixel:</p>
+  <ol id="municipalities">
+  </ol>
+  </article>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Buildings in the Netherlands by year of construction</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="leaflet.css" />
+	<script src="jquery-2.0.3.min.js"></script>
+	<script src="leaflet.js"></script>
+</head>
+<body>
+	<div id="map"></div>
+  <span id="close" class="close"></span>
+  <div id="box">
+    <div>
+      <div id="info">
+        <h2>Info</h2>
+        <p>All 9,866,539 <a href="http://www.kadaster.nl/web/file?uuid=25da4675-fc9c-47a6-8039-1af04c142965&owner=23cbe925-35ce-4a72-ac8c-a33a0c19ae1e&contentid=2585">buildings</a> in the Netherlands, shaded according to year of construction. Data from <a href="http://www.kadaster.nl/bag">BAG</a>, via <a href="http://citysdk.waag.org/">CitySDK</a>. Map made with <a href="http://www.mapbox.com/tilemill/">TileMill</a> by <a href="mailto:bert@waag.org">Bert Spaan</a>, <a href="http://waag.org/">Waag Society</a>, inspired by <a href="http://bklynr.com/block-by-block-brooklyns-past-and-present/">BKLYNR</a>.
+        </p>
+        <p>If you encounter incorrect building data, don't hesitate to <a href="http://www.kadaster.nl/web/Themas/themaartikel/BAGartikel/BAG-terugmelden.htm">inform the Kadaster</a>.</p>
+        <p>High-res <a href="selections">prints and images are available</a>!</p>
+      </div>
+      <div id="legend">
+        <h2>Legend</h2>
+        <table>
+          <tr><td class="key color1"></td><td class="value first">&lt; 1800</td>   <td class="key color7"></td><td class="value">1960 - 1975</td></tr>
+          <tr><td class="key color2"></td><td class="value first">1800 - 1850</td> <td class="key color8"></td><td class="value">1975 - 1985</td></tr>
+          <tr><td class="key color3"></td><td class="value first">1850 - 1900</td> <td class="key color9"></td><td class="value">1985 - 1995</td></tr>
+          <tr><td class="key color4"></td><td class="value first">1900 - 1930</td> <td class="key color10"></td><td class="value">1995 - 2005</td></tr>
+          <tr><td class="key color5"></td><td class="value first">1930 - 1945</td> <td class="key color11"></td><td class="value">&gt; 2005</td></tr>
+          <tr><td class="key color6"></td><td class="value first">1945 - 1960</td> <td></td><td></td></tr>
+        </table>
+      </div>
+      <div id="data">
+        <h2>Data</h2>
+        <table class="data-table">
+          <tr><td><h3>City</h3></td><td><span class="help" id="gemeente-help">(click on building for data)</span></td></tr>
+          <tr><td class="key">Name:</td><td class="value" id="admr-naam"></td></tr>
+          <tr><td class="key">Population:</td><td class="value" id="cbs-inwoners"></td></tr>
+          <tr><td class="key">Area:</td><td class="value" id="cbs-oppervlakte"></td></tr>
+          <tr><td><h3>Building</h3></td><td></td></tr>
+          <tr><td class="key">Constructed:</td><td class="value" id="pand-bouwjaar"></td></tr>
+          <tr><td class="key">Address:</td><td class="value" id="vbo-adres"></td></tr>
+          <tr><td class="key"></td><td class="value" id="vbo-postcode"></td></tr>
+          <tr><td class="key"></td><td class="value" id="vbo-plaats"></td></tr>
+          <tr><td class="key">Area:</td><td class="value" id="vbo-oppervlakte"></td></tr>
+          <tr><td class="key">Function:</td><td class="value" id="vbo-gebruiksdoel"></td></tr>
+        </table>
+      </div>
+      <div id="waag">
+        <a href="#52.3732,4.9003,16"><img src="images/waag.png" /></a>
+      </div>
+    </div>
+  <div>
+
+	<script>
+    var radius = 100;
+
+    disableHashChange = false;
+
+		var map = L.map('map');
+    var tileUrl = "http://tiles.waag.org/v2/buildings/{z}/{x}/{y}.png";
+
+		L.tileLayer(tileUrl, {
+      attributionControl: false,
+			minZoom: 8,
+			maxZoom: 16
+		}).addTo(map);
+
+    map.setMaxBounds([
+      [48, 0],
+      [57, 10]
+    ]);
+
+    map.setView([52.3674, 4.915], 11);
+
+    map.on('moveend', function(e) {
+      var lat = roundLatLon(map.getCenter().lat);
+      var lon = roundLatLon(map.getCenter().lng);
+      var zoom = map.getZoom();
+
+      disableHashChange = true;
+      window.location.hash = [lat, lon, zoom].join(",");
+    });
+
+    map.on('click', function(e) {
+      var lat = e.latlng.lat;
+      var lon = e.latlng.lng;
+
+      var pandUrl = "http://api.citysdk.waag.org/nodes?lat=" + lat + "&lon=" + lon + "&layer=bag.panden&per_page=1&radius=" + radius;
+
+      $.getJSON(pandUrl, function(data) {
+
+        // Reset data:
+        $("#admr-naam").html("");
+        $("#cbs-oppervlakte").html("");
+        $("#cbs-inwoners").html("");
+
+        $("#pand-bouwjaar").html("");
+
+        $("#vbo-adres").html("");
+        $("#vbo-postcode").html("");
+        $("#vbo-plaats").html("");
+        $("#vbo-oppervlakte").html("");
+        $("#vbo-gebruiksdoel").html("");
+
+        if (data.status === "success" && data.results.length > 0) {
+          var pandData = data.results[0].layers["bag.panden"].data;
+          var pand_id = pandData.pand_id;
+          var bouwjaar = pandData.bouwjaar;
+
+          $("#pand-bouwjaar").html(bouwjaar);
+
+          var admrUrl = "http://api.citysdk.waag.org/bag.panden." + pand_id + "/select/regions?admr::admn_level=3&layer=cbs,admr";
+          $.getJSON(admrUrl, function(data) {
+            if (data.status === "success" && data.results.length > 0) {
+
+              var node;
+              for (var i = 0; i < data.results.length; i++) {
+                if (parseInt(data.results[i].layers.admr.data.admn_level) == 3) {
+                  node = data.results[i];
+                  break;
+                }
+              }
+
+              if (node) {
+                var admrData = node.layers["admr"].data;
+                var cbsData = node.layers["cbs"].data;
+
+                var naam = admrData.name;
+                var oppervlakte = cbsData.opp_tot;
+                var inwoners = cbsData.aant_inw;
+
+                $("#admr-naam").html(naam);
+                $("#cbs-oppervlakte").html(formatNumber(oppervlakte / 100) + " km&#178;");
+                $("#cbs-inwoners").html(formatNumber(inwoners));
+              }
+            }
+
+          });
+
+          var vboUrl = "http://api.citysdk.waag.org/nodes?bag.vbo::pand_ids=" + pand_id;
+          $.getJSON(vboUrl, function(data) {
+
+            if (data.status === "success" && data.results.length > 0) {
+              var vboData = data.results[0].layers["bag.vbo"].data;
+              var adres = vboData.adres;
+              var postcode = vboData.postcode;
+              var plaats = vboData.plaats;
+              var gebruiksdoel = vboData.gebruiksdoel;
+              var oppervlakte = vboData.oppervlakte;
+
+              var purpose = "";
+              switch (gebruiksdoel) {
+              case "woonfunctie":
+                purpose = "House";
+                break;
+              case "gezondheidszorgfunctie":
+                purpose = "Healthcare";
+                break;
+              case "logiesfunctie":
+                purpose = "Hotel";
+                break;
+              case "industriefunctie":
+                purpose = "Industry";
+                break;
+              case "onderwijsfunctie":
+                purpose = "Education";
+                break;
+              case "sportfunctie":
+                purpose = "Sport";
+                break;
+              case "kantoorfunctie":
+                purpose = "Office";
+                break;
+              case "celfunctie":
+                purpose = "Detention";
+                break;
+              case "bijeenkomstfunctie":
+                purpose = "Public";
+                break;
+              case "winkelfunctie":
+                purpose = "Retail";
+                break;
+              case "overige gebruiksfunctie":
+                purpose = "Other";
+                break;
+              }
+
+              $("#vbo-adres").html(adres);
+              $("#vbo-postcode").html(postcode);
+              $("#vbo-plaats").html(plaats);
+              $("#vbo-oppervlakte").html(formatNumber(oppervlakte) + " m&#178;");
+              $("#vbo-gebruiksdoel").html(purpose);
+            }
+          });
+        }
+      });
+
+    });
+
+    $("#close").on("click", function() {
+        $("#box").fadeToggle();
+        $("#close").toggleClass("closed");
+    });
+
+    window.onhashchange = function() {
+      if (!disableHashChange) {
+        var hash = window.location.hash.split(",");;
+        if (hash.length == 3) {
+          var lat = parseFloat(hash[0].substring(1)); // Remove "#"
+          var lon = parseFloat(hash[1]);
+          var zoom = parseInt(hash[2]);
+
+          map.setView([lat, lon], zoom);
+        }
+      }
+      disableHashChange = false;
+    }
+
+    window.onhashchange();
+
+    function roundLatLon(l) {
+      return Math.round(l * 10000) / 10000;
+    }
+
+    function formatNumber(x) {
+      x = x.toString();
+      var pattern = /(-?\d+)(\d{3})/;
+      while (pattern.test(x))
+        x = x.replace(pattern, "$1,$2");
+      return x;
+    }
+
+	</script>
+</body>
+</html>
