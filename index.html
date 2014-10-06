@@ -1,15 +1,17 @@
+---
+---
 <!DOCTYPE html>
 <html>
 <head>
 	<title>All buildings in the Netherlands, shaded by year of construction</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="style.css" />
-	<link rel="stylesheet" href="leaflet/leaflet.css" />
-	<script src="jquery-2.0.3.min.js"></script>
-	<script src="leaflet/leaflet.js"></script>
+	<link rel="stylesheet" href="{{ site.baseurl}}/style.css" />
+	<link rel="stylesheet" href="{{ site.baseurl}}/leaflet/leaflet.css" />
+	<script src="{{ site.baseurl}}/jquery-2.0.3.min.js"></script>
+	<script src="{{ site.baseurl}}/leaflet/leaflet.js"></script>
 </head>
 <body>
-	<div id="map"></div>
+	<div class="map" id="map"></div>
   <span id="close" class="close"></span>
   <div id="box">
     <div>
@@ -17,7 +19,7 @@
         <h2>Info</h2>
         <p>All 9,866,539 <a href="http://www.kadaster.nl/web/file?uuid=25da4675-fc9c-47a6-8039-1af04c142965&owner=23cbe925-35ce-4a72-ac8c-a33a0c19ae1e&contentid=2585">buildings</a> in the Netherlands, shaded according to year of construction. Data from <a href="http://www.kadaster.nl/bag">BAG</a>, via <a href="http://citysdk.waag.org/">CitySDK</a>. Map made with <a href="http://www.mapbox.com/tilemill/">TileMill</a> by <a href="mailto:bert@waag.org">Bert Spaan</a>, <a href="http://waag.org/">Waag Society</a>, inspired by <a href="http://bklynr.com/block-by-block-brooklyns-past-and-present/">BKLYNR</a>.
         </p>
-				<p>The source code and TileMill project can be found on <a href="https://github.com/waagsociety/buildings">GitHub</a>. High-res <a href="http://waagsociety.werkaandemuur.nl/">prints</a> are via our web shop</a>.</p>
+				<p>The source code and TileMill project can be found on <a href="https://github.com/waagsociety/buildings">GitHub</a>. High-res <a href="http://waagsociety.werkaandemuur.nl/">prints</a> are available in our web shop</a>.</p>
         <p>If you encounter incorrect building data, don't hesitate to <a href="http://www.kadaster.nl/web/Themas/themaartikel/BAGartikel/BAG-terugmelden.htm">inform the Kadaster</a>.</p>
       </div>
       <div id="legend">
@@ -48,7 +50,7 @@
         </table>
       </div>
       <div id="waag">
-        <a href="#52.3732,4.9003,16"><img src="images/waag.png" /></a>
+        <a href="#52.3732,4.9003,16"><img src="{{ site.baseurl}}/images/waag.png" /></a>
       </div>
     </div>
   <div>

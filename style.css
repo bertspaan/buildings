@@ -1,19 +1,48 @@
-body {
+---
+---
+
+* {
+	margin: 0;
 	padding: 0;
-  margin: 0;
-  
-  overflow: hidden;
 }
 
-html, body, #map {
-	height: 100%;
-  background-color: black;  
-  font-family: "Helvetica Neue", Helvetica, Arial, freesans, sans-serif;  
+body {
+	padding: 0;
+  margin: 0;  
+  overflow: hidden;
   font-size: 12px;
+	font-family: "Helvetica Neue", Helvetica, Arial, freesans, sans-serif;
+	background-color: black;  
+}
+
+.hidden {
+	display: none;
+}
+
+@font-face {
+  font-family: 'FPL Neu';
+  font-style: italic;
+  font-weight: bold;
+  src: url('{{ site.baseurl}}/fonts/fp9ri8a.otf')
+}
+
+.map {
+  right: 0px;
+  left: 0;
+  height: 100%;
+  position: absolute;
+}
+
+h1, h2 {
+ font-family: "FPL Neu";
 }
 
 #map {
   cursor: pointer;
+}
+
+#map, #map0, #map1, #map2, #map3, #map4 {
+	background-color: black;	
 }
 
 html, body, #map,
@@ -36,22 +65,16 @@ a, a:visited, a:hover {
 #box {
   background-color: rgba(255, 255, 255, 0.95);
     
-  border-width: 2px;
+/*  border-width: 2px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.8);*/
+  /*border-radius: 9px;*/
   
-  border-radius: 9px;
-  
-  padding: 10px;
-  
+  padding: 10px;  
   width: 230px;
-
   top: 20px;  
   right: 20px;
-  
-/*  bottom: 20px;  
-  max-height: 710px;*/
-  
+    
   position: absolute;
   
   overflow-y: auto;
@@ -67,9 +90,13 @@ p:last-child {
   margin-bottom: 0;
 }
 
+h1 {
+	font-size: 40px;
+  font-style: italic;
+}
+
 #box h2 {
   font-size: 24px;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;  
   font-style: italic;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -98,12 +125,12 @@ h3 {
 }
 
 #box h2:before {
-  content:url('images/tilde_left.png');
+  content:url('{{ site.baseurl}}/images/tilde_left.png');
   left: -4px;
 }
 
 #box h2:after {
-  content:url('images/tilde_right.png');
+  content:url('{{ site.baseurl}}/images/tilde_right.png');
   left: 4px;
 }
 
@@ -175,7 +202,7 @@ td {
 }
 
 .close.closed {
-  background-image: url('images/i.png');
+  background-image: url('{{ site.baseurl}}/images/i.png');
 }
 
 .close:before {  
@@ -188,7 +215,7 @@ td {
 }
 
 .close {
-  background-image: url('images/x.png');
+  background-image: url('{{ site.baseurl}}/images/x.png');
   background-position: center center;
   background-color: black;
   background-repeat: no-repeat;
@@ -208,6 +235,51 @@ td {
   padding: 20px 0 0;
   width: 20px;
   z-index: 999;
+}
+
+#sections {
+	width: 100%;
+	height: 100%;
+}
+
+.map-container {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+}
+
+.map-container .map-text {
+  position: absolute;
+	z-index: 999;
+	width: 300px;
+	
+	margin: 20px;
+
+  background-color: rgba(255, 255, 255, 0.95);
+    
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.8); 
+}
+
+.map-container h1, .map-container p {
+	margin: 10px;
+}
+
+#map-container1, #map-container3 {
+	left: 0;
+}
+
+#map-container1, #map-container2 {
+	top: 0;
+}
+
+#map-container2, #map-container4 {
+	left: 50%;
+}
+
+#map-container3, #map-container4 {
+	top: 50%;
 }
 
 
