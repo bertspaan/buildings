@@ -14,7 +14,7 @@ script_path = File.expand_path(File.dirname(__FILE__))
 
 formats = ["png"] # ["pdf", "png"]
 
-arg_selections = ARGV
+arg_sections = ARGV
 
 r = 1.8 # pixels per meter
 l = 8000 # longest edge of resulting image in pixels
@@ -25,7 +25,7 @@ convert_to_jpg = false
 rgeo_factory = RGeo::Geographic.spherical_factory(:srid => 3785)
 
 #bbox=xmin,ymin,xmax,ymax
-tile_cmd = "#{tilemill_path}/index.js export bag #{export_path}/selections/%s.%s --format=%s --width=%s --height=%s --bbox=%s --files=#{projects_path}"
+tile_cmd = "#{tilemill_path}/index.js export bag #{export_path}/sections/%s.%s --format=%s --width=%s --height=%s --bbox=%s --files=#{projects_path}"
 
 #3x2
 # {
@@ -35,19 +35,19 @@ tile_cmd = "#{tilemill_path}/index.js export bag #{export_path}/selections/%s.%s
 #   },
 #   "geometry":
 # },
-selections = JSON.parse(File.read('./selections.json'))
+sections = JSON.parse(File.read('./sections.json'))
 
 Dir.chdir(tilemill_path)
-selections["features"].each do |selection|
+sections["features"].each do |selection|
 
   name = selection["properties"]["name"]
   filename = name.downcase.to_ascii.gsub(/[^a-z]/, "_")
 
-  if arg_selections.empty? or arg_selections.include? name or arg_selections.include? filename or arg_selections.include? name.downcase
+  if arg_sections.empty? or arg_sections.include? name or arg_sections.include? filename or arg_sections.include? name.downcase
     name = selection["properties"]["name"]
     filename = name.downcase.to_ascii.gsub(/[^a-z]/, "_")
 
-    geom = RGeo::GeoJSON.decode(selection["geometry"].to_json, :json_parser => :json)
+    geom = RGeo::GeoJSON.decode(selection["geometry"].to_json, json_parser: :json)
     bbox = RGeo::Cartesian::BoundingBox.create_from_geometry(geom)
 
     bbox_str = [
@@ -74,7 +74,7 @@ selections["features"].each do |selection|
     if convert_to_jpg
       puts "Converting #{name} to jpg"
       s = (l / a).round
-      image = MiniMagick::Image.open("#{export_path}/selections/#{filename}.png")
+      image = MiniMagick::Image.open("#{export_path}/sections/#{filename}.png")
       orientation = image[:width] > image[:height] ? :landscape : :portrait
       puts "\tOrientation: #{orientation}"
       image.combine_options do |c|
@@ -89,10 +89,10 @@ selections["features"].each do |selection|
         c.gravity "center"
 
       end
-      image.write "#{export_path}/selections/#{filename}_s.png"
+      image.write "#{export_path}/sections/#{filename}_s.png"
 
       # Using MiniMagick to convert to JPG leads to 'invalid JPG' errors...
-      system "convert #{export_path}/selections/#{filename}_s.png -colorspace sRGB -quality 99 #{export_path}/selections/#{filename}.jpg"
+      system "convert #{export_path}/sections/#{filename}_s.png -colorspace sRGB -quality 99 #{export_path}/sections/#{filename}.jpg"
     end
   end
 end
