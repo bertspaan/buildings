@@ -8,11 +8,11 @@
 
 body {
 	padding: 0;
-  margin: 0;  
+  margin: 0;
   overflow: hidden;
   font-size: 12px;
 	font-family: "Helvetica Neue", Helvetica, Arial, freesans, sans-serif;
-	background-color: black;  
+	background-color: black;
 }
 
 .hidden {
@@ -42,7 +42,7 @@ h1, h2 {
 }
 
 #map, #map0, #map1, #map2, #map3, #map4 {
-	background-color: black;	
+	background-color: black;
 }
 
 html, body, #map,
@@ -64,19 +64,19 @@ a, a:visited, a:hover {
 
 #box {
   background-color: rgba(255, 255, 255, 0.95);
-    
+
 /*  border-width: 2px;
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.8);*/
   /*border-radius: 9px;*/
-  
-  padding: 10px;  
+
+  padding: 10px;
   width: 230px;
-  top: 20px;  
+  top: 20px;
   right: 20px;
-    
+
   position: absolute;
-  
+
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -145,7 +145,7 @@ h3 {
   margin-bottom: 0px;
   margin-left: auto;
   margin-right: auto;
-  display: block;  
+  display: block;
 }
 
 #legend table tr td {
@@ -173,7 +173,7 @@ td {
   width: 99%;
   text-align: left;
   padding-left: 10px;
-  
+
   overflow: hidden;
   text-overflow: ellipsis;
 
@@ -205,7 +205,7 @@ td {
   background-image: url('{{ site.baseurl}}/images/i.png');
 }
 
-.close:before {  
+.close:before {
   display: block;
   left: 0;
   line-height: 20px;
@@ -219,10 +219,10 @@ td {
   background-position: center center;
   background-color: black;
   background-repeat: no-repeat;
-      
+
   position: fixed;
   top: 10px;
-  right: 10px;  
+  right: 10px;
 
   border: 2.27273px solid #FFFFFF;
   border-radius: 20px 20px 20px 20px;
@@ -252,18 +252,22 @@ td {
   position: absolute;
 	z-index: 999;
 	width: 300px;
-	
+
 	margin: 20px;
 
   background-color: rgba(255, 255, 255, 0.95);
-    
+
   border-width: 2px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.8); 
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
-.map-container h1, .map-container p {
-	margin: 10px;
+.map-container h1 {
+  margin: 0 6px;
+}
+
+.map-container p {
+  margin: 0 6px 6px 6px;
 }
 
 #map-container1, #map-container3 {
