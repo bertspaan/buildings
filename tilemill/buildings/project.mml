@@ -28,7 +28,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(SELECT identificatie, bouwjaar, geom FROM tilemill.pand) AS p",
+        "table": "(SELECT identificatie, year, geom FROM tilemill.buildings) AS p",
         "key_field": "",
         "geometry_field": "",
         "extent_cache": "auto",
@@ -37,21 +37,21 @@
         "dbname": "bag",
         "user": "postgres",
         "password": "postgres",
-        "id": "pand",
+        "id": "buildings",
         "project": "bag",
         "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
       },
-      "id": "pand",
+      "id": "buildings",
       "class": "",
       "srs-name": "WGS84",
       "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
       "advanced": {},
-      "name": "pand"
+      "name": "buildings"
     }
   ],
   "scale": 1,
   "metatile": 2,
-  "name": "BAG - Bouwjaar",
+  "name": "Dutch buildings by year of construction",
   "description": "",
   "attribution": ""
 }

@@ -2,7 +2,7 @@
 
 Map showing all 9,866,539 <a href="http://www.kadaster.nl/web/file?uuid=25da4675-fc9c-47a6-8039-1af04c142965&owner=23cbe925-35ce-4a72-ac8c-a33a0c19ae1e&contentid=2585">buildings</a> in the Netherlands, shaded according to year of construction. Data from <a href="http://www.kadaster.nl/bag">BAG</a>, via <a href="http://citysdk.waag.org/">CitySDK</a>. Map made with <a href="http://www.mapbox.com/tilemill/">TileMill</a> by <a href="mailto:bert@waag.org">Bert Spaan</a>, <a href="http://waag.org/">Waag Society</a>, inspired by <a href="http://bklynr.com/block-by-block-brooklyns-past-and-present/">BKLYNR</a>.
 
-This README file explains how to get the data, create the map and export high-res PNG and PDF files.
+This README file explains how to get the data, create the map and [export](../../tree/gh-pages/sections) high-res PNG and PDF files.
 
 # Download and import BAG data
 
@@ -34,7 +34,7 @@ To create a map with buildings by year of construction (or area and function), e
 
     CREATE SCHEMA tilemill;
 
-    CREATE TABLE tilemill.pand AS
+    CREATE TABLE tilemill.buildings AS
     SELECT
       p.identificatie::bigint, bouwjaar::int,
       ST_Transform(p.geovlak, 4326) AS geom,
@@ -50,11 +50,12 @@ To create a map with buildings by year of construction (or area and function), e
     GROUP BY
       p.identificatie, bouwjaar, p.geovlak;
 
-    CREATE INDEX pand_geom_idx
-      ON tilemill.pand
+    CREATE INDEX buildings_geom_idx
+      ON tilemill.buildings
       USING gist (geom);
-
 
 # Create TileMill project and map tiles
 
-Install TileMill, copy the contents of the `tilemill` to your local TileMill projects directory (usually `~/Documents/MapBox/project`), or create a symbolic link. The TileMill project file connects with PostgreSQL using user `postgres` and password `postgres`. Edit `project.mml` to change user and password.
+Install [TileMill](https://www.mapbox.com/tilemill/), copy the contents of the `tilemill` to your local TileMill projects directory (usually `~/Documents/MapBox/project`), or create a symbolic link. The TileMill project file connects with PostgreSQL using user `postgres` and password `postgres`. Edit `project.mml` to change user and password.
+
+A script to export high-res images is available in the [`sections`](../../tree/gh-pages/sections) directory of this repository.

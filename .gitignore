@@ -1,0 +1,5 @@
+_site
+sections/config.json
+sections/export/*.png
+sections/export/*.jpg
+sections/export/*.pdf

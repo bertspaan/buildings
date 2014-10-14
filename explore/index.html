@@ -1,0 +1,132 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All buildings in the Netherlands, shaded by year of construction</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="{{ site.baseurl}}/style.css" />
+	<link rel="stylesheet" href="{{ site.baseurl}}/leaflet/leaflet.css" />
+	<script src="{{ site.baseurl}}/jquery-2.0.3.min.js"></script>
+	<script src="{{ site.baseurl}}/leaflet/leaflet.js"></script>
+</head>
+<body>
+	<div id="sections">
+		<div class="map-container" id="map-container1">
+			<div class="map-text">
+				<h1>Haarlem</h1>
+				<p>This section shows the medieval city of Haarlem with the river Spaarne running through it. In the west, connected with a single road through the dunes, lies the seaside town of Zandvoort. In the east, one can see the canal surrounding the polder of the Haarlemmermeer.</p>
+			</div>
+			<div class="map" id="map1"></div>
+		</div>
+		<div class="map-container" id="map-container2">
+			<div class="map-text">
+				<h1>Stadskanaal</h1>
+				<p>In the beginning of the 19th century, a canal was dug from the city of Groningen to the bogs in the south-east of the city. The canal was used for peat transportation, and along this canal typical linear peatland settlements like Stadskanaal were founded.</p>
+			</div>
+			<div class="map" id="map2"></div>
+		</div>
+		<div class="map-container" id="map-container3">
+			<div class="map-text">
+				<h1>Almere</h1>
+				<p>Now the 7th largest city in the country, Almere was founded in the 1970s, and lies on reclaimed land in the former Zuiderzee. In the south, one can see the old sea coast and the fortified town of Naarden.</p>		
+			</div>
+			<div class="map" id="map3"></div>
+		</div>
+		<div class="map-container" id="map-container4">
+			<div class="map-text">
+				<h1>Amsterdam</h1>
+				<p>Amsterdam was founded in the 1200s around a dam in the Amstel river. The city expanded in the 17th century when the canal rings were built around the city medieval center. Amsterdam's harbour used to be located on the waterfront just north of the old city - these days, people live there in modern apartment buildings and the harbour has moved west of town.</p>
+			</div>
+			<div class="map" id="map4"></div>
+		</div>
+	</div>
+	<div id="map0" class="hidden"></div>
+  <span id="close" class="close"></span>
+  <div id="box" class="hidden">
+    <div>
+      <div id="info">
+        <h2>Info</h2>
+        <p>All 9,866,539 <a href="http://www.kadaster.nl/web/file?uuid=25da4675-fc9c-47a6-8039-1af04c142965&owner=23cbe925-35ce-4a72-ac8c-a33a0c19ae1e&contentid=2585">buildings</a> in the Netherlands, shaded according to year of construction. Data from <a href="http://www.kadaster.nl/bag">BAG</a>, via <a href="http://citysdk.waag.org/">CitySDK</a>. Map made with <a href="http://www.mapbox.com/tilemill/">TileMill</a> by <a href="mailto:bert@waag.org">Bert Spaan</a>, <a href="http://waag.org/">Waag Society</a>, inspired by <a href="http://bklynr.com/block-by-block-brooklyns-past-and-present/">BKLYNR</a>.
+        </p>
+				<p>The source code and TileMill project can be found on <a href="https://github.com/waagsociety/buildings">GitHub</a>. High-res <a href="http://waagsociety.werkaandemuur.nl/">prints</a> are via our web shop</a>.</p>
+      </div>
+      <div id="legend">
+        <h2>Legend</h2>
+        <table>
+          <tr><td class="key color1"></td><td class="value first">&lt; 1800</td>   <td class="key color7"></td><td class="value">1960 - 1975</td></tr>
+          <tr><td class="key color2"></td><td class="value first">1800 - 1850</td> <td class="key color8"></td><td class="value">1975 - 1985</td></tr>
+          <tr><td class="key color3"></td><td class="value first">1850 - 1900</td> <td class="key color9"></td><td class="value">1985 - 1995</td></tr>
+          <tr><td class="key color4"></td><td class="value first">1900 - 1930</td> <td class="key color10"></td><td class="value">1995 - 2005</td></tr>
+          <tr><td class="key color5"></td><td class="value first">1930 - 1945</td> <td class="key color11"></td><td class="value">&gt; 2005</td></tr>
+          <tr><td class="key color6"></td><td class="value first">1945 - 1960</td> <td></td><td></td></tr>
+        </table>
+      </div>
+      <div id="waag">
+				<img src="{{ site.baseurl}}/images/waag.png" />
+      </div>
+    </div>
+  <div>
+
+	<script>
+		
+		var maps = {
+			netherlands: {
+				id: 'map0',				
+				center: [52.3674, 4.915], 
+				zoom: 11,
+				controls: true
+			},
+			haarlem: {
+				id: 'map1',				
+				center: [52.3825, 4.613], 
+				zoom: 13,
+				controls: false
+			},
+			stadskanaal: {
+				id: 'map2',				
+				center: [52.9431,6.9933],
+				zoom: 13,
+				controls: false
+			},
+			almere: {
+				id: 'map3',				
+				center: [52.3627, 5.2186], 
+				zoom: 13,
+				controls: false
+			},
+			amsterdam: {
+				id: 'map4',				
+				center: [52.3683, 4.8871], 
+				zoom: 13,
+				controls: false
+			}
+		};
+						
+		for (var key in maps) {
+			var map = L.map(maps[key]['id'], {
+				zoomControl: maps[key]['controls']
+			});
+			var tileUrl = "http://tiles.waag.org/v2/buildings/{z}/{x}/{y}.png";
+
+			L.tileLayer(tileUrl, {
+			  attributionControl: false,
+				minZoom: 8,
+				maxZoom: 16
+			}).addTo(map);
+
+			map.setMaxBounds([
+				[48, 0],
+			  [57, 10]
+			]);
+			
+			map.setView(maps[key]["center"], maps[key]["zoom"]);			
+		}
+		
+    $("#close").on("click", function() {
+        $("#box").fadeToggle();
+        $("#close").toggleClass("closed");
+    }); 
+	</script>
+</body>
+</html>

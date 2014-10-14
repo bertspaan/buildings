@@ -1,6 +1,6 @@
 {
   "paths": {
-    "exports": "/Users/bert/dev/checkouts/citysdk-amsterdam/demos/buildings/selections",
+    "exports": "/Users/bert/dev/checkouts/buildings/selections",
     "projects": "/Users/bert/Documents/MapBox",
     "tilemill": "/Applications/TileMill.app/Contents/Resources"
   }
