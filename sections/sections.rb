@@ -25,7 +25,7 @@ convert_to_jpg = false
 rgeo_factory = RGeo::Geographic.spherical_factory(:srid => 3785)
 
 #bbox=xmin,ymin,xmax,ymax
-tile_cmd = "#{tilemill_path}/index.js export bag #{export_path}/sections/%s.%s --format=%s --width=%s --height=%s --bbox=%s --files=#{projects_path}"
+tile_cmd = "#{tilemill_path}/index.js export buildings #{export_path}/sections/%s.%s --format=%s --width=%s --height=%s --bbox=%s --files=#{projects_path}"
 
 #3x2
 # {
