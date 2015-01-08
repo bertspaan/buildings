@@ -33,7 +33,7 @@
           <tr><td class="key color6"></td><td class="value first">1945 - 1960</td> <td></td><td></td></tr>
         </table>
       </div>
-      <div id="data">
+      <!--<div id="data">
         <h2>Data</h2>
         <table class="data-table">
           <tr><td><h3>City</h3></td><td><span class="help" id="gemeente-help">(click on building for data)</span></td></tr>
@@ -48,7 +48,7 @@
           <tr><td class="key">Area:</td><td class="value" id="vbo-oppervlakte"></td></tr>
           <tr><td class="key">Function:</td><td class="value" id="vbo-gebruiksdoel"></td></tr>
         </table>
-      </div>
+      </div>-->
       <div id="waag">
         <a href="#52.3732,4.9003,16"><img src="{{ site.baseurl}}/images/waag.png" /></a>
       </div>
@@ -85,121 +85,121 @@
       window.location.hash = [lat, lon, zoom].join(",");
     });
 
-    map.on('click', function(e) {
-      var lat = e.latlng.lat;
-      var lon = e.latlng.lng;
-
-      var pandUrl = "http://api.citysdk.waag.org/nodes?lat=" + lat + "&lon=" + lon + "&layer=bag.panden&per_page=1&radius=" + radius;
-
-      $.getJSON(pandUrl, function(data) {
-
-        // Reset data:
-        $("#admr-naam").html("");
-        $("#cbs-oppervlakte").html("");
-        $("#cbs-inwoners").html("");
-
-        $("#pand-bouwjaar").html("");
-
-        $("#vbo-adres").html("");
-        $("#vbo-postcode").html("");
-        $("#vbo-plaats").html("");
-        $("#vbo-oppervlakte").html("");
-        $("#vbo-gebruiksdoel").html("");
-
-        if (data.status === "success" && data.results.length > 0) {
-          var pandData = data.results[0].layers["bag.panden"].data;
-          var pand_id = pandData.pand_id;
-          var bouwjaar = pandData.bouwjaar;
-
-          $("#pand-bouwjaar").html(bouwjaar);
-
-          var admrUrl = "http://api.citysdk.waag.org/bag.panden." + pand_id + "/select/regions?admr::admn_level=3&layer=cbs,admr";
-          $.getJSON(admrUrl, function(data) {
-            if (data.status === "success" && data.results.length > 0) {
-
-              var node;
-              for (var i = 0; i < data.results.length; i++) {
-                if (parseInt(data.results[i].layers.admr.data.admn_level) == 3) {
-                  node = data.results[i];
-                  break;
-                }
-              }
-
-              if (node) {
-                var admrData = node.layers["admr"].data;
-                var cbsData = node.layers["cbs"].data;
-
-                var naam = admrData.name;
-                var oppervlakte = cbsData.opp_tot;
-                var inwoners = cbsData.aant_inw;
-
-                $("#admr-naam").html(naam);
-                $("#cbs-oppervlakte").html(formatNumber(oppervlakte / 100) + " km&#178;");
-                $("#cbs-inwoners").html(formatNumber(inwoners));
-              }
-            }
-
-          });
-
-          var vboUrl = "http://api.citysdk.waag.org/nodes?bag.vbo::pand_ids=" + pand_id;
-          $.getJSON(vboUrl, function(data) {
-
-            if (data.status === "success" && data.results.length > 0) {
-              var vboData = data.results[0].layers["bag.vbo"].data;
-              var adres = vboData.adres;
-              var postcode = vboData.postcode;
-              var plaats = vboData.plaats;
-              var gebruiksdoel = vboData.gebruiksdoel;
-              var oppervlakte = vboData.oppervlakte;
-
-              var purpose = "";
-              switch (gebruiksdoel) {
-              case "woonfunctie":
-                purpose = "House";
-                break;
-              case "gezondheidszorgfunctie":
-                purpose = "Healthcare";
-                break;
-              case "logiesfunctie":
-                purpose = "Hotel";
-                break;
-              case "industriefunctie":
-                purpose = "Industry";
-                break;
-              case "onderwijsfunctie":
-                purpose = "Education";
-                break;
-              case "sportfunctie":
-                purpose = "Sport";
-                break;
-              case "kantoorfunctie":
-                purpose = "Office";
-                break;
-              case "celfunctie":
-                purpose = "Detention";
-                break;
-              case "bijeenkomstfunctie":
-                purpose = "Public";
-                break;
-              case "winkelfunctie":
-                purpose = "Retail";
-                break;
-              case "overige gebruiksfunctie":
-                purpose = "Other";
-                break;
-              }
-
-              $("#vbo-adres").html(adres);
-              $("#vbo-postcode").html(postcode);
-              $("#vbo-plaats").html(plaats);
-              $("#vbo-oppervlakte").html(formatNumber(oppervlakte) + " m&#178;");
-              $("#vbo-gebruiksdoel").html(purpose);
-            }
-          });
-        }
-      });
-
-    });
+    // map.on('click', function(e) {
+    //   var lat = e.latlng.lat;
+    //   var lon = e.latlng.lng;
+    //
+    //   var pandUrl = "http://api.citysdk.waag.org/nodes?lat=" + lat + "&lon=" + lon + "&layer=bag.panden&per_page=1&radius=" + radius;
+    //
+    //   $.getJSON(pandUrl, function(data) {
+    //
+    //     // Reset data:
+    //     $("#admr-naam").html("");
+    //     $("#cbs-oppervlakte").html("");
+    //     $("#cbs-inwoners").html("");
+    //
+    //     $("#pand-bouwjaar").html("");
+    //
+    //     $("#vbo-adres").html("");
+    //     $("#vbo-postcode").html("");
+    //     $("#vbo-plaats").html("");
+    //     $("#vbo-oppervlakte").html("");
+    //     $("#vbo-gebruiksdoel").html("");
+    //
+    //     if (data.status === "success" && data.results.length > 0) {
+    //       var pandData = data.results[0].layers["bag.panden"].data;
+    //       var pand_id = pandData.pand_id;
+    //       var bouwjaar = pandData.bouwjaar;
+    //
+    //       $("#pand-bouwjaar").html(bouwjaar);
+    //
+    //       var admrUrl = "http://api.citysdk.waag.org/bag.panden." + pand_id + "/select/regions?admr::admn_level=3&layer=cbs,admr";
+    //       $.getJSON(admrUrl, function(data) {
+    //         if (data.status === "success" && data.results.length > 0) {
+    //
+    //           var node;
+    //           for (var i = 0; i < data.results.length; i++) {
+    //             if (parseInt(data.results[i].layers.admr.data.admn_level) == 3) {
+    //               node = data.results[i];
+    //               break;
+    //             }
+    //           }
+    //
+    //           if (node) {
+    //             var admrData = node.layers["admr"].data;
+    //             var cbsData = node.layers["cbs"].data;
+    //
+    //             var naam = admrData.name;
+    //             var oppervlakte = cbsData.opp_tot;
+    //             var inwoners = cbsData.aant_inw;
+    //
+    //             $("#admr-naam").html(naam);
+    //             $("#cbs-oppervlakte").html(formatNumber(oppervlakte / 100) + " km&#178;");
+    //             $("#cbs-inwoners").html(formatNumber(inwoners));
+    //           }
+    //         }
+    //
+    //       });
+    //
+    //       var vboUrl = "http://api.citysdk.waag.org/nodes?bag.vbo::pand_ids=" + pand_id;
+    //       $.getJSON(vboUrl, function(data) {
+    //
+    //         if (data.status === "success" && data.results.length > 0) {
+    //           var vboData = data.results[0].layers["bag.vbo"].data;
+    //           var adres = vboData.adres;
+    //           var postcode = vboData.postcode;
+    //           var plaats = vboData.plaats;
+    //           var gebruiksdoel = vboData.gebruiksdoel;
+    //           var oppervlakte = vboData.oppervlakte;
+    //
+    //           var purpose = "";
+    //           switch (gebruiksdoel) {
+    //           case "woonfunctie":
+    //             purpose = "House";
+    //             break;
+    //           case "gezondheidszorgfunctie":
+    //             purpose = "Healthcare";
+    //             break;
+    //           case "logiesfunctie":
+    //             purpose = "Hotel";
+    //             break;
+    //           case "industriefunctie":
+    //             purpose = "Industry";
+    //             break;
+    //           case "onderwijsfunctie":
+    //             purpose = "Education";
+    //             break;
+    //           case "sportfunctie":
+    //             purpose = "Sport";
+    //             break;
+    //           case "kantoorfunctie":
+    //             purpose = "Office";
+    //             break;
+    //           case "celfunctie":
+    //             purpose = "Detention";
+    //             break;
+    //           case "bijeenkomstfunctie":
+    //             purpose = "Public";
+    //             break;
+    //           case "winkelfunctie":
+    //             purpose = "Retail";
+    //             break;
+    //           case "overige gebruiksfunctie":
+    //             purpose = "Other";
+    //             break;
+    //           }
+    //
+    //           $("#vbo-adres").html(adres);
+    //           $("#vbo-postcode").html(postcode);
+    //           $("#vbo-plaats").html(plaats);
+    //           $("#vbo-oppervlakte").html(formatNumber(oppervlakte) + " m&#178;");
+    //           $("#vbo-gebruiksdoel").html(purpose);
+    //         }
+    //       });
+    //     }
+    //   });
+    //
+    // });
 
     $("#close").on("click", function() {
         $("#box").fadeToggle();
