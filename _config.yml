@@ -1,2 +1,5 @@
 baseurl: /buildings
 exclude: ['README.md', 'sections', 'tilemill']
+
+api: http://api.citysdk.waag.org/
+radius: 100

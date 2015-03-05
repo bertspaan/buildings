@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" href="{{ site.baseurl}}/style.css" />
 	<link rel="stylesheet" href="{{ site.baseurl}}/leaflet/leaflet.css" />
-	<script src="{{ site.baseurl}}/jquery-2.0.3.min.js"></script>
+	<script src="{{ site.baseurl}}/d3.v3.min.js"></script>
 	<script src="{{ site.baseurl}}/leaflet/leaflet.js"></script>
 </head>
 <body>
@@ -33,7 +33,7 @@
           <tr><td class="key color6"></td><td class="value first">1945 - 1960</td> <td></td><td></td></tr>
         </table>
       </div>
-      <!--<div id="data">
+      <div id="data">
         <h2>Data</h2>
         <table class="data-table">
           <tr><td><h3>City</h3></td><td><span class="help" id="gemeente-help">(click on building for data)</span></td></tr>
@@ -48,7 +48,7 @@
           <tr><td class="key">Area:</td><td class="value" id="vbo-oppervlakte"></td></tr>
           <tr><td class="key">Function:</td><td class="value" id="vbo-gebruiksdoel"></td></tr>
         </table>
-      </div>-->
+      </div>
       <div id="waag">
         <a href="#52.3732,4.9003,16"><img src="{{ site.baseurl}}/images/waag.png" /></a>
       </div>
@@ -56,12 +56,9 @@
   <div>
 
 	<script>
-    var radius = 100;
-
-    disableHashChange = false;
-
-		var map = L.map('map');
-    var tileUrl = "http://tiles.waag.org/v2/buildings/{z}/{x}/{y}.png";
+    var disableHashChange = false,
+        map = L.map('map'),
+        tileUrl = "http://tiles.waag.org/v2/buildings/{z}/{x}/{y}.png";
 
 		L.tileLayer(tileUrl, {
       attributionControl: false,
@@ -85,134 +82,129 @@
       window.location.hash = [lat, lon, zoom].join(",");
     });
 
-    // map.on('click', function(e) {
-    //   var lat = e.latlng.lat;
-    //   var lon = e.latlng.lng;
-    //
-    //   var pandUrl = "http://api.citysdk.waag.org/nodes?lat=" + lat + "&lon=" + lon + "&layer=bag.panden&per_page=1&radius=" + radius;
-    //
-    //   $.getJSON(pandUrl, function(data) {
-    //
-    //     // Reset data:
-    //     $("#admr-naam").html("");
-    //     $("#cbs-oppervlakte").html("");
-    //     $("#cbs-inwoners").html("");
-    //
-    //     $("#pand-bouwjaar").html("");
-    //
-    //     $("#vbo-adres").html("");
-    //     $("#vbo-postcode").html("");
-    //     $("#vbo-plaats").html("");
-    //     $("#vbo-oppervlakte").html("");
-    //     $("#vbo-gebruiksdoel").html("");
-    //
-    //     if (data.status === "success" && data.results.length > 0) {
-    //       var pandData = data.results[0].layers["bag.panden"].data;
-    //       var pand_id = pandData.pand_id;
-    //       var bouwjaar = pandData.bouwjaar;
-    //
-    //       $("#pand-bouwjaar").html(bouwjaar);
-    //
-    //       var admrUrl = "http://api.citysdk.waag.org/bag.panden." + pand_id + "/select/regions?admr::admn_level=3&layer=cbs,admr";
-    //       $.getJSON(admrUrl, function(data) {
-    //         if (data.status === "success" && data.results.length > 0) {
-    //
-    //           var node;
-    //           for (var i = 0; i < data.results.length; i++) {
-    //             if (parseInt(data.results[i].layers.admr.data.admn_level) == 3) {
-    //               node = data.results[i];
-    //               break;
-    //             }
-    //           }
-    //
-    //           if (node) {
-    //             var admrData = node.layers["admr"].data;
-    //             var cbsData = node.layers["cbs"].data;
-    //
-    //             var naam = admrData.name;
-    //             var oppervlakte = cbsData.opp_tot;
-    //             var inwoners = cbsData.aant_inw;
-    //
-    //             $("#admr-naam").html(naam);
-    //             $("#cbs-oppervlakte").html(formatNumber(oppervlakte / 100) + " km&#178;");
-    //             $("#cbs-inwoners").html(formatNumber(inwoners));
-    //           }
-    //         }
-    //
-    //       });
-    //
-    //       var vboUrl = "http://api.citysdk.waag.org/nodes?bag.vbo::pand_ids=" + pand_id;
-    //       $.getJSON(vboUrl, function(data) {
-    //
-    //         if (data.status === "success" && data.results.length > 0) {
-    //           var vboData = data.results[0].layers["bag.vbo"].data;
-    //           var adres = vboData.adres;
-    //           var postcode = vboData.postcode;
-    //           var plaats = vboData.plaats;
-    //           var gebruiksdoel = vboData.gebruiksdoel;
-    //           var oppervlakte = vboData.oppervlakte;
-    //
-    //           var purpose = "";
-    //           switch (gebruiksdoel) {
-    //           case "woonfunctie":
-    //             purpose = "House";
-    //             break;
-    //           case "gezondheidszorgfunctie":
-    //             purpose = "Healthcare";
-    //             break;
-    //           case "logiesfunctie":
-    //             purpose = "Hotel";
-    //             break;
-    //           case "industriefunctie":
-    //             purpose = "Industry";
-    //             break;
-    //           case "onderwijsfunctie":
-    //             purpose = "Education";
-    //             break;
-    //           case "sportfunctie":
-    //             purpose = "Sport";
-    //             break;
-    //           case "kantoorfunctie":
-    //             purpose = "Office";
-    //             break;
-    //           case "celfunctie":
-    //             purpose = "Detention";
-    //             break;
-    //           case "bijeenkomstfunctie":
-    //             purpose = "Public";
-    //             break;
-    //           case "winkelfunctie":
-    //             purpose = "Retail";
-    //             break;
-    //           case "overige gebruiksfunctie":
-    //             purpose = "Other";
-    //             break;
-    //           }
-    //
-    //           $("#vbo-adres").html(adres);
-    //           $("#vbo-postcode").html(postcode);
-    //           $("#vbo-plaats").html(plaats);
-    //           $("#vbo-oppervlakte").html(formatNumber(oppervlakte) + " m&#178;");
-    //           $("#vbo-gebruiksdoel").html(purpose);
-    //         }
-    //       });
-    //     }
-    //   });
-    //
-    // });
+    map.on('click', function(e) {
+      var lat = e.latlng.lat,
+          lon = e.latlng.lng;
 
-    $("#close").on("click", function() {
-        $("#box").fadeToggle();
-        $("#close").toggleClass("closed");
+      var buildingUrl = "{{ site.api }}layers/bag.pand/objects?lat=" + lat
+           + "&lon=" + lon + "&per_page=1&radius=" + {{ site.radius }};
+
+      d3.json(buildingUrl, function(geojson) {
+
+        // Reset data:
+        d3.select("#admr-naam").html("");
+        d3.select("#cbs-oppervlakte").html("");
+        d3.select("#cbs-inwoners").html("");
+
+        d3.select("#pand-bouwjaar").html("");
+
+        d3.select("#vbo-adres").html("");
+        d3.select("#vbo-postcode").html("");
+        d3.select("#vbo-plaats").html("");
+        d3.select("#vbo-oppervlakte").html("");
+        d3.select("#vbo-gebruiksdoel").html("");
+
+        if (geojson && geojson.features && geojson.features.length > 0) {
+          var buildingData = geojson.features[0].properties.layers["bag.pand"].data;
+
+          d3.select("#pand-bouwjaar").html(buildingData.bouwjaar);
+
+          var admrUrl = "{{ site.api }}layers/admr/objects?contains=bag.pand." + buildingData.id
+              + "&admr::admn_level=3&geom=false&layer=cbs";
+
+          d3.json(admrUrl, function(geojson) {
+              if (geojson && geojson.features && geojson.features.length > 0) {
+                var admrData = geojson.features[0].properties.layers["admr"].data,
+                    cbsData = geojson.features[0].properties.layers["cbs"].data;
+
+                d3.select("#admr-naam").html(admrData.gemeentenaam);
+                d3.select("#cbs-oppervlakte").html(formatNumber(cbsData.opp_tot / 100) + " km&#178;");
+                d3.select("#cbs-inwoners").html(formatNumber(cbsData.aant_inw));
+              }
+          });
+
+          var addressUrl = "{{ site.api }}layers/bag.vbo/objects?bag.vbo::pand_ids=" + buildingData.id;
+
+          d3.json(addressUrl, function(geojson) {
+
+            if (geojson && geojson.features && geojson.features.length > 0) {
+              var addressData = geojson.features[0].properties.layers["bag.vbo"].data;
+
+              var purpose = "";
+              switch (addressData.gebruiksdoel) {
+              case "woonfunctie":
+                purpose = "House";
+                break;
+              case "gezondheidszorgfunctie":
+                purpose = "Healthcare";
+                break;
+              case "logiesfunctie":
+                purpose = "Hotel";
+                break;
+              case "industriefunctie":
+                purpose = "Industry";
+                break;
+              case "onderwijsfunctie":
+                purpose = "Education";
+                break;
+              case "sportfunctie":
+                purpose = "Sport";
+                break;
+              case "kantoorfunctie":
+                purpose = "Office";
+                break;
+              case "celfunctie":
+                purpose = "Detention";
+                break;
+              case "bijeenkomstfunctie":
+                purpose = "Public";
+                break;
+              case "winkelfunctie":
+                purpose = "Retail";
+                break;
+              case "overige gebruiksfunctie":
+                purpose = "Other";
+                break;
+              }
+
+              var addess = addressData.straat + " " + addressData.huisnummer
+
+              if (addressData.toevoeging) {
+                address += addressData.toevoeging;
+              }
+
+              d3.select("#vbo-adres").html(addess);
+              d3.select("#vbo-postcode").html(addressData.postcode);
+              d3.select("#vbo-plaats").html(addressData.woonplaats);
+              d3.select("#vbo-oppervlakte").html(formatNumber(addressData.oppervlakte) + " m&#178;");
+              d3.select("#vbo-gebruiksdoel").html(purpose);
+            }
+          });
+        }
+      });
+
+    });
+
+    d3.select("#close").on("click", function() {
+      var closed = d3.select(this).classed("closed");
+
+      d3.select("#box")
+          .classed("hidden", closed)
+          .transition()
+          .duration(150)
+          .style("opacity", closed ? 1 : 0)
+          .each("end", function() { d3.select(this).classed("hidden", !closed); });
+
+      d3.select(this).classed("closed", !closed);
     });
 
     window.onhashchange = function() {
       if (!disableHashChange) {
         var hash = window.location.hash.split(",");;
         if (hash.length == 3) {
-          var lat = parseFloat(hash[0].substring(1)); // Remove "#"
-          var lon = parseFloat(hash[1]);
-          var zoom = parseInt(hash[2]);
+          var lat = parseFloat(hash[0].substring(1)), // Remove "#"
+              lon = parseFloat(hash[1]),
+              zoom = parseInt(hash[2]);
 
           map.setView([lat, lon], zoom);
         }
@@ -235,22 +227,22 @@
     }
 
 	</script>
-	
-	<!-- Piwik --> 
-	<script type="text/javascript"> 
-    var _paq = _paq || []; 
-	  _paq.push(['trackPageView']); 
-    _paq.push(['enableLinkTracking']); 
-    (function() { 
-      var u="//194.145.201.185/"; 
-      _paq.push(['setTrackerUrl', u+'piwik.php']); 
-      _paq.push(['setSiteId', 2]); 
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; 
-      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s); 
-    })(); 
-  </script> 
-  <noscript><p><img src="//194.145.201.185/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript> 
-  <!-- End Piwik Code --> 
-	
+
+	<!-- Piwik -->
+	<script type="text/javascript">
+    var _paq = _paq || [];
+	  _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//194.145.201.185/";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 2]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <noscript><p><img src="//194.145.201.185/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+
 </body>
 </html>
