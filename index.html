@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" href="{{ site.baseurl}}/style.css" />
 	<link rel="stylesheet" href="{{ site.baseurl}}/leaflet/leaflet.css" />
-	<script src="{{ site.baseurl}}/jquery-2.0.3.min.js"></script>
+	<script src="{{ site.baseurl}}/d3.v3.min.js"></script>
 	<script src="{{ site.baseurl}}/leaflet/leaflet.js"></script>
 </head>
 <body>
@@ -17,10 +17,9 @@
     <div>
       <div id="info">
         <h2>Info</h2>
-        <p>All 9,866,539 <a href="http://www.kadaster.nl/web/file?uuid=25da4675-fc9c-47a6-8039-1af04c142965&owner=23cbe925-35ce-4a72-ac8c-a33a0c19ae1e&contentid=2585">buildings</a> in the Netherlands, shaded according to year of construction. Data from <a href="http://www.kadaster.nl/bag">BAG</a>, via <a href="http://citysdk.waag.org/">CitySDK</a>. Map made with <a href="http://www.mapbox.com/tilemill/">TileMill</a> by <a href="mailto:bert@waag.org">Bert Spaan</a>, <a href="http://waag.org/">Waag Society</a>, inspired by <a href="http://bklynr.com/block-by-block-brooklyns-past-and-present/">BKLYNR</a>.
+        <p>All 9,866,539 <a href="http://www.kadaster.nl/web/file?uuid=25da4675-fc9c-47a6-8039-1af04c142965&owner=23cbe925-35ce-4a72-ac8c-a33a0c19ae1e&contentid=2585">buildings</a> in the Netherlands, shaded according to year of construction. Data from <a href="http://www.kadaster.nl/bag">BAG</a>, via <a href="http://citysdk.waag.org/">CitySDK LD API</a>. Map made with <a href="http://www.mapbox.com/tilemill/">TileMill</a> by <b><a href="https://twitter.com/bertspaan">Bert Spaan</a>, <a href="http://waag.org/">Waag Society</a></b>, inspired by <a href="http://bklynr.com/block-by-block-brooklyns-past-and-present/">BKLYNR</a>.
         </p>
-				<p>The source code and TileMill project can be found on <a href="https://github.com/waagsociety/buildings">GitHub</a>. High-res <a href="http://waagsociety.werkaandemuur.nl/">prints</a> are available in our web shop</a>.</p>
-        <p>If you encounter incorrect building data, don't hesitate to <a href="http://www.kadaster.nl/web/Themas/themaartikel/BAGartikel/BAG-terugmelden.htm">inform the Kadaster</a>.</p>
+				<p>The source code and TileMill project can be found on <a href="https://github.com/waagsociety/buildings">GitHub</a>. High-res prints are available in <a href="http://waagsociety.werkaandemuur.nl/">our web shop</a>.</p>
       </div>
       <div id="legend">
         <h2>Legend</h2>
@@ -56,12 +55,9 @@
   <div>
 
 	<script>
-    var radius = 100;
-
-    disableHashChange = false;
-
-		var map = L.map('map');
-    var tileUrl = "http://tiles.waag.org/v2/buildings/{z}/{x}/{y}.png";
+    var disableHashChange = false,
+        map = L.map('map'),
+        tileUrl = "http://tiles.waag.org/v2/buildings/{z}/{x}/{y}.png";
 
 		L.tileLayer(tileUrl, {
       attributionControl: false,
@@ -86,74 +82,55 @@
     });
 
     map.on('click', function(e) {
-      var lat = e.latlng.lat;
-      var lon = e.latlng.lng;
+      var lat = e.latlng.lat,
+          lon = e.latlng.lng;
 
-      var pandUrl = "http://api.citysdk.waag.org/nodes?lat=" + lat + "&lon=" + lon + "&layer=bag.panden&per_page=1&radius=" + radius;
+      var buildingUrl = "{{ site.api }}layers/bag.pand/objects?lat=" + lat
+           + "&lon=" + lon + "&per_page=1&radius=" + {{ site.radius }};
 
-      $.getJSON(pandUrl, function(data) {
+      d3.json(buildingUrl, function(geojson) {
 
         // Reset data:
-        $("#admr-naam").html("");
-        $("#cbs-oppervlakte").html("");
-        $("#cbs-inwoners").html("");
+        d3.select("#admr-naam").html("");
+        d3.select("#cbs-oppervlakte").html("");
+        d3.select("#cbs-inwoners").html("");
 
-        $("#pand-bouwjaar").html("");
+        d3.select("#pand-bouwjaar").html("");
 
-        $("#vbo-adres").html("");
-        $("#vbo-postcode").html("");
-        $("#vbo-plaats").html("");
-        $("#vbo-oppervlakte").html("");
-        $("#vbo-gebruiksdoel").html("");
+        d3.select("#vbo-adres").html("");
+        d3.select("#vbo-postcode").html("");
+        d3.select("#vbo-plaats").html("");
+        d3.select("#vbo-oppervlakte").html("");
+        d3.select("#vbo-gebruiksdoel").html("");
 
-        if (data.status === "success" && data.results.length > 0) {
-          var pandData = data.results[0].layers["bag.panden"].data;
-          var pand_id = pandData.pand_id;
-          var bouwjaar = pandData.bouwjaar;
+        if (geojson && geojson.features && geojson.features.length > 0) {
+          var buildingData = geojson.features[0].properties.layers["bag.pand"].data;
 
-          $("#pand-bouwjaar").html(bouwjaar);
+          d3.select("#pand-bouwjaar").html(buildingData.bouwjaar);
 
-          var admrUrl = "http://api.citysdk.waag.org/bag.panden." + pand_id + "/select/regions?admr::admn_level=3&layer=cbs,admr";
-          $.getJSON(admrUrl, function(data) {
-            if (data.status === "success" && data.results.length > 0) {
+          var admrUrl = "{{ site.api }}layers/admr/objects?contains=bag.pand." + buildingData.id
+              + "&admr::admn_level=3&geom=false&layer=cbs";
 
-              var node;
-              for (var i = 0; i < data.results.length; i++) {
-                if (parseInt(data.results[i].layers.admr.data.admn_level) == 3) {
-                  node = data.results[i];
-                  break;
-                }
+          d3.json(admrUrl, function(geojson) {
+              if (geojson && geojson.features && geojson.features.length > 0) {
+                var admrData = geojson.features[0].properties.layers["admr"].data,
+                    cbsData = geojson.features[0].properties.layers["cbs"].data;
+
+                d3.select("#admr-naam").html(admrData.gemeentenaam);
+                d3.select("#cbs-oppervlakte").html(formatNumber(cbsData.opp_tot / 100) + " km&#178;");
+                d3.select("#cbs-inwoners").html(formatNumber(cbsData.aant_inw));
               }
-
-              if (node) {
-                var admrData = node.layers["admr"].data;
-                var cbsData = node.layers["cbs"].data;
-
-                var naam = admrData.name;
-                var oppervlakte = cbsData.opp_tot;
-                var inwoners = cbsData.aant_inw;
-
-                $("#admr-naam").html(naam);
-                $("#cbs-oppervlakte").html(formatNumber(oppervlakte / 100) + " km&#178;");
-                $("#cbs-inwoners").html(formatNumber(inwoners));
-              }
-            }
-
           });
 
-          var vboUrl = "http://api.citysdk.waag.org/nodes?bag.vbo::pand_ids=" + pand_id;
-          $.getJSON(vboUrl, function(data) {
+          var addressUrl = "{{ site.api }}layers/bag.vbo/objects?bag.vbo::pand_ids=" + buildingData.id;
 
-            if (data.status === "success" && data.results.length > 0) {
-              var vboData = data.results[0].layers["bag.vbo"].data;
-              var adres = vboData.adres;
-              var postcode = vboData.postcode;
-              var plaats = vboData.plaats;
-              var gebruiksdoel = vboData.gebruiksdoel;
-              var oppervlakte = vboData.oppervlakte;
+          d3.json(addressUrl, function(geojson) {
+
+            if (geojson && geojson.features && geojson.features.length > 0) {
+              var addressData = geojson.features[0].properties.layers["bag.vbo"].data;
 
               var purpose = "";
-              switch (gebruiksdoel) {
+              switch (addressData.gebruiksdoel) {
               case "woonfunctie":
                 purpose = "House";
                 break;
@@ -189,11 +166,17 @@
                 break;
               }
 
-              $("#vbo-adres").html(adres);
-              $("#vbo-postcode").html(postcode);
-              $("#vbo-plaats").html(plaats);
-              $("#vbo-oppervlakte").html(formatNumber(oppervlakte) + " m&#178;");
-              $("#vbo-gebruiksdoel").html(purpose);
+              var addess = addressData.straat + " " + addressData.huisnummer
+
+              if (addressData.toevoeging) {
+                address += addressData.toevoeging;
+              }
+
+              d3.select("#vbo-adres").html(addess);
+              d3.select("#vbo-postcode").html(addressData.postcode);
+              d3.select("#vbo-plaats").html(addressData.woonplaats);
+              d3.select("#vbo-oppervlakte").html(formatNumber(addressData.oppervlakte) + " m&#178;");
+              d3.select("#vbo-gebruiksdoel").html(purpose);
             }
           });
         }
@@ -201,18 +184,26 @@
 
     });
 
-    $("#close").on("click", function() {
-        $("#box").fadeToggle();
-        $("#close").toggleClass("closed");
+    d3.select("#close").on("click", function() {
+      var closed = d3.select(this).classed("closed");
+
+      d3.select("#box")
+          .classed("hidden", closed)
+          .transition()
+          .duration(150)
+          .style("opacity", closed ? 1 : 0)
+          .each("end", function() { d3.select(this).classed("hidden", !closed); });
+
+      d3.select(this).classed("closed", !closed);
     });
 
     window.onhashchange = function() {
       if (!disableHashChange) {
         var hash = window.location.hash.split(",");;
         if (hash.length == 3) {
-          var lat = parseFloat(hash[0].substring(1)); // Remove "#"
-          var lon = parseFloat(hash[1]);
-          var zoom = parseInt(hash[2]);
+          var lat = parseFloat(hash[0].substring(1)), // Remove "#"
+              lon = parseFloat(hash[1]),
+              zoom = parseInt(hash[2]);
 
           map.setView([lat, lon], zoom);
         }
@@ -235,5 +226,22 @@
     }
 
 	</script>
+
+	<!-- Piwik -->
+	<script type="text/javascript">
+    var _paq = _paq || [];
+	  _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//194.145.201.185/";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 2]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <noscript><p><img src="//194.145.201.185/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+
 </body>
 </html>

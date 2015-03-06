@@ -23,7 +23,7 @@ body {
   font-family: 'FPL Neu';
   font-style: italic;
   font-weight: bold;
-  src: url('{{ site.baseurl}}/fonts/fp9ri8a.otf')
+  src: url('{{ site.baseurl}}/fonts/fp9bi8a.otf')
 }
 
 .map {
@@ -63,12 +63,10 @@ a, a:visited, a:hover {
 .color11 { background-color: #313695; }
 
 #box {
-  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
 
-/*  border-width: 2px;
-  border-style: solid;
-  border-color: rgba(255, 255, 255, 0.8);*/
-  /*border-radius: 9px;*/
+  background-color: white;
 
   padding: 10px;
   width: 230px;
