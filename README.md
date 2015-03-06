@@ -1,6 +1,10 @@
 # Buildings in the Netherlands by year of construction
 
+View map on http://code.waag.org/buildings.
+
 Map showing all 9,866,539 <a href="http://www.kadaster.nl/web/file?uuid=25da4675-fc9c-47a6-8039-1af04c142965&owner=23cbe925-35ce-4a72-ac8c-a33a0c19ae1e&contentid=2585">buildings</a> in the Netherlands, shaded according to year of construction. Data from <a href="http://www.kadaster.nl/bag">BAG</a>, via <a href="http://citysdk.waag.org/">CitySDK</a>. Map made with <a href="http://www.mapbox.com/tilemill/">TileMill</a> by <a href="mailto:bert@waag.org">Bert Spaan</a>, <a href="http://waag.org/">Waag Society</a>, inspired by <a href="http://bklynr.com/block-by-block-brooklyns-past-and-present/">BKLYNR</a>.
+
+[![](high-res/smaller/haarlem.png)](http://code.waag.org/buildings)
 
 This README file explains how to get the data, create the map and [export](../../tree/gh-pages/sections) high-res PNG and PDF files.
 
