@@ -85,8 +85,8 @@
       var lat = e.latlng.lat,
           lon = e.latlng.lng;
 
-      var buildingUrl = "{{ site.api }}layers/bag.pand/objects?lat=" + lat
-           + "&lon=" + lon + "&per_page=1&radius=" + {{ site.radius }};
+      var buildingUrl = "{{ site.api }}layers/bag.pand/objects?lat=" + lat.toFixed(4)
+           + "&lon=" + lon.toFixed(4) + "&per_page=1&radius=" + {{ site.radius }};
 
       d3.json(buildingUrl, function(geojson) {
 
