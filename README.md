@@ -6,13 +6,19 @@ Map showing all 9,866,539 <a href="http://www.kadaster.nl/web/file?uuid=25da4675
 
 [![](high-res/smaller/haarlem.png)](http://code.waag.org/buildings)
 
-This README file explains how to get the data, create the map and [export](../../tree/gh-pages/sections) high-res PNG and PDF files.
+# License
 
-# Download and import BAG data
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
+# Make a similar map yourself
+
+The map is made with open data and open source software only. This section of the README explains how to get the data, create the map and [export](../../tree/gh-pages/sections) high-res PNG and PDF files.
+
+## Download and import BAG data
 
 Install PostgreSQL and PostGIS, download data from [NLExtract](http://nlextract.nl/) and import into database `bag`. Details can be found in [NLExtract's documentation](https://nlextract.readthedocs.org/en/latest/bagextract.html).
 
-# Create buildings table
+## Create buildings table
 
 To create a map with buildings by year of construction (or area and function), execute the following SQL:
 
@@ -60,7 +66,7 @@ CREATE INDEX buildings_geom_idx
   USING gist (geom);
 ```
 
-# Create TileMill project and map tiles
+## Create TileMill project and map tiles
 
 Install [TileMill](https://www.mapbox.com/tilemill/), copy the contents of the `tilemill` to your local TileMill projects directory (usually `~/Documents/MapBox/project`), or create a symbolic link. The TileMill project file connects with PostgreSQL using user `postgres` and password `postgres`. Edit `project.mml` to change user and password.
 
