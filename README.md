@@ -29,43 +29,24 @@ Install PostgreSQL and PostGIS, download data from [NLExtract](http://nlextract.
 To create a map with buildings by year of construction (or area and function), execute the following SQL:
 
 ```sql
--- Aggregate mode function, to compute modal area and function
--- From: http://wiki.postgresql.org/wiki/Aggregate_Mode
-CREATE OR REPLACE FUNCTION _final_mode(anyarray)
-  RETURNS anyelement AS
-$BODY$
-    SELECT a
-    FROM unnest($1) a
-    GROUP BY 1
-    ORDER BY COUNT(1) DESC, 1
-    LIMIT 1;
-$BODY$
-LANGUAGE 'sql' IMMUTABLE;
-
-CREATE AGGREGATE mode(anyelement) (
-  SFUNC=array_append, --Function to call for each row. Just builds the array
-  STYPE=anyarray,
-  FINALFUNC=_final_mode, --Function to call after everything has been added to array
-  INITCOND='{}' --Initialize an empty array when starting
-);
-
+DROP SCHEMA tilemill;
 CREATE SCHEMA tilemill;
 
 CREATE TABLE tilemill.buildings AS
 SELECT
-  p.identificatie::bigint, bouwjaar::int,
+  p.identificatie::bigint, p.bouwjaar::int AS year,
   ST_Transform(p.geovlak, 4326) AS geom,
-  round(mode(oppervlakteverblijfsobject)) AS oppervlakte,
-  mode(vg.gebruiksdoelverblijfsobject::text) AS gebruiksdoel
-FROM verblijfsobjectactueelbestaand v
-JOIN verblijfsobjectpandactueel vp
+  round(mode() WITHIN GROUP(order by v.oppervlakteverblijfsobject)) AS oppervlakte,
+  mode() WITHIN GROUP(order by vg.gebruiksdoelverblijfsobject::text) AS gebruiksdoel
+FROM bagactueel.verblijfsobject v
+JOIN bagactueel.verblijfsobjectpand vp
   ON vp.identificatie = v.identificatie
-JOIN pandactueelbestaand p
+JOIN bagactueel.pand p
   ON vp.gerelateerdpand = p.identificatie
-JOIN verblijfsobjectgebruiksdoelactueel vg
+JOIN bagactueel.verblijfsobjectgebruiksdoel vg
   ON v.identificatie = vg.identificatie
 GROUP BY
-  p.identificatie, bouwjaar, p.geovlak;
+  p.identificatie, p.bouwjaar, p.geovlak;
 
 CREATE INDEX buildings_geom_idx
   ON tilemill.buildings
