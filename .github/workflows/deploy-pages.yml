@@ -20,14 +20,16 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BASE_PATH: /${{ github.event.repository.name }}
+      PUBLIC_BUILDINGS_RASTER_PMTILES_URL: https://buildings.allmaps.org/buildings-raster@2x.pmtiles
+      PUBLIC_BUILDINGS_VECTOR_PMTILES_URL: https://buildings.allmaps.org/buildings-vector.pmtiles
+      PUBLIC_NEW_BUILDING_CLUSTERS_PMTILES_URL: https://buildings.allmaps.org/new-building-clusters-2015.pmtiles
+      PUBLIC_NEW_BUILDING_CLUSTERS_MASK_PMTILES_URL: https://buildings.allmaps.org/new-building-clusters-mask-2015.pmtiles
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Setup Node
         uses: actions/setup-node@v4
