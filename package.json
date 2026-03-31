@@ -1,0 +1,35 @@
+{
+  "name": "@bertspaan/buildings",
+  "author": {
+    "name": "Bert Spaan",
+    "email": "hello@bertspaan.nl",
+    "url": "https://bertspaan.nl"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cluster-new-building-clusters": "node scripts/build-new-building-clusters.ts",
+    "export-new-building-cluster-mask": "node scripts/build-new-building-cluster-mask.ts",
+    "export-new-building-cluster-mask-tiles": "node scripts/build-new-building-cluster-mask-tiles.ts",
+    "export-new-building-cluster-overlay": "pnpm export-new-building-cluster-mask && pnpm export-new-building-cluster-mask-tiles && pnpm export-new-building-cluster-tiles",
+    "export-new-building-cluster-tiles": "node scripts/build-new-building-cluster-tiles.ts",
+    "count-buildings": "node scripts/count-buildings.ts",
+    "export-raster": "node scripts/build-raster.ts national",
+    "export-raster-haarlem": "node scripts/build-raster.ts haarlem",
+    "export-vector": "node scripts/build-vector.ts national",
+    "export-vector-haarlem": "node scripts/build-vector.ts haarlem",
+    "export-tiles": "pnpm export-raster && pnpm export-vector",
+    "export-tiles-haarlem": "pnpm export-raster-haarlem && pnpm export-vector-haarlem",
+    "dev": "pnpm --filter @buildings/viewer dev",
+    "build": "pnpm --filter @buildings/viewer build",
+    "check": "pnpm exec tsc -p tsconfig.scripts.json --noEmit && pnpm --filter @buildings/viewer check",
+    "lint": "pnpm --filter @buildings/viewer lint",
+    "format": "pnpm --filter @buildings/viewer format",
+    "upload:r2": "node scripts/upload-r2.ts"
+  },
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
+  "devDependencies": {
+    "@types/node": "^24.12.0",
+    "wrangler": "^4.78.0"
+  }
+}

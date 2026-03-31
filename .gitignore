@@ -1,0 +1,10 @@
+node_modules/
+app/node_modules/
+app/.env.local
+data/
+gdal/data/*
+!gdal/data/.gitkeep
+mapnik/data/*
+!mapnik/data/.gitkeep
+mapserver/data/output/*
+!mapserver/data/output/.gitkeep

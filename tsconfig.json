@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.scripts.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "scripts/build-raster.ts",
+    "scripts/build-vector.ts",
+    "scripts/tile-helpers.ts",
+    "scripts/xyzdir-to-mbtiles.ts"
+  ]
+}
