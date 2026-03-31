@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "rootDir": "scripts",
+    "strict": true,
+    "noEmitOnError": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
+    "verbatimModuleSyntax": true
+  },
+  "include": [
+    "scripts/count-buildings.ts",
+    "scripts/build-raster.ts",
+    "scripts/build-vector.ts",
+    "scripts/tile-helpers.ts",
+    "scripts/xyzdir-to-mbtiles.ts"
+  ]
+}
