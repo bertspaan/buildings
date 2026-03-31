@@ -1,0 +1,37 @@
+{
+  "hybridBreakZoom": 13,
+  "rasterMinZoom": 7,
+  "vectorMaxZoom": 17,
+  "rasterTileSize": 512,
+  "rasterDpi": 192,
+  "rasterAntialias": true,
+  "rasterProject": "qgis-buffered.qgs",
+  "vectorLayerName": "buildings",
+  "vectorAttributes": ["identificatie", "bouwjaar", "status", "gebruiksdoel"],
+  "nationalBoundsWgs84": [
+    3.255248647817185, 50.73468904276694, 7.240796714133118, 53.540082417800754
+  ],
+  "areas": {
+    "national": {
+      "id": "buildings",
+      "label": "Nationwide export",
+      "extent3857": [
+        362372.6218805014, 806041.8031549073, 6574496.790414488,
+        7083530.142053811
+      ],
+      "boundsWgs84": [
+        3.255248647817185, 50.73468904276694, 7.240796714133118,
+        53.540082417800754
+      ]
+    },
+    "haarlem": {
+      "id": "haarlem",
+      "label": "Haarlem test",
+      "extent3857": [
+        512069.65764905844, 522088.41182045307, 6863659.039714891,
+        6874600.9359679315
+      ],
+      "boundsWgs84": [4.6, 52.35, 4.69, 52.41]
+    }
+  }
+}
