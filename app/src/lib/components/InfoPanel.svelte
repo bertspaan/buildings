@@ -28,12 +28,6 @@
   const maxPopupAddresses = 5
 
   $effect(() => {
-    if (selectedBuilding && detailsEnabled) {
-      expanded = true
-    }
-  })
-
-  $effect(() => {
     const identificatie = selectedBuilding?.local.identificatie
 
     bagFeature = undefined
@@ -175,6 +169,7 @@
   }
 
   function getMapLinks(): {
+    allmapsHere: string
     openStreetMap: string
     googleMaps: string
     streetView: string
@@ -188,6 +183,7 @@
     const lngString = lng.toFixed(6)
 
     return {
+      allmapsHere: `https://here.allmaps.org/?position=${latString},${lngString}`,
       openStreetMap: `https://www.openstreetmap.org/?mlat=${latString}&mlon=${lngString}#map=19/${latString}/${lngString}`,
       googleMaps: `https://www.google.com/maps/search/?api=1&query=${latString},${lngString}`,
       streetView: `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${latString},${lngString}`
@@ -214,7 +210,7 @@
 <Panel bind:expanded disabled={!detailsEnabled}>
   {#snippet header()}
     {#if !detailsEnabled}
-      Zoom in and click on a building to see details
+      Zoom in to see building details
     {:else if selectedBuilding && addresses.length > 0}
       {addresses[0]}
     {:else if expanded}
@@ -226,10 +222,29 @@
 
   {#snippet contents()}
     {#if selectedBuilding}
-      {#if addresses.length > 0}
+      <div class="grid gap-1.5">
+        <div class="grid grid-cols-[8rem_1fr] gap-2.5 text-[0.83rem]">
+          <span class="text-white/70">BAG ID</span>
+          <a
+            class="wrap-break-words text-white underline"
+            href={getBagObjectUrl()}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {formatValue(selectedBuilding.local.identificatie)}
+          </a>
+        </div>
+        <div class="grid grid-cols-[8rem_1fr] gap-2.5 text-[0.83rem]">
+          <span class="text-white/70">Year of construction</span>
+          <span class="wrap-break-words"
+            >{formatValue(selectedBuilding.local.bouwjaar)}</span
+          >
+        </div>
+      </div>
+      {#if addresses.length > 1}
         <div class="mb-2 flex items-baseline justify-between gap-3">
           <div class="text-[0.8rem] uppercase tracking-[0.04em] text-white/70">
-            Adressen
+            All addresses
           </div>
           <div class="text-[0.82rem] text-white/85">
             {formatValue(
@@ -240,7 +255,7 @@
         </div>
 
         <div class="grid gap-1.5">
-          {#each getVisibleAddresses().slice(1) as address}
+          {#each getVisibleAddresses() as address}
             <div class="text-[0.82rem] leading-[1.35]">{address}</div>
           {/each}
         </div>
@@ -253,33 +268,33 @@
               showAllAddresses = true
             }}
           >
-            Toon nog {getRemainingAddressCount()} adres{getRemainingAddressCount() ===
+            Show {getRemainingAddressCount()} more address{getRemainingAddressCount() ===
             1
               ? ''
-              : 'sen'}
+              : 'es'}
           </button>
         {/if}
 
         {@const mapLinks = getMapLinks()}
         {#if mapLinks}
-          <div class="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[0.8rem]">
+          <div class="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-[0.8rem]">
+            <a
+              class="text-white underline"
+              href={mapLinks.allmapsHere}
+              target="_blank"
+              rel="noreferrer">Allmaps Here</a
+            >
             <a
               class="text-white underline"
               href={mapLinks.openStreetMap}
               target="_blank"
-              rel="noreferrer">View in OpenStreetMap</a
-            >
-            <a
-              class="text-white underline"
-              href={mapLinks.googleMaps}
-              target="_blank"
-              rel="noreferrer">Google Maps</a
+              rel="noreferrer">OpenStreetMap</a
             >
             <a
               class="text-white underline"
               href={mapLinks.streetView}
               target="_blank"
-              rel="noreferrer">Street View</a
+              rel="noreferrer">Google Street View</a
             >
           </div>
         {/if}
@@ -287,49 +302,15 @@
         <div class="my-3 h-px bg-white/12"></div>
       {/if}
 
-      <div class="grid gap-1.5">
-        <div class="grid grid-cols-[8rem_1fr] gap-2.5 text-[0.83rem]">
-          <span class="text-white/70">BAG-identificatie</span>
-          <a
-            class="wrap-break-words text-white underline"
-            href={getBagObjectUrl()}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {formatValue(selectedBuilding.local.identificatie)}
-          </a>
-        </div>
-        <div class="grid grid-cols-[8rem_1fr] gap-2.5 text-[0.83rem]">
-          <span class="text-white/70">Bouwjaar</span>
-          <span class="wrap-break-words"
-            >{formatValue(selectedBuilding.local.bouwjaar)}</span
-          >
-        </div>
-        <div class="grid grid-cols-[8rem_1fr] gap-2.5 text-[0.83rem]">
-          <span class="text-white/70">Status</span>
-          <span class="wrap-break-words"
-            >{formatValue(selectedBuilding.local.status)}</span
-          >
-        </div>
-        <div class="grid grid-cols-[8rem_1fr] gap-2.5 text-[0.83rem]">
-          <span class="text-white/70">Gebruiksdoel</span>
-          <span class="wrap-break-words"
-            >{formatValue(selectedBuilding.local.gebruiksdoel)}</span
-          >
-        </div>
-      </div>
-
       {#if isFetching}
-        <div class="mt-3 text-[0.78rem] text-white/70">
-          BAG gegevens laden...
-        </div>
+        <div class="mt-3 text-[0.78rem] text-white/70">Loading BAG data...</div>
       {/if}
 
       {#if error}
         <div class="mt-3 text-[0.78rem] text-[#ff9f9f]">{error}</div>
       {/if}
     {:else}
-      <div>Klik op een gebouw om de details te zien.</div>
+      <div>Click on a building to see its details.</div>
     {/if}
   {/snippet}
 </Panel>

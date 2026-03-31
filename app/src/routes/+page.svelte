@@ -116,13 +116,6 @@
     return '>= 2015'
   }
 
-  // function getColorForBouwjaar(bouwjaar: number | string | undefined): string {
-  //   const label = getLegendLabelForBouwjaar(bouwjaar)
-  //   return (
-  //     legendEntries.find((entry) => entry.label === label)?.color ?? '#a50026'
-  //   )
-  // }
-
   function formatCount(value: number): string {
     return new Intl.NumberFormat('nl-NL').format(value)
   }
@@ -546,6 +539,10 @@
   }
 
   async function initializeMap() {
+    if (!container) {
+      return
+    }
+
     error = ''
 
     if (!nationwideArchive.raster || !nationwideArchive.vector) {
@@ -676,26 +673,32 @@
     aria-label="Map showing the PMTiles archive"
   ></div>
 
-  {#if error}
-    <div
-      class="fixed bottom-4 left-4 z-1 max-w-[min(32rem,calc(100vw-2rem))] rounded-xl border border-white/15 bg-red-950/85 px-4 py-3 text-white"
-    >
-      {error}
-    </div>
-  {/if}
+  <div
+    class="flex absolute z-10 inset-0 h-full w-full p-2 pointer-events-none
+      flex-row
+      sm:flex-col items-end"
+  >
+    <PanelContainer
+      {allowMultipleExpanded}
+      count={buildingStats.buildingCount}
+      {legendEntries}
+      selectedLegendLabel={getLegendLabelForBouwjaar(
+        selectedBuilding?.local.bouwjaar
+      )}
+      {hoveredLegendLabel}
+      {hoveredBuildingYear}
+      {showNewBuildingClusters}
+      detailsEnabled={mapZoom >= hybridBreakZoom}
+      {selectedBuilding}
+      onToggleNewBuildingAreas={toggleNewBuildingClusters}
+    />
 
-  <PanelContainer
-    {allowMultipleExpanded}
-    count={buildingStats.buildingCount}
-    {legendEntries}
-    selectedLegendLabel={getLegendLabelForBouwjaar(
-      selectedBuilding?.local.bouwjaar
-    )}
-    {hoveredLegendLabel}
-    {hoveredBuildingYear}
-    {showNewBuildingClusters}
-    detailsEnabled={mapZoom >= hybridBreakZoom}
-    {selectedBuilding}
-    onToggleNewBuildingAreas={toggleNewBuildingClusters}
-  />
+    {#if error}
+      <div
+        class="rounded-xl border border-white/15 bg-red-950/85 px-4 py-3 text-white"
+      >
+        {error}
+      </div>
+    {/if}
+  </div>
 </div>

@@ -17,14 +17,14 @@
 <Panel bind:expanded>
   {#snippet header()}
     <div class="flex w-full items-center justify-between gap-2">
-      <div>New building clusters since 2015</div>
+      <div>Areas built since 2015</div>
       <button
         type="button"
         class={[
-          'cursor-pointer rounded-lg border border-white px-3 py-0.5 text-xs',
+          'cursor-pointer rounded-lg border border-[#4a7fbe] px-3 py-0.5 text-xs transition-all text-white',
           showNewBuildingClusters
-            ? 'bg-white text-black'
-            : 'bg-white/8 text-white hover:bg-white/12'
+            ? 'bg-[#3a5fa8]'
+            : 'bg-none hover:bg-[#3a5fa8]/50'
         ]}
         onclick={(event) => {
           event.stopPropagation()
@@ -47,9 +47,8 @@
       >
         first version
       </a>
-      of this map was last updated. Toggle this layer to see where clusters of new
-      buildings have appeared since then, and explore the urban development of Dutch
-      cities.
+      of this map was last updated. Toggle this layer to see where new buildings have
+      been built since then.
     </div>
   {/snippet}
 </Panel>

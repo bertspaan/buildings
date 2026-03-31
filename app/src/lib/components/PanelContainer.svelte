@@ -67,7 +67,9 @@
           ? lastOpenedIndex
           : currentExpandedState.findIndex(Boolean)
 
-      setExpandedState(currentExpandedState.map((_, index) => index === keepIndex))
+      setExpandedState(
+        currentExpandedState.map((_, index) => index === keepIndex)
+      )
     }
 
     previousExpandedState = getExpandedState()
@@ -75,26 +77,21 @@
 </script>
 
 <div
-  class="fixed right-2 top-2 z-1 max-h-[calc(100vh-2rem)] w-[min(23rem,calc(100vw-2rem))] overflow-auto text-white"
+  class="max-w-full w-sm
+    flex flex-col gap-1 overflow-auto text-white"
 >
-  <div class="space-y-1.5">
-    <AboutPanel bind:expanded={aboutExpanded} {count} />
-    <NewBuildingsPanel
-      bind:expanded={newBuildingsExpanded}
-      {showNewBuildingClusters}
-      onToggle={onToggleNewBuildingAreas}
-    />
-    <LegendPanel
-      bind:expanded={legendExpanded}
-      entries={legendEntries}
-      selectedLabel={selectedLegendLabel}
-      hoveredLabel={hoveredLegendLabel}
-      {hoveredBuildingYear}
-    />
-    <InfoPanel
-      bind:expanded={infoExpanded}
-      {detailsEnabled}
-      {selectedBuilding}
-    />
-  </div>
+  <AboutPanel bind:expanded={aboutExpanded} {count} />
+  <NewBuildingsPanel
+    bind:expanded={newBuildingsExpanded}
+    {showNewBuildingClusters}
+    onToggle={onToggleNewBuildingAreas}
+  />
+  <LegendPanel
+    bind:expanded={legendExpanded}
+    entries={legendEntries}
+    selectedLabel={selectedLegendLabel}
+    hoveredLabel={hoveredLegendLabel}
+    {hoveredBuildingYear}
+  />
+  <InfoPanel bind:expanded={infoExpanded} {detailsEnabled} {selectedBuilding} />
 </div>
