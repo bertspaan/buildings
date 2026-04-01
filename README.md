@@ -1,5 +1,7 @@
 # All 11.333.878 buildings in the Netherlands
 
+[![All buildings in the Netherlands](app/static/buildings-open-graph.jpg)](https://bertspaan.nl/buildings)
+
 https://bertspaan.nl/buildings
 
 This map shows all buildings in the Netherlands, colored by their year of construction. This map is made by [Bert Spaan](https://bertspaan.nl) — it's an improved and updated version of [the map I made in 2013](https://code.waag.org/buildings). The data comes from the [BAG](https://www.kadaster.nl/zakelijk/registraties/basisregistraties/bag/over-bag), the Dutch building and addresses registry.
