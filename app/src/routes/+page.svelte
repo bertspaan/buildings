@@ -670,7 +670,7 @@
 
 <svelte:body bind:clientWidth={bodyWidth} />
 
-<div class="absolute top-0 left-0 h-screen w-screen overflow-hidden bg-black">
+<div class="absolute top-0 left-0 h-dvh w-dvw overflow-hidden bg-black">
   <div
     bind:this={container}
     class="absolute top-0 left-0 h-full w-full"
