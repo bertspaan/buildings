@@ -32,14 +32,17 @@ export type BagVerblijfsobjectFeature = {
     identificatie?: string
     hoofdadres_identificatie?: string
     openbare_ruimte_naam?: string
+    openbare_ruimte?: string
     huisnummer?: number | string
     huisletter?: string | null
     toevoeging?: string | null
     postcode?: string
     woonplaats_naam?: string
+    woonplaats?: string
     status?: string
     gebruiksdoel?: string
     oppervlakte?: number
+    pandidentificatie?: string
   }
 }
 

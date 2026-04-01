@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
-  import maplibre, {
+  import {
     GeolocateControl,
     Map as MapLibreMap,
-    NavigationControl
+    NavigationControl,
+    addProtocol
   } from 'maplibre-gl'
-  import { PMTiles } from 'pmtiles'
+  import { PMTiles, Protocol as PMTilesProtocol } from 'pmtiles'
 
   import {
     PUBLIC_BUILDINGS_RASTER_PMTILES_URL,
@@ -18,7 +19,7 @@
   import PanelContainer from '$lib/components/PanelContainer.svelte'
   import buildingStats from '$lib/generated/building-stats.json'
 
-  import { ensurePmtilesProtocol } from '$lib/pmtiles.js'
+  // import { ensurePmtilesProtocol } from '$lib/pmtiles.js'
 
   import type { MapGeoJSONFeature, StyleSpecification } from 'maplibre-gl'
 
@@ -29,7 +30,7 @@
 
   import tileConfig from '../../../tile-config.json'
 
-  ensurePmtilesProtocol(maplibre)
+  // ensurePmtilesProtocol(maplibre)
 
   const nationwideArchive = {
     raster: PUBLIC_BUILDINGS_RASTER_PMTILES_URL,
@@ -543,6 +544,9 @@
       return
     }
 
+    const protocol = new PMTilesProtocol()
+    addProtocol('pmtiles', protocol.tile)
+
     error = ''
 
     if (!nationwideArchive.raster || !nationwideArchive.vector) {
@@ -666,25 +670,29 @@
 
 <svelte:body bind:clientWidth={bodyWidth} />
 
-<div class="relative h-screen w-screen overflow-hidden bg-black">
+<div class="absolute top-0 left-0 h-screen w-screen overflow-hidden bg-black">
   <div
     bind:this={container}
-    class="absolute inset-0 h-full w-full"
+    class="absolute top-0 left-0 h-full w-full"
     aria-label="Map showing the PMTiles archive"
   ></div>
 
   <div
-    class="flex absolute z-10 inset-0 h-full w-full p-2 pointer-events-none
+    class="flex absolute z-10 top-0 left-0 h-full w-full pointer-events-none
       flex-row
-      sm:flex-col items-end"
+      p-1 sm:p-2
+      min-[420px]:flex-col items-end"
   >
     <PanelContainer
       {allowMultipleExpanded}
-      count={buildingStats.buildingCount}
+      buildingCount={buildingStats.buildingCount}
       {legendEntries}
       selectedLegendLabel={getLegendLabelForBouwjaar(
         selectedBuilding?.local.bouwjaar
       )}
+      selectedBuildingYear={getNumericBouwjaar(
+        selectedBuilding?.local.bouwjaar
+      ) || undefined}
       {hoveredLegendLabel}
       {hoveredBuildingYear}
       {showNewBuildingClusters}

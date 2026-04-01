@@ -8,7 +8,9 @@
     entries?: LegendEntry[]
     selectedLabel?: string
     hoveredLabel?: string
+    selectedBuildingYear?: number
     hoveredBuildingYear?: number
+    detailsEnabled?: boolean
     expanded?: boolean
   }
 
@@ -16,11 +18,16 @@
     entries = [],
     selectedLabel,
     hoveredLabel,
+    selectedBuildingYear,
     hoveredBuildingYear,
+    detailsEnabled = false,
     expanded = $bindable(false)
   }: Props = $props()
 
   const collapsedLegendLabel = $derived(hoveredLabel ?? selectedLabel)
+  const collapsedLegendYear = $derived(
+    hoveredBuildingYear ?? selectedBuildingYear
+  )
 
   function getContrastTextColor(backgroundColor: string): string {
     const normalized = backgroundColor.trim().replace('#', '')
@@ -44,45 +51,46 @@
     return luminance > 0.62 ? '#111111' : '#ffffff'
   }
 
-  function getCollapsedLegendText(label: string): string {
-    if (label === hoveredLabel && hoveredBuildingYear) {
-      return String(hoveredBuildingYear)
+  function getCollapsedLegendText(): string | undefined {
+    if (detailsEnabled && collapsedLegendYear) {
+      return String(collapsedLegendYear)
     }
 
-    return label
+    return undefined
   }
 </script>
 
 <Panel bind:expanded>
   {#snippet header()}
-    {#if expanded}
-      Legend
-    {:else}
-      <div class="contents">
-        <div>Legend</div>
-        <div
-          class="grid w-full auto-cols-auto grid-flow-col items-center gap-1"
-        >
-          {#each entries as entry}
-            <div
-              class={`flex h-5 items-center overflow-hidden rounded-full border border-white/15 transition-all duration-200 ${
-                collapsedLegendLabel === entry.label
-                  ? 'w-auto max-w-full px-1.5'
-                  : 'w-5'
-              }`}
-              style={`background:${entry.color}`}
-            >
-              {#if collapsedLegendLabel === entry.label}
-                <span
-                  class="pr-0.5 text-[0.72rem] font-medium whitespace-nowrap"
-                  style={`color:${getContrastTextColor(entry.color)}`}
-                >
-                  {getCollapsedLegendText(entry.label)}
-                </span>
-              {/if}
-            </div>
-          {/each}
-        </div>
+    Legend
+  {/snippet}
+
+  {#snippet controls()}
+    {#if !expanded}
+      <div
+        class="grid w-full min-w-0 max-w-full auto-cols-auto grid-flow-col items-center gap-1"
+      >
+        {#each entries as entry}
+          {@const isActive = collapsedLegendLabel === entry.label}
+          {@const collapsedLegendText = getCollapsedLegendText()}
+          <div
+            class={[
+              'w-auto flex h-5 items-center justify-center rounded-full border border-white/15 p-1',
+              'transition-all',
+              isActive && collapsedLegendText ? 'px-0' : ''
+            ]}
+            style:background={entry.color}
+          >
+            {#if isActive && collapsedLegendText}
+              <span
+                class="text-xs font-medium"
+                style:color={getContrastTextColor(entry.color)}
+              >
+                {collapsedLegendText}
+              </span>
+            {/if}
+          </div>
+        {/each}
       </div>
     {/if}
   {/snippet}

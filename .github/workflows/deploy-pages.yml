@@ -27,6 +27,9 @@ jobs:
       PUBLIC_BUILDINGS_VECTOR_PMTILES_URL: https://buildings.allmaps.org/buildings-vector.pmtiles
       PUBLIC_NEW_BUILDING_CLUSTERS_PMTILES_URL: https://buildings.allmaps.org/new-building-clusters-2015.pmtiles
       PUBLIC_NEW_BUILDING_CLUSTERS_MASK_PMTILES_URL: https://buildings.allmaps.org/new-building-clusters-mask-2015.pmtiles
+      PUBLIC_BUILDING_ADDRESS_LOOKUP_DATA_URL: https://buildings.allmaps.org/building-addresses.data
+      PUBLIC_BUILDING_ADDRESS_LOOKUP_URL: https://buildings.allmaps.org/building-addresses.lookup
+      PUBLIC_BUILDING_ADDRESS_LOOKUP_INDEX_URL: https://buildings.allmaps.org/building-addresses.lookup.index.json
     steps:
       - name: Checkout
         uses: actions/checkout@v6

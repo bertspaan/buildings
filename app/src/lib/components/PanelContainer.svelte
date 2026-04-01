@@ -7,11 +7,12 @@
   import type { LegendEntry, SelectedBuildingState } from '$lib/viewer-types.js'
 
   type Props = {
-    count?: number
+    buildingCount: number
     allowMultipleExpanded?: boolean
     legendEntries?: LegendEntry[]
     selectedLegendLabel?: string
     hoveredLegendLabel?: string
+    selectedBuildingYear?: number
     hoveredBuildingYear?: number
     showNewBuildingClusters?: boolean
     detailsEnabled?: boolean
@@ -20,11 +21,12 @@
   }
 
   let {
-    count = 0,
+    buildingCount,
     allowMultipleExpanded = true,
     legendEntries = [],
     selectedLegendLabel,
     hoveredLegendLabel,
+    selectedBuildingYear,
     hoveredBuildingYear,
     showNewBuildingClusters = false,
     detailsEnabled = false,
@@ -77,13 +79,15 @@
 </script>
 
 <div
-  class="max-w-full w-sm
-    flex flex-col gap-1 overflow-auto text-white"
+  class="max-w-full w-full min-[420px]:w-90 max-h-full min-h-0
+    flex flex-col overflow-hidden text-white
+    gap-0.5 sm:gap-1"
 >
-  <AboutPanel bind:expanded={aboutExpanded} {count} />
+  <AboutPanel bind:expanded={aboutExpanded} {buildingCount} />
   <NewBuildingsPanel
     bind:expanded={newBuildingsExpanded}
     {showNewBuildingClusters}
+    {buildingCount}
     onToggle={onToggleNewBuildingAreas}
   />
   <LegendPanel
@@ -91,7 +95,9 @@
     entries={legendEntries}
     selectedLabel={selectedLegendLabel}
     hoveredLabel={hoveredLegendLabel}
+    {selectedBuildingYear}
     {hoveredBuildingYear}
+    {detailsEnabled}
   />
   <InfoPanel bind:expanded={infoExpanded} {detailsEnabled} {selectedBuilding} />
 </div>

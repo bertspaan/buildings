@@ -2,10 +2,10 @@
   import Panel from '$lib/components/Panel.svelte'
 
   let {
-    count = 0,
+    buildingCount = 0,
     expanded = $bindable(true)
   }: {
-    count?: number
+    buildingCount?: number
     expanded?: boolean
   } = $props()
 
@@ -16,9 +16,9 @@
 
 <Panel bind:expanded>
   {#snippet header()}
-    <div class="font-bold">
-      All {formatCount(count)} buildings in the Netherlands
-    </div>
+    <span class="font-bold">
+      All {formatCount(buildingCount)} buildings in the Netherlands
+    </span>
   {/snippet}
 
   {#snippet contents()}
@@ -29,7 +29,7 @@
         class="text-white underline"
         target="_blank">Bert Spaan</a
       >
-      — it is a new version of
+      — it's an improved and updated version of
       <a
         href="https://code.waag.org/buildings/"
         target="_blank"

@@ -1,11 +1,22 @@
 <script lang="ts">
+  import {
+    PUBLIC_BUILDING_ADDRESS_LOOKUP_DATA_URL,
+    PUBLIC_BUILDING_ADDRESS_LOOKUP_INDEX_URL,
+    PUBLIC_BUILDING_ADDRESS_LOOKUP_URL
+  } from '$env/static/public'
+
   import Panel from '$lib/components/Panel.svelte'
 
-  import type {
-    BagPandFeature,
-    BagVerblijfsobjectFeature,
-    SelectedBuildingState
-  } from '$lib/viewer-types.js'
+  import type { SelectedBuildingState } from '$lib/viewer-types.js'
+
+  type LookupBucketIndex = Record<
+    string,
+    {
+      offset: number
+      length: number
+      count: number
+    }
+  >
 
   type Props = {
     detailsEnabled?: boolean
@@ -18,7 +29,7 @@
     selectedBuilding = null,
     expanded = $bindable(false)
   }: Props = $props()
-  let bagFeature = $state<BagPandFeature>()
+  let addressCount = $state(0)
   let addresses = $state<string[]>([])
   let isFetching = $state(false)
   let error = $state('')
@@ -26,11 +37,12 @@
   let loadId = 0
 
   const maxPopupAddresses = 5
+  let bucketIndexPromise: Promise<LookupBucketIndex> | undefined
 
   $effect(() => {
     const identificatie = selectedBuilding?.local.identificatie
 
-    bagFeature = undefined
+    addressCount = 0
     addresses = []
     isFetching = false
     error = ''
@@ -44,15 +56,14 @@
     isFetching = true
     ;(async () => {
       try {
-        const nextBagFeature = await fetchBagPand(identificatie)
-        const nextAddresses = await fetchAddressesForPand(nextBagFeature)
+        const nextAddresses = await fetchAddressesForPand(identificatie)
 
         if (currentLoadId !== loadId) {
           return
         }
 
-        bagFeature = nextBagFeature
         addresses = nextAddresses
+        addressCount = nextAddresses.length
         isFetching = false
       } catch (cause) {
         if (currentLoadId !== loadId) {
@@ -76,88 +87,107 @@
     return String(value)
   }
 
-  function formatAddress(
-    feature: BagVerblijfsobjectFeature
+  function getLookupBucketKey(pandId: string): string {
+    let hash = 2166136261
+
+    for (let index = 0; index < pandId.length; index += 1) {
+      hash ^= pandId.charCodeAt(index)
+      hash = Math.imul(hash, 16777619)
+    }
+
+    return (hash >>> 20).toString(16).padStart(3, '0')
+  }
+
+  async function loadLookupIndex(): Promise<LookupBucketIndex> {
+    if (!PUBLIC_BUILDING_ADDRESS_LOOKUP_INDEX_URL) {
+      throw new Error('Address lookup index URL is not configured.')
+    }
+
+    bucketIndexPromise ??= fetch(PUBLIC_BUILDING_ADDRESS_LOOKUP_INDEX_URL, {
+      headers: {
+        accept: 'application/json'
+      }
+    }).then(async (response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Address lookup index request failed with status ${response.status}`
+        )
+      }
+
+      return (await response.json()) as LookupBucketIndex
+    })
+
+    return bucketIndexPromise
+  }
+
+  async function fetchByteRange(url: string, start: number, length: number) {
+    const end = start + length - 1
+    const response = await fetch(url, {
+      headers: {
+        Range: `bytes=${start}-${end}`
+      }
+    })
+
+    if (!(response.ok || response.status === 206)) {
+      throw new Error(`Range request failed with status ${response.status}`)
+    }
+
+    return await response.text()
+  }
+
+  function findLookupLine(
+    lookupText: string,
+    pandId: string
   ): string | undefined {
-    const properties = feature.properties
-    if (!properties) {
-      return undefined
-    }
-
-    const street = properties.openbare_ruimte_naam
-    const houseNumber = properties.huisnummer
-    const houseLetter = properties.huisletter ?? ''
-    const addition = properties.toevoeging ?? ''
-    const postcode = properties.postcode
-    const city = properties.woonplaats_naam
-
-    if (!street || houseNumber === null || houseNumber === undefined) {
-      return undefined
-    }
-
-    const line1 = `${street} ${houseNumber}${houseLetter}${addition}`
-    const line2 = [postcode, city].filter(Boolean).join(' ')
-    return [line1, line2].filter(Boolean).join(', ')
+    return lookupText
+      .split('\n')
+      .map((line) => line.trim())
+      .find((line) => line.startsWith(`${pandId}\t`))
   }
 
-  async function fetchBagPand(
-    identificatie: string
-  ): Promise<BagPandFeature | undefined> {
-    const url = new URL(
-      `https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&limit=1&identificatie=${identificatie}`
-    )
-
-    const response = await fetch(url, {
-      headers: {
-        accept: 'application/json'
-      }
-    })
-
-    if (!response.ok) {
-      throw new Error(`BAG API request failed with status ${response.status}`)
+  async function fetchAddressesForPand(pandId: string): Promise<string[]> {
+    if (
+      !PUBLIC_BUILDING_ADDRESS_LOOKUP_DATA_URL ||
+      !PUBLIC_BUILDING_ADDRESS_LOOKUP_URL
+    ) {
+      throw new Error('Address lookup URLs are not configured.')
     }
 
-    const payload = (await response.json()) as { features?: BagPandFeature[] }
-    return payload.features?.[0]
-  }
+    const bucketIndex = await loadLookupIndex()
+    const bucketKey = getLookupBucketKey(pandId)
+    const bucket = bucketIndex[bucketKey]
 
-  async function fetchBagVerblijfsobject(
-    url: string
-  ): Promise<BagVerblijfsobjectFeature | undefined> {
-    const response = await fetch(url, {
-      headers: {
-        accept: 'application/json'
-      }
-    })
-
-    if (!response.ok) {
-      throw new Error(`BAG API request failed with status ${response.status}`)
-    }
-
-    return (await response.json()) as BagVerblijfsobjectFeature
-  }
-
-  async function fetchAddressesForPand(
-    nextBagFeature?: BagPandFeature
-  ): Promise<string[]> {
-    const urls = nextBagFeature?.properties?.['verblijfsobject.href'] ?? []
-    if (urls.length === 0) {
+    if (!bucket || bucket.length === 0) {
       return []
     }
 
-    const features = await Promise.all(
-      urls.map((url: string) => fetchBagVerblijfsobject(url))
+    const lookupText = await fetchByteRange(
+      PUBLIC_BUILDING_ADDRESS_LOOKUP_URL,
+      bucket.offset,
+      bucket.length
     )
 
-    const nextAddresses = features
-      .map((feature: BagVerblijfsobjectFeature | undefined) =>
-        feature ? formatAddress(feature) : undefined
-      )
-      .filter((address: string | undefined): address is string =>
-        Boolean(address)
-      )
+    const lookupLine = findLookupLine(lookupText, pandId)
 
-    return [...new Set(nextAddresses)]
+    if (!lookupLine) {
+      return []
+    }
+
+    const [, offsetRaw, lengthRaw] = lookupLine.split('\t')
+    const offset = Number.parseInt(offsetRaw ?? '', 10)
+    const length = Number.parseInt(lengthRaw ?? '', 10)
+
+    if (!Number.isFinite(offset) || !Number.isFinite(length) || length <= 0) {
+      return []
+    }
+
+    const payloadText = await fetchByteRange(
+      PUBLIC_BUILDING_ADDRESS_LOOKUP_DATA_URL,
+      offset,
+      length
+    )
+
+    return JSON.parse(payloadText) as string[]
   }
 
   function getVisibleAddresses(): string[] {
@@ -191,12 +221,6 @@
   }
 
   function getBagObjectUrl(): string {
-    const directUrl = bagFeature?.properties?.rdf_seealso?.trim()
-
-    if (directUrl) {
-      return directUrl.replace(/^http:\/\//, 'https://')
-    }
-
     const identificatie = selectedBuilding?.local.identificatie?.trim()
 
     if (identificatie) {
@@ -241,29 +265,55 @@
           >
         </div>
       </div>
+
+      <div class="my-1 h-px bg-white/12"></div>
+
+      {@const mapLinks = getMapLinks()}
+      {#if mapLinks}
+        <div class="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-[0.8rem]">
+          <a
+            class="text-white underline"
+            href={mapLinks.openStreetMap}
+            target="_blank"
+            rel="noreferrer">OpenStreetMap</a
+          >
+          <a
+            class="text-white underline"
+            href={mapLinks.streetView}
+            target="_blank"
+            rel="noreferrer">Google Street View</a
+          >
+          <a
+            class="text-white underline"
+            href={mapLinks.allmapsHere}
+            target="_blank"
+            rel="noreferrer">Allmaps Here</a
+          >
+        </div>
+      {/if}
+
       {#if addresses.length > 1}
+        <div class="my-1 h-px bg-white/12"></div>
         <div class="mb-2 flex items-baseline justify-between gap-3">
-          <div class="text-[0.8rem] uppercase tracking-[0.04em] text-white/70">
-            All addresses
-          </div>
-          <div class="text-[0.82rem] text-white/85">
-            {formatValue(
-              bagFeature?.properties?.aantal_verblijfsobjecten ??
-                bagFeature?.properties?.['verblijfsobject.href']?.length
-            )}
+          <span class="font-bold">All addresses</span>
+
+          <div
+            class="text-xs border border-white/50 bg-white/20 rounded-full px-1 py-0"
+          >
+            {formatValue(addressCount)}
           </div>
         </div>
 
-        <div class="grid gap-1.5">
+        <div class="grid gap-1.5 max-h-30 sm:max-h-90 overflow-y-auto">
           {#each getVisibleAddresses() as address}
-            <div class="text-[0.82rem] leading-[1.35]">{address}</div>
+            <div class="text-sm leading-4">{address}</div>
           {/each}
         </div>
 
         {#if getRemainingAddressCount() > 0}
           <button
             type="button"
-            class="mt-3 cursor-pointer border-0 bg-transparent p-0 text-[0.8rem] text-white underline"
+            class="mt-3 cursor-pointer border-0 p-0 underline"
             onclick={() => {
               showAllAddresses = true
             }}
@@ -274,40 +324,14 @@
               : 'es'}
           </button>
         {/if}
-
-        {@const mapLinks = getMapLinks()}
-        {#if mapLinks}
-          <div class="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-[0.8rem]">
-            <a
-              class="text-white underline"
-              href={mapLinks.allmapsHere}
-              target="_blank"
-              rel="noreferrer">Allmaps Here</a
-            >
-            <a
-              class="text-white underline"
-              href={mapLinks.openStreetMap}
-              target="_blank"
-              rel="noreferrer">OpenStreetMap</a
-            >
-            <a
-              class="text-white underline"
-              href={mapLinks.streetView}
-              target="_blank"
-              rel="noreferrer">Google Street View</a
-            >
-          </div>
-        {/if}
-
-        <div class="my-3 h-px bg-white/12"></div>
       {/if}
 
       {#if isFetching}
-        <div class="mt-3 text-[0.78rem] text-white/70">Loading BAG data...</div>
+        <div class="mt-3">Loading addresses…</div>
       {/if}
 
       {#if error}
-        <div class="mt-3 text-[0.78rem] text-[#ff9f9f]">{error}</div>
+        <div class="mt-3 text-red-600">{error}</div>
       {/if}
     {:else}
       <div>Click on a building to see its details.</div>

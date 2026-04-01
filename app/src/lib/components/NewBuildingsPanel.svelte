@@ -2,22 +2,33 @@
   import Panel from '$lib/components/Panel.svelte'
 
   type Props = {
+    buildingCount: number
     showNewBuildingClusters?: boolean
     onToggle?: () => void
     expanded?: boolean
   }
 
   let {
+    buildingCount,
     showNewBuildingClusters = false,
     onToggle = () => {},
     expanded = $bindable(false)
   }: Props = $props()
+
+  const buildingsCount2015 = 9_866_539
+
+  function formatCount(value: number): string {
+    return new Intl.NumberFormat('nl-NL').format(value)
+  }
 </script>
 
 <Panel bind:expanded>
   {#snippet header()}
-    <div class="flex w-full items-center justify-between gap-2">
-      <div>Areas built since 2015</div>
+    Buildings built since 2015
+  {/snippet}
+
+  {#snippet controls()}
+    <div class="text-right">
       <button
         type="button"
         class={[
@@ -38,7 +49,7 @@
 
   {#snippet contents()}
     <div>
-      This map looked different in 2015, when the
+      The Netherlands looked different in 2015, when the
       <a
         href="https://code.waag.org/buildings/"
         target="_blank"
@@ -48,7 +59,9 @@
         first version
       </a>
       of this map was last updated. Toggle this layer to see where new buildings have
-      been built since then.
+      been built since then. According to the data, {formatCount(
+        buildingCount - buildingsCount2015
+      )} new buildings have been built since then.
     </div>
   {/snippet}
 </Panel>
