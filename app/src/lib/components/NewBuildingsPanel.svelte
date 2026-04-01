@@ -58,10 +58,9 @@
       >
         first version
       </a>
-      of this map was last updated. Toggle this layer to see where new buildings have
-      been built since then. According to the data, {formatCount(
+      of this map was last updated. According to the data, {formatCount(
         buildingCount - buildingsCount2015
-      )} new buildings have been built since then.
+      )} new buildings have been built since then. Toggle this layer to see where.
     </div>
   {/snippet}
 </Panel>
