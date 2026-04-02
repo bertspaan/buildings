@@ -1,8 +1,8 @@
 <script lang="ts">
-  import AboutPanel from '$lib/components/AboutPanel.svelte'
-  import InfoPanel from '$lib/components/InfoPanel.svelte'
-  import LegendPanel from '$lib/components/LegendPanel.svelte'
-  import NewBuildingsPanel from '$lib/components/NewBuildingsPanel.svelte'
+  import AboutPanel from '$lib/components/Panels/AboutPanel.svelte'
+  import InfoPanel from '$lib/components/Panels/InfoPanel.svelte'
+  import LegendPanel from '$lib/components/Panels/LegendPanel.svelte'
+  import NewBuildingsPanel from '$lib/components/Panels/NewBuildingsPanel.svelte'
 
   import type { LegendEntry, SelectedBuildingState } from '$lib/viewer-types.js'
 

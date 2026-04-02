@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LegendGrid from '$lib/components/LegendGrid.svelte'
+  import LegendGrid from '$lib/components/Panels/LegendGrid.svelte'
   import Panel from '$lib/components/Panel.svelte'
 
   import type { LegendEntry } from '$lib/viewer-types.js'
