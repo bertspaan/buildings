@@ -66,6 +66,17 @@
   const vectorNativeMinZoom = hybridBreakZoom + 1
   const viewerMinZoom = tileConfig.rasterMinZoom
   const viewerMaxZoom = 19
+  const mapBounds = tileConfig.nationalBoundsWgs84 as [number, number, number, number]
+  const mapBoundsWidth = mapBounds[2] - mapBounds[0]
+  const mapBoundsHeight = mapBounds[3] - mapBounds[1]
+  const mapBoundsBufferX = mapBoundsWidth * 1
+  const mapBoundsBufferY = mapBoundsHeight * 1
+  const paddedMapBounds = [
+    mapBounds[0] - mapBoundsBufferX,
+    mapBounds[1] - mapBoundsBufferY,
+    mapBounds[2] + mapBoundsBufferX,
+    mapBounds[3] + mapBoundsBufferY
+  ] as [number, number, number, number]
   const selectedBuildingLayerId = 'buildings-vector-selected'
   const vectorFillLayerId = 'buildings-vector-fill'
   const vectorOutlineLayerId = 'buildings-vector-outline'
@@ -601,6 +612,10 @@
         zoom: rasterHeader.minZoom,
         minZoom: viewerMinZoom,
         maxZoom: viewerMaxZoom,
+        maxBounds: [
+          [paddedMapBounds[0], paddedMapBounds[1]],
+          [paddedMapBounds[2], paddedMapBounds[3]]
+        ],
         attributionControl: false,
         hash: true,
         canvasContextAttributes: {
