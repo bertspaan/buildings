@@ -35,14 +35,14 @@
 
 <section
   class={[
-    'pointer-events-auto text-sm font-medium text-white leading-tight overflow-hidden',
+    'pointer-events-auto font-medium text-white leading-tight overflow-hidden',
     'rounded-xl border border-white/20 bg-black/70 backdrop-blur-xl transition-all',
     disabled && 'border-white/10'
   ]}
 >
   <div
     class="grid grid-cols-[auto_1fr_auto] hover:bg-white/5 transition-colors
-      gap-3 px-2 py-1 sm:px-3 sm:py-2"
+      gap-3 px-3 py-2"
   >
     <div class="contents">
       {@render toggleExpanded(header)}
@@ -63,7 +63,7 @@
       }}
       {disabled}
     >
-      <div class="shrink-0 text-sm text-white/70 font-bold">
+      <div class="shrink-0 text-white/70 font-bold">
         {#if disabled}
           —
         {:else}
@@ -75,8 +75,8 @@
 
   {#if expanded && !disabled}
     <div
-      class="border-t border-white/20 text-sm leading-normal text-white/80
-        px-2 py-1 sm:px-3 sm:py-2"
+      class="border-t border-white/20 leading-normal text-white/80
+        px-3 py-2"
     >
       {@render contents()}
     </div>

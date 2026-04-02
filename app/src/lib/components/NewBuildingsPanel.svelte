@@ -32,7 +32,7 @@
       <button
         type="button"
         class={[
-          'cursor-pointer rounded-lg border border-[#4a7fbe] px-3 py-0.5 text-xs transition-all text-white',
+          'cursor-pointer rounded-lg border border-[#4a7fbe] px-3 py-0.5 transition-all text-white',
           showNewBuildingClusters
             ? 'bg-[#3a5fa8]'
             : 'bg-none hover:bg-[#3a5fa8]/50'

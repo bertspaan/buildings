@@ -83,7 +83,7 @@
           >
             {#if isActive && collapsedLegendText}
               <span
-                class="text-xs font-medium"
+                class="font-medium"
                 style:color={getContrastTextColor(entry.color)}
               >
                 {collapsedLegendText}

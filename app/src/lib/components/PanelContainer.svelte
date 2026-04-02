@@ -79,7 +79,7 @@
 </script>
 
 <div
-  class="max-w-full w-full min-[420px]:w-90 max-h-full min-h-0
+  class="max-w-full w-full min-[420px]:w-105 max-h-full min-h-0
     flex flex-col overflow-hidden text-white
     gap-0.5 sm:gap-1"
 >

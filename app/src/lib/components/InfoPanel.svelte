@@ -29,6 +29,7 @@
     selectedBuilding = null,
     expanded = $bindable(false)
   }: Props = $props()
+  let displayedBuilding = $state<SelectedBuildingState | null>(null)
   let addressCount = $state(0)
   let addresses = $state<string[]>([])
   let isFetching = $state(false)
@@ -42,13 +43,13 @@
   $effect(() => {
     const identificatie = selectedBuilding?.local.identificatie
 
-    addressCount = 0
-    addresses = []
-    isFetching = false
-    error = ''
-    showAllAddresses = false
-
     if (!identificatie || !detailsEnabled) {
+      displayedBuilding = selectedBuilding
+      addressCount = 0
+      addresses = []
+      isFetching = false
+      error = ''
+      showAllAddresses = false
       return
     }
 
@@ -62,8 +63,11 @@
           return
         }
 
+        displayedBuilding = selectedBuilding
         addresses = nextAddresses
         addressCount = nextAddresses.length
+        error = ''
+        showAllAddresses = false
         isFetching = false
       } catch (cause) {
         if (currentLoadId !== loadId) {
@@ -204,11 +208,11 @@
     googleMaps: string
     streetView: string
   } | null {
-    if (!selectedBuilding?.location) {
+    if (!displayedBuilding?.location) {
       return null
     }
 
-    const { lat, lng } = selectedBuilding.location
+    const { lat, lng } = displayedBuilding.location
     const latString = lat.toFixed(6)
     const lngString = lng.toFixed(6)
 
@@ -221,7 +225,7 @@
   }
 
   function getBagObjectUrl(): string {
-    const identificatie = selectedBuilding?.local.identificatie?.trim()
+    const identificatie = displayedBuilding?.local.identificatie?.trim()
 
     if (identificatie) {
       return `https://bag.basisregistraties.overheid.nl/bag/id/pand/${identificatie}`
@@ -235,7 +239,7 @@
   {#snippet header()}
     {#if !detailsEnabled}
       Zoom in to see building details
-    {:else if selectedBuilding && addresses.length > 0}
+    {:else if displayedBuilding && addresses.length > 0}
       {addresses[0]}
     {:else if expanded}
       Building details
@@ -245,32 +249,29 @@
   {/snippet}
 
   {#snippet contents()}
-    {#if selectedBuilding}
-      <div class="grid gap-1.5">
-        <div class="grid grid-cols-[8rem_1fr] gap-2.5 text-[0.83rem]">
-          <span class="text-white/70">BAG ID</span>
-          <a
-            class="wrap-break-words text-white underline"
-            href={getBagObjectUrl()}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {formatValue(selectedBuilding.local.identificatie)}
-          </a>
-        </div>
-        <div class="grid grid-cols-[8rem_1fr] gap-2.5 text-[0.83rem]">
-          <span class="text-white/70">Year of construction</span>
-          <span class="wrap-break-words"
-            >{formatValue(selectedBuilding.local.bouwjaar)}</span
-          >
-        </div>
+    {#if displayedBuilding}
+      <div class="grid grid-cols-2 gap-2">
+        <span class="text-white/70">BAG ID</span>
+        <a
+          class="wrap-break-words text-white underline"
+          href={getBagObjectUrl()}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {formatValue(displayedBuilding.local.identificatie)}
+        </a>
+
+        <span class="text-white/70">Year of construction</span>
+        <span class="wrap-break-words"
+          >{formatValue(displayedBuilding.local.bouwjaar)}</span
+        >
       </div>
 
       <div class="my-1 h-px bg-white/12"></div>
 
       {@const mapLinks = getMapLinks()}
       {#if mapLinks}
-        <div class="mt-3 flex flex-wrap gap-x-2 gap-y-1 text-[0.8rem]">
+        <div class="mt-3 flex flex-wrap gap-2">
           <a
             class="text-white underline"
             href={mapLinks.openStreetMap}
@@ -298,7 +299,7 @@
           <span class="font-bold">All addresses</span>
 
           <div
-            class="text-xs border border-white/50 bg-white/20 rounded-full px-1 py-0"
+            class="border border-white/50 bg-white/20 rounded-full px-1 py-0"
           >
             {formatValue(addressCount)}
           </div>
@@ -306,7 +307,7 @@
 
         <div class="grid gap-1.5 max-h-30 sm:max-h-90 overflow-y-auto">
           {#each getVisibleAddresses() as address}
-            <div class="text-sm leading-4">{address}</div>
+            <div class="leading-4">{address}</div>
           {/each}
         </div>
 
@@ -324,10 +325,6 @@
               : 'es'}
           </button>
         {/if}
-      {/if}
-
-      {#if isFetching}
-        <div class="mt-3">Loading addresses…</div>
       {/if}
 
       {#if error}
