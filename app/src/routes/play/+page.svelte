@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from '$app/paths'
   import { onDestroy, onMount } from 'svelte'
   import { PUBLIC_WOONPLAATS_POLYGONS_PMTILES_URL } from '$env/static/public'
 
@@ -336,7 +337,7 @@
         transition-all
         shadow-[0_0_10px_rgba(255,255,255,1)]
         hover:shadow-[0_0_25px_rgba(255,255,255,1)]"
-      href="../"><XIcon class="size-4" weight="bold" /></a
+      href={`${base}/`}><XIcon class="size-4" weight="bold" /></a
     >
   </div>
   <div>
