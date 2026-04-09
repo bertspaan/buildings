@@ -87,7 +87,7 @@
     flex-col-reverse sm:flex-col
     justify-between
     min-h-0 max-h-full
-    justify-self-end p-1.5 sm:p-2.5"
+    justify-self-end p-2"
 >
   <div class="self-end">
     <PanelContainer

@@ -31,7 +31,7 @@
 </script>
 
 <div
-  class="glow isolate relative rounded-xl z-10 bg-black text-white pointer-events-auto font-bold"
+  class="glow isolate relative rounded-xl z-10 bg-black text-white pointer-events-auto font-bold p-1"
   data-enable-hover={enableHover}
   style:--glow-gradient={gradient}
   style:--glow-gradient-hover={gradientHover}

@@ -311,7 +311,7 @@
   })
 </script>
 
-<div class="h-full w-full flex flex-col justify-between p-1.5 sm:p-2.5">
+<div class="h-full w-full flex flex-col justify-between p-2">
   <div
     class="grid grid-cols-[auto_auto_1fr] min-[420px]:grid-cols-[1fr_auto_1fr] gap-4 justify-items-center items-center"
   >
