@@ -1,0 +1,1594 @@
+[
+  {
+    "bagId": "3594",
+    "osmType": "node",
+    "osmId": 268396336,
+    "place": "city",
+    "name": "Amsterdam",
+    "center": [4.8924534, 52.3730796]
+  },
+  {
+    "bagId": "3086",
+    "osmType": "node",
+    "osmId": 44410812,
+    "place": "city",
+    "name": "Rotterdam",
+    "center": [4.47775, 51.9244424]
+  },
+  {
+    "bagId": "1245",
+    "osmType": "node",
+    "osmId": 235857686,
+    "place": "city",
+    "name": "Den Haag",
+    "center": [4.3113461, 52.0799838]
+  },
+  {
+    "bagId": "3295",
+    "osmType": "node",
+    "osmId": 235861650,
+    "place": "city",
+    "name": "Utrecht",
+    "center": [5.1215634, 52.0907006]
+  },
+  {
+    "bagId": "1101",
+    "osmType": "node",
+    "osmId": 42616340,
+    "place": "city",
+    "name": "Eindhoven",
+    "center": [5.478633, 51.4392648]
+  },
+  {
+    "bagId": "1070",
+    "osmType": "node",
+    "osmId": 3125538288,
+    "place": "city",
+    "name": "Groningen",
+    "center": [6.5680077, 53.2190652]
+  },
+  {
+    "bagId": "1043",
+    "osmType": "node",
+    "osmId": 1206763375,
+    "place": "city",
+    "name": "Tilburg",
+    "center": [5.0886014, 51.5562404]
+  },
+  {
+    "bagId": "1270",
+    "osmType": "node",
+    "osmId": 5731324538,
+    "place": "city",
+    "name": "Almere",
+    "center": [5.2185859, 52.3705038]
+  },
+  {
+    "bagId": "2907",
+    "osmType": "node",
+    "osmId": 296054949,
+    "place": "city",
+    "name": "Haarlem",
+    "center": [4.6388048, 52.3885317]
+  },
+  {
+    "bagId": "3030",
+    "osmType": "node",
+    "osmId": 867975219,
+    "place": "city",
+    "name": "Nijmegen",
+    "center": [5.8637771, 51.8474946]
+  },
+  {
+    "bagId": "1296",
+    "osmType": "node",
+    "osmId": 6394641551,
+    "place": "city",
+    "name": "Arnhem",
+    "center": [5.9108573, 51.984257]
+  },
+  {
+    "bagId": "3622",
+    "osmType": "node",
+    "osmId": 867998189,
+    "place": "city",
+    "name": "Breda",
+    "center": [4.7760237, 51.5887845]
+  },
+  {
+    "bagId": "1145",
+    "osmType": "node",
+    "osmId": 3836540471,
+    "place": "city",
+    "name": "Enschede",
+    "center": [6.8940537, 52.2209855]
+  },
+  {
+    "bagId": "1664",
+    "osmType": "node",
+    "osmId": 667889917,
+    "place": "city",
+    "name": "Amersfoort",
+    "center": [5.3896944, 52.1562499]
+  },
+  {
+    "bagId": "2088",
+    "osmType": "node",
+    "osmId": 235865586,
+    "place": "city",
+    "name": "Leiden",
+    "center": [4.4908843, 52.1594747]
+  },
+  {
+    "bagId": "1406",
+    "osmType": "node",
+    "osmId": 41977208,
+    "place": "city",
+    "name": "Maastricht",
+    "center": [5.6909768, 50.8512438]
+  },
+  {
+    "bagId": "3560",
+    "osmType": "node",
+    "osmId": 216244216,
+    "place": "city",
+    "name": "Apeldoorn",
+    "center": [5.9639485, 52.2156457]
+  },
+  {
+    "bagId": "1182",
+    "osmType": "node",
+    "osmId": 235886826,
+    "place": "city",
+    "name": "Zwolle",
+    "center": [6.0943765, 52.5089759]
+  },
+  {
+    "bagId": "2351",
+    "osmType": "node",
+    "osmId": 235874404,
+    "place": "city",
+    "name": "Dordrecht",
+    "center": [4.6692438, 51.814429]
+  },
+  {
+    "bagId": "1595",
+    "osmType": "node",
+    "osmId": 60400458,
+    "place": "city",
+    "name": "'s-Hertogenbosch",
+    "center": [5.303116, 51.6889387]
+  },
+  {
+    "bagId": "2293",
+    "osmType": "node",
+    "osmId": 868039529,
+    "place": "city",
+    "name": "Zoetermeer",
+    "center": [4.4901218, 52.0622531]
+  },
+  {
+    "bagId": "3615",
+    "osmType": "node",
+    "osmId": 235278210,
+    "place": "city",
+    "name": "Leeuwarden",
+    "center": [5.7918548, 53.2005936]
+  },
+  {
+    "bagId": "2138",
+    "osmType": "node",
+    "osmId": 274247451,
+    "place": "city",
+    "name": "Delft",
+    "center": [4.35839, 52.0114017]
+  },
+  {
+    "bagId": "2348",
+    "osmType": "node",
+    "osmId": 3474142743,
+    "place": "city",
+    "name": "Alkmaar",
+    "center": [4.7503798, 52.6312592]
+  },
+  {
+    "bagId": "1050",
+    "osmType": "node",
+    "osmId": 4931137843,
+    "place": "town",
+    "name": "Amstelveen",
+    "center": [4.8596844, 52.3028209]
+  },
+  {
+    "bagId": "1036",
+    "osmType": "node",
+    "osmId": 296056871,
+    "place": "city",
+    "name": "Hilversum",
+    "center": [5.1719396, 52.2241375]
+  },
+  {
+    "bagId": "1146",
+    "osmType": "node",
+    "osmId": 299144900,
+    "place": "city",
+    "name": "Helmond",
+    "center": [5.6557686, 51.4790956]
+  },
+  {
+    "bagId": "3510",
+    "osmType": "node",
+    "osmId": 45952041,
+    "place": "town",
+    "name": "Hengelo",
+    "center": [6.7924049, 52.2658726]
+  },
+  {
+    "bagId": "1884",
+    "osmType": "node",
+    "osmId": 296053026,
+    "place": "town",
+    "name": "Zaandam",
+    "center": [4.8298607, 52.4424926]
+  },
+  {
+    "bagId": "2856",
+    "osmType": "node",
+    "osmId": 3247433861,
+    "place": "city",
+    "name": "Deventer",
+    "center": [6.1584725, 52.2532272]
+  },
+  {
+    "bagId": "3103",
+    "osmType": "node",
+    "osmId": 296050393,
+    "place": "city",
+    "name": "Purmerend",
+    "center": [4.9614827, 52.5024789]
+  },
+  {
+    "bagId": "1312",
+    "osmType": "node",
+    "osmId": 2667692112,
+    "place": "city",
+    "name": "Heerlen",
+    "center": [5.9773285, 50.8876735]
+  },
+  {
+    "bagId": "1935",
+    "osmType": "node",
+    "osmId": 760583438,
+    "place": "town",
+    "name": "Schiedam",
+    "center": [4.4019149, 51.91718]
+  },
+  {
+    "bagId": "1015",
+    "osmType": "node",
+    "osmId": 44355326,
+    "place": "town",
+    "name": "Vlaardingen",
+    "center": [4.3402639, 51.9097536]
+  },
+  {
+    "bagId": "1051",
+    "osmType": "node",
+    "osmId": 243670659,
+    "place": "city",
+    "name": "Lelystad",
+    "center": [5.4768915, 52.5150949]
+  },
+  {
+    "bagId": "2764",
+    "osmType": "node",
+    "osmId": 760382981,
+    "place": "city",
+    "name": "Ede",
+    "center": [5.6702011, 52.0458265]
+  },
+  {
+    "bagId": "1597",
+    "osmType": "node",
+    "osmId": 936127487,
+    "place": "town",
+    "name": "Hoofddorp",
+    "center": [4.6926644, 52.305554]
+  },
+  {
+    "bagId": "1005",
+    "osmType": "node",
+    "osmId": 607388087,
+    "place": "town",
+    "name": "Gouda",
+    "center": [4.7106094, 52.0114922]
+  },
+  {
+    "bagId": "1473",
+    "osmType": "node",
+    "osmId": 4774930013,
+    "place": "city",
+    "name": "Venlo",
+    "center": [6.1688954, 51.3702109]
+  },
+  {
+    "bagId": "1080",
+    "osmType": "node",
+    "osmId": 235868279,
+    "place": "town",
+    "name": "Alphen aan den Rijn",
+    "center": [4.6561357, 52.1343369]
+  },
+  {
+    "bagId": "1924",
+    "osmType": "node",
+    "osmId": 3836540470,
+    "place": "town",
+    "name": "Almelo",
+    "center": [6.6636219, 52.3563585]
+  },
+  {
+    "bagId": "1588",
+    "osmType": "node",
+    "osmId": 3122967684,
+    "place": "town",
+    "name": "Roosendaal",
+    "center": [4.4561276, 51.5331484]
+  },
+  {
+    "bagId": "2391",
+    "osmType": "node",
+    "osmId": 29629883,
+    "place": "city",
+    "name": "Assen",
+    "center": [6.560498, 52.9952273]
+  },
+  {
+    "bagId": "3032",
+    "osmType": "node",
+    "osmId": 1574683058,
+    "place": "town",
+    "name": "Spijkenisse",
+    "center": [4.3287681, 51.8464881]
+  },
+  {
+    "bagId": "2459",
+    "osmType": "node",
+    "osmId": 267275296,
+    "place": "town",
+    "name": "Rijswijk",
+    "center": [4.3188215, 52.0446265]
+  },
+  {
+    "bagId": "1108",
+    "osmType": "node",
+    "osmId": 994008023,
+    "place": "town",
+    "name": "Nieuwegein",
+    "center": [5.0836117, 52.0367152]
+  },
+  {
+    "bagId": "1105",
+    "osmType": "node",
+    "osmId": 838296138,
+    "place": "town",
+    "name": "Capelle aan den IJssel",
+    "center": [4.5883596, 51.9312552]
+  },
+  {
+    "bagId": "2048",
+    "osmType": "node",
+    "osmId": 3579230999,
+    "place": "town",
+    "name": "Veenendaal",
+    "center": [5.5539239, 52.0259814]
+  },
+  {
+    "bagId": "1988",
+    "osmType": "node",
+    "osmId": 868430925,
+    "place": "city",
+    "name": "Emmen",
+    "center": [6.8939001, 52.788937]
+  },
+  {
+    "bagId": "3249",
+    "osmType": "node",
+    "osmId": 3123148337,
+    "place": "town",
+    "name": "Oss",
+    "center": [5.5253912, 51.7696387]
+  },
+  {
+    "bagId": "1746",
+    "osmType": "node",
+    "osmId": 296046309,
+    "place": "town",
+    "name": "Heerhugowaard",
+    "center": [4.8326672, 52.6631484]
+  },
+  {
+    "bagId": "1937",
+    "osmType": "node",
+    "osmId": 760705238,
+    "place": "town",
+    "name": "Bergen op Zoom",
+    "center": [4.2871541, 51.4944756]
+  },
+  {
+    "bagId": "1869",
+    "osmType": "node",
+    "osmId": 44208661,
+    "place": "village",
+    "name": "Oosterhout",
+    "center": [5.8270267, 51.8800369]
+  },
+  {
+    "bagId": "2821",
+    "osmType": "node",
+    "osmId": 45197785,
+    "place": "town",
+    "name": "Zeist",
+    "center": [5.2276307, 52.0892832]
+  },
+  {
+    "bagId": "3614",
+    "osmType": "node",
+    "osmId": 240767902,
+    "place": "town",
+    "name": "Hoorn",
+    "center": [5.0735802, 52.653272]
+  },
+  {
+    "bagId": "3056",
+    "osmType": "node",
+    "osmId": 296048509,
+    "place": "town",
+    "name": "Den Helder",
+    "center": [4.760279, 52.957976]
+  },
+  {
+    "bagId": "1007",
+    "osmType": "node",
+    "osmId": 3122879753,
+    "place": "city",
+    "name": "Middelburg",
+    "center": [3.6137371, 51.4996784]
+  },
+  {
+    "bagId": "3279",
+    "osmType": "node",
+    "osmId": 235259159,
+    "place": "town",
+    "name": "Drachten",
+    "center": [6.0948102, 53.1091111]
+  },
+  {
+    "bagId": "2562",
+    "osmType": "node",
+    "osmId": 1364305828,
+    "place": "town",
+    "name": "Ridderkerk",
+    "center": [4.5999778, 51.8714812]
+  },
+  {
+    "bagId": "2281",
+    "osmType": "node",
+    "osmId": 3124096042,
+    "place": "city",
+    "name": "Roermond",
+    "center": [5.9882649, 51.1933903]
+  },
+  {
+    "bagId": "3246",
+    "osmType": "node",
+    "osmId": 760709245,
+    "place": "town",
+    "name": "Doetinchem",
+    "center": [6.2891093, 51.9655192]
+  },
+  {
+    "bagId": "2649",
+    "osmType": "node",
+    "osmId": 2667692113,
+    "place": "town",
+    "name": "Kerkrade",
+    "center": [6.0632022, 50.8654924]
+  },
+  {
+    "bagId": "1384",
+    "osmType": "node",
+    "osmId": 3123160927,
+    "place": "town",
+    "name": "Veldhoven",
+    "center": [5.4045572, 51.4190691]
+  },
+  {
+    "bagId": "1974",
+    "osmType": "node",
+    "osmId": 3124070294,
+    "place": "town",
+    "name": "Weert",
+    "center": [5.7065678, 51.2538446]
+  },
+  {
+    "bagId": "3222",
+    "osmType": "node",
+    "osmId": 46280889,
+    "place": "town",
+    "name": "Harderwijk",
+    "center": [5.618933, 52.3490693]
+  },
+  {
+    "bagId": "1010",
+    "osmType": "node",
+    "osmId": 3123022919,
+    "place": "town",
+    "name": "Etten-Leur",
+    "center": [4.6360813, 51.5692065]
+  },
+  {
+    "bagId": "1622",
+    "osmType": "node",
+    "osmId": 274251097,
+    "place": "town",
+    "name": "Voorburg",
+    "center": [4.3558561, 52.0703201]
+  },
+  {
+    "bagId": "3512",
+    "osmType": "node",
+    "osmId": 2526992665,
+    "place": "town",
+    "name": "Sittard",
+    "center": [5.8666627, 50.9974235]
+  },
+  {
+    "bagId": "1594",
+    "osmType": "node",
+    "osmId": 1762567236,
+    "place": "town",
+    "name": "Barendrecht",
+    "center": [4.5368567, 51.8566651]
+  },
+  {
+    "bagId": "1814",
+    "osmType": "node",
+    "osmId": 47279925,
+    "place": "town",
+    "name": "Hoogeveen",
+    "center": [6.4759313, 52.7202393]
+  },
+  {
+    "bagId": "1395",
+    "osmType": "node",
+    "osmId": 2979682499,
+    "place": "town",
+    "name": "Zutphen",
+    "center": [6.194772, 52.1396933]
+  },
+  {
+    "bagId": "2399",
+    "osmType": "node",
+    "osmId": 1523625769,
+    "place": "town",
+    "name": "Zwijndrecht",
+    "center": [4.6405166, 51.8162227]
+  },
+  {
+    "bagId": "2735",
+    "osmType": "node",
+    "osmId": 46734018,
+    "place": "town",
+    "name": "Beverwijk",
+    "center": [4.6578632, 52.4857561]
+  },
+  {
+    "bagId": "1078",
+    "osmType": "node",
+    "osmId": 3122829496,
+    "place": "town",
+    "name": "Vlissingen",
+    "center": [3.5697992, 51.4480929]
+  },
+  {
+    "bagId": "2053",
+    "osmType": "node",
+    "osmId": 44956610,
+    "place": "town",
+    "name": "Houten",
+    "center": [5.1620637, 52.0271433]
+  },
+  {
+    "bagId": "3601",
+    "osmType": "node",
+    "osmId": 8181237045,
+    "place": "town",
+    "name": "Tiel",
+    "center": [5.4372681, 51.8874333]
+  },
+  {
+    "bagId": "2006",
+    "osmType": "node",
+    "osmId": 44679797,
+    "place": "town",
+    "name": "Wageningen",
+    "center": [5.6662814, 51.9663016]
+  },
+  {
+    "bagId": "1011",
+    "osmType": "node",
+    "osmId": 46065577,
+    "place": "town",
+    "name": "Huizen",
+    "center": [5.2567209, 52.2958122]
+  },
+  {
+    "bagId": "2137",
+    "osmType": "node",
+    "osmId": 2290698778,
+    "place": "town",
+    "name": "Hellevoetsluis",
+    "center": [4.1436739, 51.833921]
+  },
+  {
+    "bagId": "1013",
+    "osmType": "node",
+    "osmId": 45568761,
+    "place": "town",
+    "name": "Soest",
+    "center": [5.2909674, 52.174595]
+  },
+  {
+    "bagId": "1707",
+    "osmType": "node",
+    "osmId": 875617853,
+    "place": "town",
+    "name": "Katwijk",
+    "center": [4.4146372, 52.2005078]
+  },
+  {
+    "bagId": "2458",
+    "osmType": "node",
+    "osmId": 1263171883,
+    "place": "town",
+    "name": "Heemskerk",
+    "center": [4.6723536, 52.5104331]
+  },
+  {
+    "bagId": "1847",
+    "osmType": "node",
+    "osmId": 2725072454,
+    "place": "town",
+    "name": "Uden",
+    "center": [5.6148605, 51.6590888]
+  },
+  {
+    "bagId": "2299",
+    "osmType": "node",
+    "osmId": 4639544491,
+    "place": "town",
+    "name": "Gorinchem",
+    "center": [4.9738743, 51.8296133]
+  },
+  {
+    "bagId": "2894",
+    "osmType": "node",
+    "osmId": 46922468,
+    "place": "town",
+    "name": "Kampen",
+    "center": [5.9033303, 52.5559484]
+  },
+  {
+    "bagId": "3055",
+    "osmType": "node",
+    "osmId": 3125417033,
+    "place": "town",
+    "name": "Landgraaf",
+    "center": [6.0264604, 50.9080845]
+  },
+  {
+    "bagId": "1071",
+    "osmType": "node",
+    "osmId": 8766075359,
+    "place": "town",
+    "name": "Woerden",
+    "center": [4.8832939, 52.0859261]
+  },
+  {
+    "bagId": "3513",
+    "osmType": "node",
+    "osmId": 4004062547,
+    "place": "town",
+    "name": "Geleen",
+    "center": [5.8267029, 50.9699953]
+  },
+  {
+    "bagId": "2144",
+    "osmType": "node",
+    "osmId": 905766896,
+    "place": "town",
+    "name": "Diemen",
+    "center": [4.960825, 52.3421489]
+  },
+  {
+    "bagId": "2597",
+    "osmType": "node",
+    "osmId": 3123085911,
+    "place": "town",
+    "name": "Waalwijk",
+    "center": [5.0705122, 51.6852544]
+  },
+  {
+    "bagId": "3504",
+    "osmType": "node",
+    "osmId": 235255139,
+    "place": "town",
+    "name": "Sneek",
+    "center": [5.6611029, 53.033548]
+  },
+  {
+    "bagId": "2564",
+    "osmType": "node",
+    "osmId": 2717911208,
+    "place": "town",
+    "name": "Wijchen",
+    "center": [5.7261657, 51.8071658]
+  },
+  {
+    "bagId": "2064",
+    "osmType": "node",
+    "osmId": 975217108,
+    "place": "town",
+    "name": "Maarssen",
+    "center": [5.040082, 52.1384846]
+  },
+  {
+    "bagId": "1596",
+    "osmType": "node",
+    "osmId": 1471084176,
+    "place": "town",
+    "name": "Rosmalen",
+    "center": [5.3629244, 51.71866]
+  },
+  {
+    "bagId": "1621",
+    "osmType": "node",
+    "osmId": 1700240652,
+    "place": "town",
+    "name": "Leidschendam",
+    "center": [4.3946774, 52.0861654]
+  },
+  {
+    "bagId": "2835",
+    "osmType": "node",
+    "osmId": 8809035126,
+    "place": "town",
+    "name": "IJmuiden",
+    "center": [4.6116211, 52.4574139]
+  },
+  {
+    "bagId": "1069",
+    "osmType": "node",
+    "osmId": 842461014,
+    "place": "town",
+    "name": "Maassluis",
+    "center": [4.2541194, 51.9219917]
+  },
+  {
+    "bagId": "3523",
+    "osmType": "node",
+    "osmId": 235265692,
+    "place": "town",
+    "name": "Heerenveen",
+    "center": [5.9270052, 52.9568246]
+  },
+  {
+    "bagId": "1331",
+    "osmType": "node",
+    "osmId": 45990885,
+    "place": "town",
+    "name": "Bussum",
+    "center": [5.1630646, 52.2773656]
+  },
+  {
+    "bagId": "1824",
+    "osmType": "node",
+    "osmId": 3122931409,
+    "place": "town",
+    "name": "Goes",
+    "center": [3.8897596, 51.5031033]
+  },
+  {
+    "bagId": "1082",
+    "osmType": "node",
+    "osmId": 47214961,
+    "place": "town",
+    "name": "Meppel",
+    "center": [6.197767, 52.6938237]
+  },
+  {
+    "bagId": "2265",
+    "osmType": "node",
+    "osmId": 9196596808,
+    "place": "village",
+    "name": "Noordwijk",
+    "center": [6.2575709, 53.1701782]
+  },
+  {
+    "bagId": "3051",
+    "osmType": "node",
+    "osmId": 45000798,
+    "place": "town",
+    "name": "Waddinxveen",
+    "center": [4.6558527, 52.0443308]
+  },
+  {
+    "bagId": "2827",
+    "osmType": "node",
+    "osmId": 3123233070,
+    "place": "town",
+    "name": "Veghel",
+    "center": [5.5446938, 51.6134544]
+  },
+  {
+    "bagId": "1100",
+    "osmType": "node",
+    "osmId": 42439544,
+    "place": "town",
+    "name": "Valkenswaard",
+    "center": [5.4594497, 51.350688]
+  },
+  {
+    "bagId": "1668",
+    "osmType": "node",
+    "osmId": 46130993,
+    "place": "town",
+    "name": "Oldenzaal",
+    "center": [6.9241615, 52.3116616]
+  },
+  {
+    "bagId": "3597",
+    "osmType": "node",
+    "osmId": 45438049,
+    "place": "town",
+    "name": "Barneveld",
+    "center": [5.5869635, 52.1397035]
+  },
+  {
+    "bagId": "2849",
+    "osmType": "node",
+    "osmId": 3124182601,
+    "place": "town",
+    "name": "Brunssum",
+    "center": [5.9705675, 50.9431108]
+  },
+  {
+    "bagId": "1137",
+    "osmType": "node",
+    "osmId": 3123884752,
+    "place": "town",
+    "name": "Terneuzen",
+    "center": [3.8403111, 51.3254737]
+  },
+  {
+    "bagId": "1477",
+    "osmType": "node",
+    "osmId": 1529225920,
+    "place": "town",
+    "name": "Papendrecht",
+    "center": [4.6937293, 51.8348695]
+  },
+  {
+    "bagId": "2573",
+    "osmType": "node",
+    "osmId": 46083724,
+    "place": "town",
+    "name": "Ermelo",
+    "center": [5.6231259, 52.300088]
+  },
+  {
+    "bagId": "2432",
+    "osmType": "node",
+    "osmId": 1011618588,
+    "place": "town",
+    "name": "IJsselstein",
+    "center": [5.0458792, 52.0246381]
+  },
+  {
+    "bagId": "1456",
+    "osmType": "node",
+    "osmId": 3125419370,
+    "place": "town",
+    "name": "Best",
+    "center": [5.3938665, 51.5033671]
+  },
+  {
+    "bagId": "3606",
+    "osmType": "node",
+    "osmId": 45772896,
+    "place": "town",
+    "name": "Nijkerk",
+    "center": [5.4824871, 52.2219471]
+  },
+  {
+    "bagId": "2430",
+    "osmType": "node",
+    "osmId": 5576108319,
+    "place": "town",
+    "name": "Dronten",
+    "center": [5.7160381, 52.5236608]
+  },
+  {
+    "bagId": "2335",
+    "osmType": "node",
+    "osmId": 3123242741,
+    "place": "town",
+    "name": "Venray",
+    "center": [5.9753635, 51.5270258]
+  },
+  {
+    "bagId": "1126",
+    "osmType": "node",
+    "osmId": 26862196,
+    "place": "town",
+    "name": "Geldrop",
+    "center": [5.5607546, 51.4226684]
+  },
+  {
+    "bagId": "1687",
+    "osmType": "node",
+    "osmId": 44759560,
+    "place": "town",
+    "name": "Berkel en Rodenrijs",
+    "center": [4.4739077, 51.9914412]
+  },
+  {
+    "bagId": "2052",
+    "osmType": "node",
+    "osmId": 3926093941,
+    "place": "town",
+    "name": "Culemborg",
+    "center": [5.2253042, 51.9573504]
+  },
+  {
+    "bagId": "1271",
+    "osmType": "node",
+    "osmId": 5576108318,
+    "place": "town",
+    "name": "Emmeloord",
+    "center": [5.7466367, 52.7087448]
+  },
+  {
+    "bagId": "2352",
+    "osmType": "node",
+    "osmId": 1506614297,
+    "place": "town",
+    "name": "Hendrik-Ido-Ambacht",
+    "center": [4.635647, 51.8438893]
+  },
+  {
+    "bagId": "1602",
+    "osmType": "node",
+    "osmId": 929393459,
+    "place": "town",
+    "name": "Nieuw-Vennep",
+    "center": [4.6340331, 52.2646243]
+  },
+  {
+    "bagId": "2563",
+    "osmType": "node",
+    "osmId": 9466213235,
+    "place": "town",
+    "name": "Heemstede",
+    "center": [4.6217323, 52.3528406]
+  },
+  {
+    "bagId": "1144",
+    "osmType": "node",
+    "osmId": 6632436655,
+    "place": "town",
+    "name": "Krimpen aan den IJssel",
+    "center": [4.5887889, 51.914403]
+  },
+  {
+    "bagId": "1141",
+    "osmType": "node",
+    "osmId": 6173393906,
+    "place": "town",
+    "name": "Pijnacker",
+    "center": [4.434186, 52.0200581]
+  },
+  {
+    "bagId": "2112",
+    "osmType": "node",
+    "osmId": 848405554,
+    "place": "town",
+    "name": "Leiderdorp",
+    "center": [4.5340923, 52.1617952]
+  },
+  {
+    "bagId": "1297",
+    "osmType": "node",
+    "osmId": 44480645,
+    "place": "town",
+    "name": "Zevenaar",
+    "center": [6.0789395, 51.9357252]
+  },
+  {
+    "bagId": "1821",
+    "osmType": "node",
+    "osmId": 869864910,
+    "place": "town",
+    "name": "Wassenaar",
+    "center": [4.4010893, 52.1428381]
+  },
+  {
+    "bagId": "1092",
+    "osmType": "node",
+    "osmId": 45720389,
+    "place": "town",
+    "name": "Baarn",
+    "center": [5.2931841, 52.2111182]
+  },
+  {
+    "bagId": "2638",
+    "osmType": "node",
+    "osmId": 1469138008,
+    "place": "town",
+    "name": "Leusden",
+    "center": [5.4286989, 52.130355]
+  },
+  {
+    "bagId": "1619",
+    "osmType": "node",
+    "osmId": 3123156001,
+    "place": "town",
+    "name": "Vught",
+    "center": [5.2893308, 51.656821]
+  },
+  {
+    "bagId": "2439",
+    "osmType": "node",
+    "osmId": 3123173277,
+    "place": "town",
+    "name": "Boxtel",
+    "center": [5.3247837, 51.5883055]
+  },
+  {
+    "bagId": "2062",
+    "osmType": "node",
+    "osmId": 951255668,
+    "place": "town",
+    "name": "Uithoorn",
+    "center": [4.8251096, 52.2411412]
+  },
+  {
+    "bagId": "3231",
+    "osmType": "node",
+    "osmId": 873538482,
+    "place": "town",
+    "name": "Voorschoten",
+    "center": [4.4465727, 52.1275236]
+  },
+  {
+    "bagId": "1075",
+    "osmType": "node",
+    "osmId": 6363529359,
+    "place": "town",
+    "name": "Zeewolde",
+    "center": [5.5430312, 52.331111]
+  },
+  {
+    "bagId": "3631",
+    "osmType": "node",
+    "osmId": 9905946240,
+    "place": "town",
+    "name": "Weesp",
+    "center": [5.0420822, 52.3072593]
+  },
+  {
+    "bagId": "1243",
+    "osmType": "node",
+    "osmId": 46995395,
+    "place": "town",
+    "name": "Heiloo",
+    "center": [4.7125066, 52.6050033]
+  },
+  {
+    "bagId": "3580",
+    "osmType": "node",
+    "osmId": 8226223529,
+    "place": "town",
+    "name": "Putten",
+    "center": [5.6101591, 52.2608571]
+  },
+  {
+    "bagId": "1478",
+    "osmType": "node",
+    "osmId": 44678480,
+    "place": "town",
+    "name": "Winterswijk",
+    "center": [6.7224185, 51.9746432]
+  },
+  {
+    "bagId": "1566",
+    "osmType": "node",
+    "osmId": 2668210685,
+    "place": "town",
+    "name": "Rijssen",
+    "center": [6.5213004, 52.3080276]
+  },
+  {
+    "bagId": "2438",
+    "osmType": "node",
+    "osmId": 1540416288,
+    "place": "town",
+    "name": "Sliedrecht",
+    "center": [4.7741716, 51.8250939]
+  },
+  {
+    "bagId": "2268",
+    "osmType": "node",
+    "osmId": 706791176,
+    "place": "town",
+    "name": "Castricum",
+    "center": [4.6696185, 52.5496739]
+  },
+  {
+    "bagId": "1774",
+    "osmType": "node",
+    "osmId": 3124021956,
+    "place": "town",
+    "name": "Deurne",
+    "center": [5.7946304, 51.4638535]
+  },
+  {
+    "bagId": "2793",
+    "osmType": "node",
+    "osmId": 1937357890,
+    "place": "town",
+    "name": "Oud-Beijerland",
+    "center": [4.4164728, 51.8214436]
+  },
+  {
+    "bagId": "1466",
+    "osmType": "node",
+    "osmId": 877149677,
+    "place": "town",
+    "name": "Lisse",
+    "center": [4.5630329, 52.2576098]
+  },
+  {
+    "bagId": "2935",
+    "osmType": "node",
+    "osmId": 3482828199,
+    "place": "town",
+    "name": "Bilthoven",
+    "center": [5.2046134, 52.1289693]
+  },
+  {
+    "bagId": "2139",
+    "osmType": "node",
+    "osmId": 3123193930,
+    "place": "town",
+    "name": "Schijndel",
+    "center": [5.4362541, 51.6176954]
+  },
+  {
+    "bagId": "2744",
+    "osmType": "node",
+    "osmId": 60280581,
+    "place": "town",
+    "name": "Oegstgeest",
+    "center": [4.4738856, 52.185433]
+  },
+  {
+    "bagId": "2799",
+    "osmType": "node",
+    "osmId": 3123083372,
+    "place": "town",
+    "name": "Dongen",
+    "center": [4.9368837, 51.6247509]
+  },
+  {
+    "bagId": "2571",
+    "osmType": "node",
+    "osmId": 943296880,
+    "place": "town",
+    "name": "Aalsmeer",
+    "center": [4.7493384, 52.2669442]
+  },
+  {
+    "bagId": "1018",
+    "osmType": "node",
+    "osmId": 7188616574,
+    "place": "town",
+    "name": "Hoogezand",
+    "center": [6.7556852, 53.1638192]
+  },
+  {
+    "bagId": "1240",
+    "osmType": "node",
+    "osmId": 47954167,
+    "place": "town",
+    "name": "Veendam",
+    "center": [6.8694863, 53.1028443]
+  },
+  {
+    "bagId": "3584",
+    "osmType": "node",
+    "osmId": 1003823602,
+    "place": "town",
+    "name": "Nijverdal",
+    "center": [6.4654075, 52.3592015]
+  },
+  {
+    "bagId": "2347",
+    "osmType": "node",
+    "osmId": 5983333596,
+    "place": "town",
+    "name": "Haaksbergen",
+    "center": [6.740239, 52.1564581]
+  },
+  {
+    "bagId": "3535",
+    "osmType": "node",
+    "osmId": 46046752,
+    "place": "town",
+    "name": "Hillegom",
+    "center": [4.5834571, 52.2922753]
+  },
+  {
+    "bagId": "2136",
+    "osmType": "node",
+    "osmId": 25279725,
+    "place": "town",
+    "name": "Nuenen",
+    "center": [5.5490439, 51.4743021]
+  },
+  {
+    "bagId": "2662",
+    "osmType": "node",
+    "osmId": 441929561,
+    "place": "town",
+    "name": "'s-Gravenzande",
+    "center": [4.1603759, 52.0028294]
+  },
+  {
+    "bagId": "2460",
+    "osmType": "node",
+    "osmId": 47423767,
+    "place": "town",
+    "name": "Schagen",
+    "center": [4.8044607, 52.7882395]
+  },
+  {
+    "bagId": "1313",
+    "osmType": "node",
+    "osmId": 8219472916,
+    "place": "suburb",
+    "name": "Hoensbroek",
+    "center": [5.9293862, 50.9239397]
+  },
+  {
+    "bagId": "3074",
+    "osmType": "node",
+    "osmId": 47723534,
+    "place": "town",
+    "name": "Stadskanaal",
+    "center": [6.9624466, 52.9925618]
+  },
+  {
+    "bagId": "1305",
+    "osmType": "node",
+    "osmId": 392043534,
+    "place": "town",
+    "name": "Zandvoort",
+    "center": [4.5302209, 52.3719838]
+  },
+  {
+    "bagId": "1500",
+    "osmType": "node",
+    "osmId": 6030464702,
+    "place": "town",
+    "name": "Velp",
+    "center": [5.9751252, 51.9958671]
+  },
+  {
+    "bagId": "2660",
+    "osmType": "node",
+    "osmId": 850458460,
+    "place": "town",
+    "name": "Naaldwijk",
+    "center": [4.2074197, 51.9930016]
+  },
+  {
+    "bagId": "1471",
+    "osmType": "node",
+    "osmId": 48034485,
+    "place": "town",
+    "name": "Winschoten",
+    "center": [7.0380717, 53.143001]
+  },
+  {
+    "bagId": "1016",
+    "osmType": "node",
+    "osmId": 1447338054,
+    "place": "town",
+    "name": "Nieuwerkerk aan den IJssel",
+    "center": [4.6116776, 51.9675284]
+  },
+  {
+    "bagId": "1748",
+    "osmType": "node",
+    "osmId": 8768920073,
+    "place": "town",
+    "name": "Volendam",
+    "center": [5.0682736, 52.4963759]
+  },
+  {
+    "bagId": "3511",
+    "osmType": "node",
+    "osmId": 46090762,
+    "place": "town",
+    "name": "Borne",
+    "center": [6.7502395, 52.3018287]
+  },
+  {
+    "bagId": "3608",
+    "osmType": "node",
+    "osmId": 46956871,
+    "place": "town",
+    "name": "Hardenberg",
+    "center": [6.6188242, 52.5754706]
+  },
+  {
+    "bagId": "2982",
+    "osmType": "node",
+    "osmId": 46419351,
+    "place": "town",
+    "name": "Nunspeet",
+    "center": [5.780886, 52.378571]
+  },
+  {
+    "bagId": "1864",
+    "osmType": "node",
+    "osmId": 2480571631,
+    "place": "town",
+    "name": "Elst",
+    "center": [5.8452555, 51.9187914]
+  },
+  {
+    "bagId": "1878",
+    "osmType": "node",
+    "osmId": 46710124,
+    "place": "village",
+    "name": "Assendelft",
+    "center": [4.7449605, 52.4681109]
+  },
+  {
+    "bagId": "2880",
+    "osmType": "node",
+    "osmId": 3123077789,
+    "place": "town",
+    "name": "Goirle",
+    "center": [5.0660312, 51.5231816]
+  },
+  {
+    "bagId": "2096",
+    "osmType": "node",
+    "osmId": 6482147169,
+    "place": "town",
+    "name": "Duiven",
+    "center": [6.024594, 51.9495859]
+  },
+  {
+    "bagId": "2646",
+    "osmType": "node",
+    "osmId": 3123137087,
+    "place": "town",
+    "name": "Oisterwijk",
+    "center": [5.1938101, 51.5778742]
+  },
+  {
+    "bagId": "2754",
+    "osmType": "node",
+    "osmId": 240765974,
+    "place": "town",
+    "name": "Enkhuizen",
+    "center": [5.2901222, 52.7036282]
+  },
+  {
+    "bagId": "2237",
+    "osmType": "node",
+    "osmId": 5435880522,
+    "place": "town",
+    "name": "Bunschoten-Spakenburg",
+    "center": [5.3731599, 52.2452013]
+  },
+  {
+    "bagId": "3296",
+    "osmType": "node",
+    "osmId": 3134163743,
+    "place": "town",
+    "name": "Vleuten",
+    "center": [5.0135224, 52.1073555]
+  },
+  {
+    "bagId": "2713",
+    "osmType": "node",
+    "osmId": 47426993,
+    "place": "town",
+    "name": "Steenwijk",
+    "center": [6.1210477, 52.7895502]
+  },
+  {
+    "bagId": "1491",
+    "osmType": "node",
+    "osmId": 46452254,
+    "place": "town",
+    "name": "Raalte",
+    "center": [6.271781, 52.385675]
+  },
+  {
+    "bagId": "1450",
+    "osmType": "node",
+    "osmId": 43688088,
+    "place": "town",
+    "name": "Cuijk",
+    "center": [5.8800458, 51.729939]
+  },
+  {
+    "bagId": "2386",
+    "osmType": "node",
+    "osmId": 1547889665,
+    "place": "village",
+    "name": "Alblasserdam",
+    "center": [4.6653953, 51.865799]
+  },
+  {
+    "bagId": "2271",
+    "osmType": "node",
+    "osmId": 44285819,
+    "place": "town",
+    "name": "Leerdam",
+    "center": [5.0924352, 51.8937356]
+  },
+  {
+    "bagId": "2872",
+    "osmType": "node",
+    "osmId": 5544031874,
+    "place": "village",
+    "name": "Beek",
+    "center": [5.9246178, 51.828871]
+  },
+  {
+    "bagId": "3130",
+    "osmType": "node",
+    "osmId": 6394959708,
+    "place": "town",
+    "name": "Huissen",
+    "center": [5.9393769, 51.9383502]
+  },
+  {
+    "bagId": "2665",
+    "osmType": "node",
+    "osmId": 45168624,
+    "place": "town",
+    "name": "Bodegraven",
+    "center": [4.7510872, 52.0834347]
+  },
+  {
+    "bagId": "1718",
+    "osmType": "node",
+    "osmId": 42007078,
+    "place": "town",
+    "name": "Valkenburg",
+    "center": [5.8312518, 50.8647531]
+  },
+  {
+    "bagId": "1052",
+    "osmType": "node",
+    "osmId": 2974030509,
+    "place": "village",
+    "name": "Naarden",
+    "center": [5.1633636, 52.2957628]
+  },
+  {
+    "bagId": "1266",
+    "osmType": "node",
+    "osmId": 7162633371,
+    "place": "town",
+    "name": "Haren",
+    "center": [6.6061413, 53.1709841]
+  },
+  {
+    "bagId": "3297",
+    "osmType": "node",
+    "osmId": 3134163742,
+    "place": "town",
+    "name": "De Meern",
+    "center": [5.0363571, 52.0811781]
+  },
+  {
+    "bagId": "1688",
+    "osmType": "node",
+    "osmId": 9062821393,
+    "place": "village",
+    "name": "Bergschenhoek",
+    "center": [4.5016775, 51.98934]
+  },
+  {
+    "bagId": "3335",
+    "osmType": "node",
+    "osmId": 45033881,
+    "place": "town",
+    "name": "Driebergen-Rijsenburg",
+    "center": [5.2834752, 52.0522872]
+  },
+  {
+    "bagId": "3589",
+    "osmType": "node",
+    "osmId": 3123118269,
+    "place": "town",
+    "name": "Drunen",
+    "center": [5.130986, 51.6862832]
+  },
+  {
+    "bagId": "2891",
+    "osmType": "node",
+    "osmId": 235273940,
+    "place": "town",
+    "name": "Harlingen",
+    "center": [5.4141998, 53.1752103]
+  },
+  {
+    "bagId": "1880",
+    "osmType": "node",
+    "osmId": 7170603803,
+    "place": "village",
+    "name": "Krommenie",
+    "center": [4.7664946, 52.4954557]
+  },
+  {
+    "bagId": "3234",
+    "osmType": "node",
+    "osmId": 48398676,
+    "place": "town",
+    "name": "Delfzijl",
+    "center": [6.9135144, 53.3325644]
+  },
+  {
+    "bagId": "2745",
+    "osmType": "node",
+    "osmId": 42516652,
+    "place": "town",
+    "name": "Someren",
+    "center": [5.7133677, 51.3858887]
+  },
+  {
+    "bagId": "1344",
+    "osmType": "node",
+    "osmId": 46278640,
+    "place": "town",
+    "name": "Epe",
+    "center": [5.9836383, 52.3484545]
+  },
+  {
+    "bagId": "1006",
+    "osmType": "node",
+    "osmId": 42518369,
+    "place": "village",
+    "name": "Waalre",
+    "center": [5.4476871, 51.3876404]
+  },
+  {
+    "bagId": "2787",
+    "osmType": "node",
+    "osmId": 43046874,
+    "place": "town",
+    "name": "Sint-Oedenrode",
+    "center": [5.4610004, 51.5646434]
+  }
+]

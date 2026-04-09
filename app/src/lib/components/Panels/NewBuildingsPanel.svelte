@@ -1,5 +1,6 @@
 <script lang="ts">
   import Panel from '$lib/components/Panel.svelte'
+  import { formatCount } from '$lib/format.js'
 
   type Props = {
     buildingCount: number
@@ -16,10 +17,6 @@
   }: Props = $props()
 
   const buildingsCount2015 = 9_866_539
-
-  function formatCount(value: number): string {
-    return new Intl.NumberFormat('nl-NL').format(value)
-  }
 </script>
 
 <Panel bind:expanded>

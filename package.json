@@ -8,7 +8,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build-play-cities": "node scripts/build-play-cities.ts",
+    "build-osm-woonplaats-centers": "node scripts/build-osm-woonplaats-centers.ts",
+    "build-woonplaats-tiles": "node scripts/build-woonplaats-tiles.ts",
+    "build-woonplaats-names": "node scripts/build-woonplaats-names.ts",
     "build-address-lookup": "node scripts/build-address-lookup.ts",
+    "download-netherlands-osm-pbf": "node scripts/download-netherlands-osm-pbf.ts",
     "cluster-new-building-clusters": "node scripts/build-new-building-clusters.ts",
     "export-new-building-cluster-mask": "node scripts/build-new-building-cluster-mask.ts",
     "export-new-building-cluster-mask-tiles": "node scripts/build-new-building-cluster-mask-tiles.ts",

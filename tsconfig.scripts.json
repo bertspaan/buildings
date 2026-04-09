@@ -14,7 +14,12 @@
     "verbatimModuleSyntax": true
   },
   "include": [
+    "scripts/build-play-cities.ts",
+    "scripts/build-osm-woonplaats-centers.ts",
+    "scripts/build-woonplaats-tiles.ts",
+    "scripts/build-woonplaats-names.ts",
     "scripts/count-buildings.ts",
+    "scripts/download-netherlands-osm-pbf.ts",
     "scripts/build-raster.ts",
     "scripts/build-vector.ts",
     "scripts/tile-helpers.ts",

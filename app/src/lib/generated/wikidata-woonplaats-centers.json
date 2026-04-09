@@ -1,0 +1,1322 @@
+[
+  {
+    "bagId": "3594",
+    "wikidataId": "Q727",
+    "name": "Amsterdam",
+    "population": 921468,
+    "center": [4.883333333, 52.366666666]
+  },
+  {
+    "bagId": "3086",
+    "wikidataId": "Q34370",
+    "name": "Rotterdam",
+    "population": 664311,
+    "center": [4.48, 51.92]
+  },
+  {
+    "bagId": "1245",
+    "wikidataId": "Q36600",
+    "name": "Den Haag",
+    "population": 548320,
+    "center": [4.31, 52.08]
+  },
+  {
+    "bagId": "3295",
+    "wikidataId": "Q39297398",
+    "name": "Utrecht",
+    "population": 308990,
+    "center": [5.12222, 52.09083]
+  },
+  {
+    "bagId": "1101",
+    "wikidataId": "Q9832",
+    "name": "Eindhoven",
+    "population": 243730,
+    "center": [5.484166666, 51.434444444]
+  },
+  {
+    "bagId": "1070",
+    "wikidataId": "Q749",
+    "name": "Groningen",
+    "population": 238147,
+    "center": [6.5675, 53.218888888]
+  },
+  {
+    "bagId": "1043",
+    "wikidataId": "Q9871",
+    "name": "Tilburg",
+    "center": [5.0911, 51.5572]
+  },
+  {
+    "bagId": "1270",
+    "wikidataId": "Q83178",
+    "name": "Almere",
+    "population": 214715,
+    "center": [5.225555555, 52.375833333]
+  },
+  {
+    "bagId": "2907",
+    "wikidataId": "Q9920",
+    "name": "Haarlem",
+    "population": 162543,
+    "center": [4.640555555, 52.380277777]
+  },
+  {
+    "bagId": "3030",
+    "wikidataId": "Q13188714",
+    "name": "Nijmegen",
+    "center": [5.85278, 51.8425]
+  },
+  {
+    "bagId": "1296",
+    "wikidataId": "Q1310",
+    "name": "Arnhem",
+    "population": 164096,
+    "center": [5.916666666, 51.983333333]
+  },
+  {
+    "bagId": "3622",
+    "wikidataId": "Q40844",
+    "name": "Breda",
+    "population": 188078,
+    "center": [4.775833333, 51.588888888]
+  },
+  {
+    "bagId": "1145",
+    "wikidataId": "Q10002",
+    "name": "Enschede",
+    "population": 159732,
+    "center": [6.8925, 52.2225]
+  },
+  {
+    "bagId": "1664",
+    "wikidataId": "Q33421377",
+    "name": "Amersfoort",
+    "center": [5.3875, 52.155]
+  },
+  {
+    "bagId": "2088",
+    "wikidataId": "Q43631",
+    "name": "Leiden",
+    "population": 124093,
+    "center": [4.49, 52.16]
+  },
+  {
+    "bagId": "1406",
+    "wikidataId": "Q1309",
+    "name": "Maastricht",
+    "population": 120227,
+    "center": [5.683333333, 50.866666666]
+  },
+  {
+    "bagId": "3560",
+    "wikidataId": "Q3018561",
+    "name": "Apeldoorn",
+    "population": 138945,
+    "center": [5.97, 52.21]
+  },
+  {
+    "bagId": "1182",
+    "wikidataId": "Q13189044",
+    "name": "Zwolle",
+    "center": [6.09444, 52.5125]
+  },
+  {
+    "bagId": "2351",
+    "wikidataId": "Q26421",
+    "name": "Dordrecht",
+    "population": 122070,
+    "center": [4.678333333, 51.795833333]
+  },
+  {
+    "bagId": "1595",
+    "wikidataId": "Q2766547",
+    "name": "Q2766547",
+    "population": 158753,
+    "center": [5.316666666, 51.7]
+  },
+  {
+    "bagId": "2293",
+    "wikidataId": "Q26432",
+    "name": "Zoetermeer",
+    "population": 125267,
+    "center": [4.493333333, 52.061111111]
+  },
+  {
+    "bagId": "3615",
+    "wikidataId": "Q25390",
+    "name": "Leeuwarden",
+    "population": 93765,
+    "center": [5.783333333, 53.2]
+  },
+  {
+    "bagId": "2138",
+    "wikidataId": "Q690",
+    "name": "Delft",
+    "population": 109435,
+    "center": [4.359166666, 52.011666666]
+  },
+  {
+    "bagId": "2348",
+    "wikidataId": "Q16977290",
+    "name": "Alkmaar",
+    "center": [4.751, 52.632]
+  },
+  {
+    "bagId": "1050",
+    "wikidataId": "Q9898",
+    "name": "Amstelveen",
+    "population": 94435,
+    "center": [4.858055555, 52.301944444]
+  },
+  {
+    "bagId": "1036",
+    "wikidataId": "Q9934",
+    "name": "Hilversum",
+    "population": 91235,
+    "center": [5.18, 52.23]
+  },
+  {
+    "bagId": "1146",
+    "wikidataId": "Q9844",
+    "name": "Helmond",
+    "population": 92627,
+    "center": [5.65559, 51.47968]
+  },
+  {
+    "bagId": "3510",
+    "wikidataId": "Q10006",
+    "name": "Hengelo",
+    "population": 81049,
+    "center": [6.793055555, 52.265555555]
+  },
+  {
+    "bagId": "1884",
+    "wikidataId": "Q211260",
+    "name": "Zaandam",
+    "population": 78682,
+    "center": [4.842222222, 52.441666666]
+  },
+  {
+    "bagId": "2856",
+    "wikidataId": "Q26296883",
+    "name": "Deventer",
+    "center": [6.16, 52.251111111]
+  },
+  {
+    "bagId": "3103",
+    "wikidataId": "Q9954",
+    "name": "Purmerend",
+    "population": 81515,
+    "center": [4.963888888, 52.505]
+  },
+  {
+    "bagId": "1312",
+    "wikidataId": "Q33444227",
+    "name": "Heerlen",
+    "center": [5.98154, 50.88365]
+  },
+  {
+    "bagId": "1935",
+    "wikidataId": "Q204709",
+    "name": "Schiedam",
+    "population": 79279,
+    "center": [4.4, 51.916666666]
+  },
+  {
+    "bagId": "1015",
+    "wikidataId": "Q210007",
+    "name": "Vlaardingen",
+    "population": 73924,
+    "center": [4.35, 51.916666666]
+  },
+  {
+    "bagId": "1051",
+    "wikidataId": "Q166065",
+    "name": "Lelystad",
+    "population": 83033,
+    "center": [5.483333333, 52.516666666]
+  },
+  {
+    "bagId": "2764",
+    "wikidataId": "Q2473978",
+    "name": "Ede",
+    "population": 72460,
+    "center": [5.6667, 52.0436]
+  },
+  {
+    "bagId": "1597",
+    "wikidataId": "Q995911",
+    "name": "Hoofddorp",
+    "center": [4.666666666, 52.3]
+  },
+  {
+    "bagId": "1005",
+    "wikidataId": "Q33439340",
+    "name": "Gouda",
+    "center": [4.70833, 52.01667]
+  },
+  {
+    "bagId": "1473",
+    "wikidataId": "Q3322237",
+    "name": "Venlo",
+    "population": 37663,
+    "center": [6.16806, 51.37]
+  },
+  {
+    "bagId": "1080",
+    "wikidataId": "Q15156199",
+    "name": "Alphen aan den Rijn",
+    "population": 71975,
+    "center": [4.653806, 52.128306]
+  },
+  {
+    "bagId": "1924",
+    "wikidataId": "Q33421017",
+    "name": "Almelo",
+    "center": [6.6625, 52.35667]
+  },
+  {
+    "bagId": "1588",
+    "wikidataId": "Q6903267",
+    "name": "Roosendaal",
+    "population": 76959,
+    "center": [4.45, 51.533333333]
+  },
+  {
+    "bagId": "2391",
+    "wikidataId": "Q49280472",
+    "name": "Assen",
+    "center": [6.5625, 52.99667]
+  },
+  {
+    "bagId": "3032",
+    "wikidataId": "Q488545",
+    "name": "Spijkenisse",
+    "population": 72740,
+    "center": [4.316666666, 51.833333333]
+  },
+  {
+    "bagId": "2459",
+    "wikidataId": "Q506745",
+    "name": "Rijswijk",
+    "population": 55220,
+    "center": [4.33, 52.045555555]
+  },
+  {
+    "bagId": "1108",
+    "wikidataId": "Q10050",
+    "name": "Nieuwegein",
+    "population": 63866,
+    "center": [5.0919, 52.0314]
+  },
+  {
+    "bagId": "1105",
+    "wikidataId": "Q734860",
+    "name": "Capelle aan den IJssel",
+    "population": 67319,
+    "center": [4.57819, 51.93567]
+  },
+  {
+    "bagId": "2048",
+    "wikidataId": "Q1840",
+    "name": "Veenendaal",
+    "population": 66912,
+    "center": [5.555, 52.025]
+  },
+  {
+    "bagId": "1988",
+    "wikidataId": "Q6807568",
+    "name": "Emmen",
+    "population": 56710,
+    "center": [6.8994, 52.7811]
+  },
+  {
+    "bagId": "3249",
+    "wikidataId": "Q13971034",
+    "name": "Oss",
+    "center": [5.52338, 51.7653]
+  },
+  {
+    "bagId": "1746",
+    "wikidataId": "Q9930",
+    "name": "Heerhugowaard",
+    "population": 58387,
+    "center": [4.841, 52.668]
+  },
+  {
+    "bagId": "1937",
+    "wikidataId": "Q192508",
+    "name": "Bergen op Zoom",
+    "population": 66445,
+    "center": [4.3, 51.5]
+  },
+  {
+    "bagId": "1869",
+    "wikidataId": "Q2439969",
+    "name": "Oosterhout",
+    "center": [5.8253, 51.8789]
+  },
+  {
+    "bagId": "2821",
+    "wikidataId": "Q33527010",
+    "name": "Zeist",
+    "center": [5.23333, 52.09]
+  },
+  {
+    "bagId": "3614",
+    "wikidataId": "Q33445973",
+    "name": "Hoorn",
+    "population": 76074,
+    "center": [5.05972, 52.6425]
+  },
+  {
+    "bagId": "3056",
+    "wikidataId": "Q33432868",
+    "name": "Den Helder",
+    "center": [4.75933, 52.95988]
+  },
+  {
+    "bagId": "1007",
+    "wikidataId": "Q52101",
+    "name": "Middelburg",
+    "population": 49956,
+    "center": [3.613611111, 51.499722222]
+  },
+  {
+    "bagId": "3279",
+    "wikidataId": "Q60444",
+    "name": "Drachten",
+    "center": [6.1, 53.1]
+  },
+  {
+    "bagId": "2562",
+    "wikidataId": "Q222220",
+    "name": "Ridderkerk",
+    "population": 46671,
+    "center": [4.6, 51.866666666]
+  },
+  {
+    "bagId": "2281",
+    "wikidataId": "Q9783",
+    "name": "Roermond",
+    "population": 57308,
+    "center": [5.987222222, 51.193333333]
+  },
+  {
+    "bagId": "3246",
+    "wikidataId": "Q16068685",
+    "name": "Doetinchem",
+    "center": [6.28888889, 51.96555556]
+  },
+  {
+    "bagId": "2649",
+    "wikidataId": "Q28914824",
+    "name": "Kerkrade",
+    "center": [6.060556, 50.864722]
+  },
+  {
+    "bagId": "1384",
+    "wikidataId": "Q9875",
+    "name": "Veldhoven",
+    "population": 45500,
+    "center": [5.405, 51.42]
+  },
+  {
+    "bagId": "1974",
+    "wikidataId": "Q12344051",
+    "name": "Weert",
+    "center": [5.709, 51.251]
+  },
+  {
+    "bagId": "3222",
+    "wikidataId": "Q13188385",
+    "name": "Harderwijk",
+    "center": [5.62083, 52.34167]
+  },
+  {
+    "bagId": "1010",
+    "wikidataId": "Q9833",
+    "name": "Etten-Leur",
+    "population": 43869,
+    "center": [4.6356, 51.5706]
+  },
+  {
+    "bagId": "1622",
+    "wikidataId": "Q809821",
+    "name": "Voorburg",
+    "population": 43090,
+    "center": [4.355, 52.07]
+  },
+  {
+    "bagId": "3512",
+    "wikidataId": "Q73022",
+    "name": "Sittard",
+    "population": 37085,
+    "center": [5.866666666, 51]
+  },
+  {
+    "bagId": "1594",
+    "wikidataId": "Q204239",
+    "name": "Barendrecht",
+    "population": 48643,
+    "center": [4.533333333, 51.85]
+  },
+  {
+    "bagId": "1814",
+    "wikidataId": "Q18691547",
+    "name": "Hoogeveen",
+    "population": 38865,
+    "center": [6.46667, 52.7167]
+  },
+  {
+    "bagId": "1395",
+    "wikidataId": "Q109535",
+    "name": "Zutphen",
+    "population": 47423,
+    "center": [6.195, 52.14]
+  },
+  {
+    "bagId": "2399",
+    "wikidataId": "Q33528808",
+    "name": "Zwijndrecht",
+    "center": [4.63333, 51.8175]
+  },
+  {
+    "bagId": "2735",
+    "wikidataId": "Q33424724",
+    "name": "Beverwijk",
+    "center": [4.65694, 52.48333]
+  },
+  {
+    "bagId": "1078",
+    "wikidataId": "Q33512335",
+    "name": "Vlissingen",
+    "center": [3.57361, 51.4425]
+  },
+  {
+    "bagId": "2053",
+    "wikidataId": "Q33446293",
+    "name": "Houten",
+    "center": [5.16806, 52.02833]
+  },
+  {
+    "bagId": "3601",
+    "wikidataId": "Q33506500",
+    "name": "Tiel",
+    "center": [5.42917, 51.88667]
+  },
+  {
+    "bagId": "2006",
+    "wikidataId": "Q1305",
+    "name": "Wageningen",
+    "population": 39635,
+    "center": [5.663055555, 51.964444444]
+  },
+  {
+    "bagId": "1011",
+    "wikidataId": "Q9939",
+    "name": "Huizen",
+    "population": 41090,
+    "center": [5.2531, 52.2994]
+  },
+  {
+    "bagId": "2137",
+    "wikidataId": "Q33444372",
+    "name": "Hellevoetsluis",
+    "center": [4.133330555, 51.833330555]
+  },
+  {
+    "bagId": "1013",
+    "wikidataId": "Q33490428",
+    "name": "Soest",
+    "center": [5.29167, 52.17333]
+  },
+  {
+    "bagId": "1707",
+    "wikidataId": "Q208764",
+    "name": "Katwijk",
+    "population": 66607,
+    "center": [4.4153, 52.2008]
+  },
+  {
+    "bagId": "2458",
+    "wikidataId": "Q9926",
+    "name": "Heemskerk",
+    "population": 39191,
+    "center": [4.672777777, 52.510833333]
+  },
+  {
+    "bagId": "1847",
+    "wikidataId": "Q528819",
+    "name": "Uden",
+    "center": [5.6181, 51.6581]
+  },
+  {
+    "bagId": "2299",
+    "wikidataId": "Q33439227",
+    "name": "Gorinchem",
+    "center": [4.97243, 51.83652]
+  },
+  {
+    "bagId": "2894",
+    "wikidataId": "Q10014",
+    "name": "Kampen",
+    "population": 38415,
+    "center": [5.919722222, 52.555]
+  },
+  {
+    "bagId": "3055",
+    "wikidataId": "Q9795",
+    "name": "Landgraaf",
+    "population": 37262,
+    "center": [6.0297, 50.9083]
+  },
+  {
+    "bagId": "1071",
+    "wikidataId": "Q33518339",
+    "name": "Woerden",
+    "population": 38320,
+    "center": [4.88333, 52.085]
+  },
+  {
+    "bagId": "3513",
+    "wikidataId": "Q73570",
+    "name": "Geleen",
+    "population": 36958,
+    "center": [5.833333333, 50.966666666]
+  },
+  {
+    "bagId": "2144",
+    "wikidataId": "Q9913",
+    "name": "Diemen",
+    "population": 31334,
+    "center": [4.9625, 52.3439]
+  },
+  {
+    "bagId": "2597",
+    "wikidataId": "Q9879",
+    "name": "Waalwijk",
+    "center": [5.0694, 51.6825]
+  },
+  {
+    "bagId": "3504",
+    "wikidataId": "Q23070",
+    "name": "Sneek",
+    "population": 33855,
+    "center": [5.66, 53.0325]
+  },
+  {
+    "bagId": "2564",
+    "wikidataId": "Q15981302",
+    "name": "Wijchen",
+    "center": [5.72111, 51.8067]
+  },
+  {
+    "bagId": "2064",
+    "wikidataId": "Q932008",
+    "name": "Maarssen",
+    "population": 39752,
+    "center": [5.0394, 52.1408]
+  },
+  {
+    "bagId": "1596",
+    "wikidataId": "Q2001490",
+    "name": "Rosmalen",
+    "population": 31219,
+    "center": [5.366666666, 51.716666666]
+  },
+  {
+    "bagId": "1621",
+    "wikidataId": "Q1616233",
+    "name": "Leidschendam",
+    "population": 34660,
+    "center": [4.4, 52.083333333]
+  },
+  {
+    "bagId": "2835",
+    "wikidataId": "Q282461",
+    "name": "IJmuiden",
+    "population": 48320,
+    "center": [4.6194, 52.4586]
+  },
+  {
+    "bagId": "1069",
+    "wikidataId": "Q497130",
+    "name": "Maassluis",
+    "population": 33567,
+    "center": [4.256666666, 51.918888888]
+  },
+  {
+    "bagId": "3523",
+    "wikidataId": "Q1061677",
+    "name": "Heerenveen",
+    "population": 28497,
+    "center": [5.933333333, 52.95]
+  },
+  {
+    "bagId": "1331",
+    "wikidataId": "Q9909",
+    "name": "Bussum",
+    "center": [5.16111, 52.27333]
+  },
+  {
+    "bagId": "1824",
+    "wikidataId": "Q81220",
+    "name": "Goes",
+    "population": 38950,
+    "center": [3.883333333, 51.5]
+  },
+  {
+    "bagId": "3083",
+    "wikidataId": "Q2103147",
+    "name": "Hoogvliet",
+    "population": 35575,
+    "center": [4.35, 51.866666666]
+  },
+  {
+    "bagId": "1082",
+    "wikidataId": "Q33461897",
+    "name": "Meppel",
+    "center": [6.19444, 52.69583]
+  },
+  {
+    "bagId": "2265",
+    "wikidataId": "Q3025606",
+    "name": "Noordwijk",
+    "center": [6.2567, 53.1697]
+  },
+  {
+    "bagId": "3051",
+    "wikidataId": "Q826048",
+    "name": "Waddinxveen",
+    "population": 31342,
+    "center": [4.633333333, 52.033333333]
+  },
+  {
+    "bagId": "2827",
+    "wikidataId": "Q12557060",
+    "name": "Veghel",
+    "center": [5.5461, 51.6175]
+  },
+  {
+    "bagId": "1100",
+    "wikidataId": "Q1869375",
+    "name": "Valkenswaard",
+    "center": [5.45972, 51.35083]
+  },
+  {
+    "bagId": "1668",
+    "wikidataId": "Q13188727",
+    "name": "Oldenzaal",
+    "center": [6.92917, 52.31333]
+  },
+  {
+    "bagId": "3597",
+    "wikidataId": "Q2001429",
+    "name": "Barneveld",
+    "population": 30027,
+    "center": [5.583333333, 52.133333333]
+  },
+  {
+    "bagId": "2849",
+    "wikidataId": "Q9803",
+    "name": "Brunssum",
+    "population": 27670,
+    "center": [5.966666666, 50.95]
+  },
+  {
+    "bagId": "1137",
+    "wikidataId": "Q2207185",
+    "name": "Terneuzen",
+    "center": [3.833333333, 51.333333333]
+  },
+  {
+    "bagId": "1477",
+    "wikidataId": "Q934511",
+    "name": "Papendrecht",
+    "population": 32171,
+    "center": [4.683333333, 51.833333333]
+  },
+  {
+    "bagId": "2573",
+    "wikidataId": "Q15874985",
+    "name": "Ermelo",
+    "center": [5.63333, 52.3]
+  },
+  {
+    "bagId": "2432",
+    "wikidataId": "Q10045",
+    "name": "IJsselstein",
+    "population": 33819,
+    "center": [5.0422, 52.02]
+  },
+  {
+    "bagId": "1456",
+    "wikidataId": "Q9816",
+    "name": "Best",
+    "population": 30216,
+    "center": [5.3922, 51.5108]
+  },
+  {
+    "bagId": "3606",
+    "wikidataId": "Q16220881",
+    "name": "Nijkerk",
+    "center": [5.484166666, 52.221388888]
+  },
+  {
+    "bagId": "2430",
+    "wikidataId": "Q33433617",
+    "name": "Dronten",
+    "center": [5.716666666, 52.525]
+  },
+  {
+    "bagId": "2335",
+    "wikidataId": "Q23015555",
+    "name": "Venray",
+    "center": [5.974722222, 51.525833333]
+  },
+  {
+    "bagId": "1126",
+    "wikidataId": "Q2636411",
+    "name": "Geldrop",
+    "population": 28001,
+    "center": [5.5578, 51.4222]
+  },
+  {
+    "bagId": "1687",
+    "wikidataId": "Q820839",
+    "name": "Berkel en Rodenrijs",
+    "population": 28095,
+    "center": [4.47, 51.99]
+  },
+  {
+    "bagId": "2052",
+    "wikidataId": "Q816699",
+    "name": "Culemborg",
+    "population": 29121,
+    "center": [5.233333333, 51.95]
+  },
+  {
+    "bagId": "1271",
+    "wikidataId": "Q60705",
+    "name": "Emmeloord",
+    "center": [5.750833333, 52.709722222]
+  },
+  {
+    "bagId": "2352",
+    "wikidataId": "Q538725",
+    "name": "Hendrik-Ido-Ambacht",
+    "population": 31258,
+    "center": [4.63, 51.85]
+  },
+  {
+    "bagId": "1602",
+    "wikidataId": "Q545457",
+    "name": "Nieuw-Vennep",
+    "center": [4.6375, 52.2639]
+  },
+  {
+    "bagId": "2563",
+    "wikidataId": "Q9928",
+    "name": "Heemstede",
+    "population": 27545,
+    "center": [4.62, 52.3528]
+  },
+  {
+    "bagId": "1144",
+    "wikidataId": "Q739449",
+    "name": "Krimpen aan den IJssel",
+    "population": 29410,
+    "center": [4.6, 51.92]
+  },
+  {
+    "bagId": "1141",
+    "wikidataId": "Q968044",
+    "name": "Pijnacker",
+    "center": [4.4361, 52.0183]
+  },
+  {
+    "bagId": "2112",
+    "wikidataId": "Q1000817",
+    "name": "Leiderdorp",
+    "population": 27377,
+    "center": [4.528333333, 52.161666666]
+  },
+  {
+    "bagId": "1297",
+    "wikidataId": "Q15884208",
+    "name": "Zevenaar",
+    "center": [6.07055556, 51.92944444]
+  },
+  {
+    "bagId": "1821",
+    "wikidataId": "Q505601",
+    "name": "Wassenaar",
+    "population": 26949,
+    "center": [4.400555555, 52.145277777]
+  },
+  {
+    "bagId": "1092",
+    "wikidataId": "Q33423050",
+    "name": "Baarn",
+    "center": [5.2875, 52.21167]
+  },
+  {
+    "bagId": "2638",
+    "wikidataId": "Q33456707",
+    "name": "Leusden",
+    "center": [5.43194, 52.1325]
+  },
+  {
+    "bagId": "1619",
+    "wikidataId": "Q12013510",
+    "name": "Vught",
+    "center": [5.2936, 51.6558]
+  },
+  {
+    "bagId": "2439",
+    "wikidataId": "Q13443096",
+    "name": "Boxtel",
+    "center": [5.3275, 51.5911]
+  },
+  {
+    "bagId": "2062",
+    "wikidataId": "Q33510004",
+    "name": "Uithoorn",
+    "center": [4.82639, 52.2375]
+  },
+  {
+    "bagId": "3231",
+    "wikidataId": "Q848324",
+    "name": "Voorschoten",
+    "population": 25650,
+    "center": [4.445, 52.125]
+  },
+  {
+    "bagId": "1075",
+    "wikidataId": "Q184454",
+    "name": "Zeewolde",
+    "population": 22879,
+    "center": [5.516666666, 52.333333333]
+  },
+  {
+    "bagId": "3631",
+    "wikidataId": "Q9974",
+    "name": "Weesp",
+    "population": 19334,
+    "center": [5.04167, 52.3075]
+  },
+  {
+    "bagId": "1243",
+    "wikidataId": "Q9932",
+    "name": "Heiloo",
+    "population": 24144,
+    "center": [4.7019, 52.6011]
+  },
+  {
+    "bagId": "3580",
+    "wikidataId": "Q15881071",
+    "name": "Putten",
+    "center": [5.60694, 52.25917]
+  },
+  {
+    "bagId": "1478",
+    "wikidataId": "Q15910469",
+    "name": "Winterswijk",
+    "center": [6.716666666, 51.966666666]
+  },
+  {
+    "bagId": "1566",
+    "wikidataId": "Q494359",
+    "name": "Rijssen",
+    "population": 26428,
+    "center": [6.516666666, 52.3]
+  },
+  {
+    "bagId": "2438",
+    "wikidataId": "Q750760",
+    "name": "Sliedrecht",
+    "population": 25597,
+    "center": [4.774444444, 51.822222222]
+  },
+  {
+    "bagId": "2268",
+    "wikidataId": "Q33429472",
+    "name": "Castricum",
+    "center": [4.66944, 52.54833]
+  },
+  {
+    "bagId": "1774",
+    "wikidataId": "Q2583037",
+    "name": "Deurne",
+    "center": [5.7947, 51.4644]
+  },
+  {
+    "bagId": "2793",
+    "wikidataId": "Q795623",
+    "name": "Oud-Beijerland",
+    "population": 24301,
+    "center": [4.42, 51.82]
+  },
+  {
+    "bagId": "1466",
+    "wikidataId": "Q332730",
+    "name": "Lisse",
+    "population": 22982,
+    "center": [4.561111111, 52.259722222]
+  },
+  {
+    "bagId": "2935",
+    "wikidataId": "Q1075656",
+    "name": "Bilthoven",
+    "center": [5.1986, 52.1283]
+  },
+  {
+    "bagId": "2139",
+    "wikidataId": "Q9864",
+    "name": "Schijndel",
+    "population": 23618,
+    "center": [5.4364, 51.6183]
+  },
+  {
+    "bagId": "2744",
+    "wikidataId": "Q94747",
+    "name": "Oegstgeest",
+    "population": 25064,
+    "center": [4.466666666, 52.166666666]
+  },
+  {
+    "bagId": "2799",
+    "wikidataId": "Q4507706",
+    "name": "Dongen",
+    "center": [4.9433, 51.6258]
+  },
+  {
+    "bagId": "2571",
+    "wikidataId": "Q33420194",
+    "name": "Aalsmeer",
+    "center": [4.75972, 52.25917]
+  },
+  {
+    "bagId": "1018",
+    "wikidataId": "Q1627411",
+    "name": "Hoogezand",
+    "center": [6.7533, 53.1572]
+  },
+  {
+    "bagId": "1240",
+    "wikidataId": "Q14212973",
+    "name": "Veendam",
+    "center": [6.87194, 53.10611]
+  },
+  {
+    "bagId": "3584",
+    "wikidataId": "Q1850290",
+    "name": "Nijverdal",
+    "center": [6.4617, 52.3631]
+  },
+  {
+    "bagId": "2347",
+    "wikidataId": "Q10003",
+    "name": "Haaksbergen",
+    "population": 24229,
+    "center": [6.7419, 52.1547]
+  },
+  {
+    "bagId": "3535",
+    "wikidataId": "Q932116",
+    "name": "Hillegom",
+    "population": 22197,
+    "center": [4.579444444, 52.291666666]
+  },
+  {
+    "bagId": "2136",
+    "wikidataId": "Q153516",
+    "name": "Nuenen",
+    "center": [5.55, 51.466666666]
+  },
+  {
+    "bagId": "2662",
+    "wikidataId": "Q425786",
+    "name": "'s-Gravenzande",
+    "population": 19173,
+    "center": [4.1647, 52.0019]
+  },
+  {
+    "bagId": "2460",
+    "wikidataId": "Q465833",
+    "name": "Schagen",
+    "center": [4.8019, 52.7886]
+  },
+  {
+    "bagId": "1313",
+    "wikidataId": "Q783094",
+    "name": "Hoensbroek",
+    "population": 22740,
+    "center": [5.933333333, 50.916666666]
+  },
+  {
+    "bagId": "3074",
+    "wikidataId": "Q485699",
+    "name": "Stadskanaal",
+    "center": [6.9504, 52.98947]
+  },
+  {
+    "bagId": "1305",
+    "wikidataId": "Q33525262",
+    "name": "Zandvoort",
+    "center": [4.53306, 52.37125]
+  },
+  {
+    "bagId": "1500",
+    "wikidataId": "Q2375289",
+    "name": "Velp",
+    "population": 1437,
+    "center": [5.9758, 51.9947]
+  },
+  {
+    "bagId": "2660",
+    "wikidataId": "Q1613459",
+    "name": "Naaldwijk",
+    "center": [4.2133, 51.9936]
+  },
+  {
+    "bagId": "1471",
+    "wikidataId": "Q73817",
+    "name": "Winschoten",
+    "population": 20913,
+    "center": [7.033333333, 53.15]
+  },
+  {
+    "bagId": "1016",
+    "wikidataId": "Q588544",
+    "name": "Nieuwerkerk aan den IJssel",
+    "population": 21649,
+    "center": [4.608333333, 51.965555555]
+  },
+  {
+    "bagId": "1748",
+    "wikidataId": "Q903595",
+    "name": "Volendam",
+    "center": [5.0675, 52.499444444]
+  },
+  {
+    "bagId": "3511",
+    "wikidataId": "Q9997",
+    "name": "Borne",
+    "population": 23668,
+    "center": [6.75, 52.3]
+  },
+  {
+    "bagId": "3608",
+    "wikidataId": "Q10013",
+    "name": "Hardenberg",
+    "population": 59689,
+    "center": [6.61944, 52.57583]
+  },
+  {
+    "bagId": "2982",
+    "wikidataId": "Q16070330",
+    "name": "Nunspeet",
+    "center": [5.783333333, 52.366666666]
+  },
+  {
+    "bagId": "1864",
+    "wikidataId": "Q130580",
+    "name": "Elst",
+    "population": 7782,
+    "center": [5.8378, 51.9156]
+  },
+  {
+    "bagId": "1878",
+    "wikidataId": "Q1614461",
+    "name": "Assendelft",
+    "population": 8335,
+    "center": [4.75, 52.466666666]
+  },
+  {
+    "bagId": "2880",
+    "wikidataId": "Q4681121",
+    "name": "Goirle",
+    "center": [5.0671, 51.5203]
+  },
+  {
+    "bagId": "2096",
+    "wikidataId": "Q2416369",
+    "name": "Duiven",
+    "center": [6.0211, 51.9472]
+  },
+  {
+    "bagId": "2646",
+    "wikidataId": "Q3299324",
+    "name": "Oisterwijk",
+    "center": [5.2, 51.5833]
+  },
+  {
+    "bagId": "2754",
+    "wikidataId": "Q9918",
+    "name": "Enkhuizen",
+    "population": 18637,
+    "center": [5.283333333, 52.7]
+  },
+  {
+    "bagId": "2237",
+    "wikidataId": "Q134395674",
+    "name": "Bunschoten-Spakenburg",
+    "center": [5.3736, 52.24536]
+  },
+  {
+    "bagId": "3296",
+    "wikidataId": "Q984079",
+    "name": "Vleuten",
+    "population": 27815,
+    "center": [5.015, 52.1081]
+  },
+  {
+    "bagId": "2713",
+    "wikidataId": "Q81175",
+    "name": "Steenwijk",
+    "population": 22843,
+    "center": [6.116666666, 52.783333333]
+  },
+  {
+    "bagId": "1491",
+    "wikidataId": "Q18012068",
+    "name": "Raalte",
+    "center": [6.282777777, 52.382777777]
+  },
+  {
+    "bagId": "1450",
+    "wikidataId": "Q13635419",
+    "name": "Cuijk",
+    "population": 18735,
+    "center": [5.87944, 51.72694]
+  },
+  {
+    "bagId": "2386",
+    "wikidataId": "Q736131",
+    "name": "Alblasserdam",
+    "population": 20136,
+    "center": [4.666666666, 51.866666666]
+  },
+  {
+    "bagId": "2271",
+    "wikidataId": "Q388575",
+    "name": "Leerdam",
+    "population": 21030,
+    "center": [5.091388888, 51.893888888]
+  },
+  {
+    "bagId": "2872",
+    "wikidataId": "Q726635",
+    "name": "Beek",
+    "center": [5.9258, 51.8292]
+  },
+  {
+    "bagId": "3130",
+    "wikidataId": "Q73084",
+    "name": "Huissen",
+    "population": 15782,
+    "center": [5.933333333, 51.933333333]
+  },
+  {
+    "bagId": "2665",
+    "wikidataId": "Q832938",
+    "name": "Bodegraven",
+    "population": 17954,
+    "center": [4.7486, 52.0808]
+  },
+  {
+    "bagId": "1718",
+    "wikidataId": "Q100076",
+    "name": "Valkenburg",
+    "center": [5.83205, 50.86523]
+  },
+  {
+    "bagId": "1052",
+    "wikidataId": "Q9949",
+    "name": "Naarden",
+    "population": 17555,
+    "center": [5.162222222, 52.295277777]
+  },
+  {
+    "bagId": "1266",
+    "wikidataId": "Q33443174",
+    "name": "Haren",
+    "population": 17950,
+    "center": [6.60931, 53.17209]
+  },
+  {
+    "bagId": "3297",
+    "wikidataId": "Q3020221",
+    "name": "De Meern",
+    "population": 21815,
+    "center": [5.033333333, 52.080555555]
+  },
+  {
+    "bagId": "1688",
+    "wikidataId": "Q820175",
+    "name": "Bergschenhoek",
+    "population": 13206,
+    "center": [4.5, 51.98]
+  },
+  {
+    "bagId": "3335",
+    "wikidataId": "Q1258901",
+    "name": "Driebergen-Rijsenburg",
+    "population": 18463,
+    "center": [5.2803, 52.0528]
+  },
+  {
+    "bagId": "3589",
+    "wikidataId": "Q2873137",
+    "name": "Drunen",
+    "population": 18355,
+    "center": [5.166666666, 51.683333333]
+  },
+  {
+    "bagId": "2891",
+    "wikidataId": "Q60475",
+    "name": "Harlingen",
+    "population": 15822,
+    "center": [5.4272, 53.1736]
+  },
+  {
+    "bagId": "1880",
+    "wikidataId": "Q2429243",
+    "name": "Krommenie",
+    "center": [4.766666666, 52.5]
+  },
+  {
+    "bagId": "3234",
+    "wikidataId": "Q322986",
+    "name": "Delfzijl",
+    "center": [6.916666666, 53.333333333]
+  },
+  {
+    "bagId": "2745",
+    "wikidataId": "Q7476457",
+    "name": "Someren",
+    "center": [5.71361111, 51.38583333]
+  },
+  {
+    "bagId": "1344",
+    "wikidataId": "Q2766701",
+    "name": "Epe",
+    "center": [5.9842, 52.3464]
+  },
+  {
+    "bagId": "1006",
+    "wikidataId": "Q2258603",
+    "name": "Waalre-dorp",
+    "center": [5.4436, 51.3861]
+  },
+  {
+    "bagId": "2787",
+    "wikidataId": "Q9867",
+    "name": "Sint-Oedenrode",
+    "population": 17893,
+    "center": [5.4608, 51.5636]
+  }
+]

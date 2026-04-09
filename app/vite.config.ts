@@ -12,7 +12,7 @@ const dataDir = resolve(repoRoot, 'data', 'r2')
 
 export default defineConfig({
   ssr: {
-    noExternal: ['maplibre-gl', 'maplibre-contour']
+    noExternal: ['bits-ui', 'maplibre-gl', 'maplibre-contour']
   },
   plugins: [
     tailwindcss(),

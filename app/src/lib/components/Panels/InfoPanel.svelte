@@ -195,7 +195,10 @@
   }
 
   function getVisibleAddresses(): string[] {
-    return showAllAddresses ? addresses : addresses.slice(0, maxPopupAddresses)
+    if (showAllAddresses) return addresses
+    const remaining = addresses.length - maxPopupAddresses
+    if (remaining < 3) return addresses
+    return addresses.slice(0, maxPopupAddresses)
   }
 
   function getRemainingAddressCount(): number {
@@ -299,7 +302,7 @@
           <span class="font-bold">All addresses</span>
 
           <div
-            class="border border-white/50 bg-white/20 rounded-full px-1 py-0"
+            class="border border-white/50 bg-white/20 rounded-full px-2 py-0.5 text-xs"
           >
             {formatValue(addressCount)}
           </div>
@@ -319,10 +322,7 @@
               showAllAddresses = true
             }}
           >
-            Show {getRemainingAddressCount()} more address{getRemainingAddressCount() ===
-            1
-              ? ''
-              : 'es'}
+            Show {getRemainingAddressCount()} more addresses
           </button>
         {/if}
       {/if}

@@ -1,5 +1,6 @@
 <script lang="ts">
   import Panel from '$lib/components/Panel.svelte'
+  import { formatCount } from '$lib/format.js'
 
   let {
     buildingCount = 0,
@@ -9,9 +10,6 @@
     expanded?: boolean
   } = $props()
 
-  function formatCount(value: number): string {
-    return new Intl.NumberFormat('nl-NL').format(value)
-  }
 </script>
 
 <Panel bind:expanded>

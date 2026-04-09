@@ -14,6 +14,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "bits-ui": "^2.17.2",
     "maplibre-gl": "^5.21.0",
     "pmtiles": "^4.3.0"
   },
@@ -29,6 +30,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.15.2",
     "globals": "^17.4.0",
+    "phosphor-svelte": "^3.1.0",
     "prettier": "^3.8.1",
     "prettier-plugin-svelte": "^3.4.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
