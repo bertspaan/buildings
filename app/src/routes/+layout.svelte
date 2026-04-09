@@ -1,7 +1,6 @@
 <script lang="ts">
   import { dev } from '$app/environment'
   import { onNavigate } from '$app/navigation'
-  import { page } from '$app/state'
 
   import './layout.css'
   import 'maplibre-gl/dist/maplibre-gl.css'

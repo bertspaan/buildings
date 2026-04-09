@@ -15,11 +15,7 @@
   import originalCities from '$lib/generated/play-cities.json'
   import { mapState } from '$lib/map-state.svelte.js'
 
-  import type {
-    FilterSpecification,
-    GeoJSONSource,
-    Map as MapLibreMap
-  } from 'maplibre-gl'
+  import type { FilterSpecification, Map as MapLibreMap } from 'maplibre-gl'
 
   type PlayCity = {
     rank: number
@@ -361,7 +357,11 @@
 {/if}
 
 {#if isGameOver}
-  <PlayGameOverModal cityName={currentCity.name} onRestart={startNewGame} />
+  <PlayGameOverModal
+    cityName={currentCity.name}
+    correctCount={cityIndex}
+    onRestart={startNewGame}
+  />
 {/if}
 
 {#if hasWon}

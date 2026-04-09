@@ -1,4 +1,8 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
+
+  import { trackEvent } from '$lib/analytics.js'
+
   import Modal from './Modal.svelte'
   import TimedActionButton from './TimedActionButton.svelte'
 
@@ -8,6 +12,12 @@
   }
 
   let { cityCount, onRestart = () => {} }: Props = $props()
+
+  onMount(() => {
+    trackEvent('play_won', {
+      city_count: cityCount
+    })
+  })
 </script>
 
 <Modal>
