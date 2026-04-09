@@ -35,7 +35,7 @@
     name: string
   }
 
-  const citiesPerGame = 15
+  const citiesPerGame = 10
   const choicesPerRound = 6
 
   let cities = $state<PlayCity[]>(shuffleCities(originalCities as PlayCity[]))
