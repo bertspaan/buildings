@@ -11,6 +11,9 @@ const repoRoot = resolve(import.meta.dirname, '..')
 const dataDir = resolve(repoRoot, 'data', 'r2')
 
 export default defineConfig({
+  server: {
+    allowedHosts: ['buildings.mini.bertspaan.nl']
+  },
   ssr: {
     noExternal: ['bits-ui', 'maplibre-gl', 'maplibre-contour']
   },

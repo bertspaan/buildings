@@ -16,6 +16,8 @@
     SelectedBuildingState
   } from '$lib/viewer-types.js'
 
+  import { addHybridTileTransition } from '$lib/hybrid-tile-transition.js'
+
   import tileConfig from '../../../../tile-config.json'
 
   type Props = {
@@ -37,10 +39,6 @@
   }
 
   const hybridBreakZoom = tileConfig.hybridBreakZoom
-  const blendWindow = 1
-  const blendMidZoom = hybridBreakZoom + blendWindow / 2
-  const fadeEndZoom = hybridBreakZoom + blendWindow
-  const vectorNativeMinZoom = hybridBreakZoom + 1
   const viewerMinZoom = tileConfig.rasterMinZoom
   const viewerMaxZoom = 19
   const mapBounds = tileConfig.nationalBoundsWgs84 as [
@@ -60,6 +58,7 @@
     mapBounds[3] + mapBoundsBufferY
   ] as [number, number, number, number]
 
+  const rasterLayerId = 'buildings-raster'
   const selectedBuildingLayerId = 'buildings-vector-selected'
   const vectorFillLayerId = 'buildings-vector-fill'
   const vectorOutlineLayerId = 'buildings-vector-outline'
@@ -230,7 +229,10 @@
     })
   }
 
-  function createStyle(vectorSourceMaxZoom: number): StyleSpecification {
+  function createStyle(
+    vectorSourceMinZoom: number,
+    vectorSourceMaxZoom: number
+  ): StyleSpecification {
     const bouwjaarExpression = [
       'coalesce',
       ['to-number', ['get', 'bouwjaar']],
@@ -295,42 +297,46 @@
         }
       },
       {
-        id: 'buildings-raster',
-        type: 'raster',
-        source: 'raster',
-        paint: {
-          'raster-opacity': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            hybridBreakZoom,
-            1,
-            blendMidZoom,
-            0.8,
-            fadeEndZoom,
-            0
-          ]
-        }
-      },
-      {
         id: vectorFillLayerId,
         type: 'fill',
         source: 'vector',
         'source-layer': 'buildings',
-        minzoom: hybridBreakZoom,
+        minzoom: vectorSourceMinZoom,
         paint: {
           'fill-color': vectorFillColor,
-          'fill-opacity': [
+          'fill-opacity': 1
+        }
+      },
+      {
+        id: vectorOutlineLayerId,
+        type: 'line',
+        source: 'vector',
+        'source-layer': 'buildings',
+        minzoom: vectorSourceMinZoom,
+        paint: {
+          'line-color': 'rgba(0,0,0,0.35)',
+          'line-opacity': 1,
+          'line-width': [
             'interpolate',
             ['linear'],
             ['zoom'],
-            hybridBreakZoom,
-            0,
-            blendMidZoom,
-            0.8,
-            fadeEndZoom,
-            1
+            vectorSourceMinZoom,
+            0.25,
+            17,
+            0.7
           ]
+        }
+      },
+      {
+        id: rasterLayerId,
+        type: 'raster',
+        source: 'raster',
+        paint: {
+          // These tiles include a black background. Compositing them over the
+          // fully opaque vectors gives a true crossfade at every pixel.
+          'raster-opacity': 1,
+          'raster-opacity-transition': { duration: 0 },
+          'raster-fade-duration': 0
         }
       },
       {
@@ -338,7 +344,7 @@
         type: 'line',
         source: 'vector',
         'source-layer': 'buildings',
-        minzoom: hybridBreakZoom,
+        minzoom: vectorSourceMinZoom,
         filter: ['==', ['get', 'identificatie'], ''],
         paint: {
           'line-color': '#ffffff',
@@ -351,36 +357,6 @@
             1.5,
             19,
             3
-          ]
-        }
-      },
-      {
-        id: vectorOutlineLayerId,
-        type: 'line',
-        source: 'vector',
-        'source-layer': 'buildings',
-        minzoom: hybridBreakZoom,
-        paint: {
-          'line-color': 'rgba(0,0,0,0.35)',
-          'line-opacity': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            hybridBreakZoom,
-            0,
-            blendMidZoom,
-            0.8,
-            fadeEndZoom,
-            1
-          ],
-          'line-width': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            vectorNativeMinZoom,
-            0.25,
-            17,
-            0.7
           ]
         }
       },
@@ -551,7 +527,7 @@
         vectorArchive.getHeader()
       ])
 
-      const style = createStyle(vectorHeader.maxZoom)
+      const style = createStyle(vectorHeader.minZoom, vectorHeader.maxZoom)
 
       if (map) {
         map.remove()
@@ -577,6 +553,17 @@
           preserveDrawingBuffer: true
         }
       })
+
+      // Start loading vectors at their native minimum zoom, before the blend.
+      const blendStartZoom =
+        Math.max(hybridBreakZoom, vectorHeader.minZoom) + 0.25
+      const removeTileTransition = addHybridTileTransition(map, {
+        rasterLayerId,
+        vectorMinZoom: vectorHeader.minZoom,
+        blendStartZoom,
+        blendEndZoom: blendStartZoom + 0.75
+      })
+      map.once('remove', removeTileTransition)
 
       if (interactive) {
         map.addControl(
