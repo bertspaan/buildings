@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { MediaQuery } from 'svelte/reactivity'
+  import { slide } from 'svelte/transition'
   import PlusIcon from 'phosphor-svelte/lib/PlusIcon'
   import MinusIcon from 'phosphor-svelte/lib/MinusIcon'
 
@@ -19,6 +21,8 @@
     expanded = $bindable(false),
     disabled = false
   }: Props = $props()
+
+  const reducedMotion = new MediaQuery('(prefers-reduced-motion: reduce)')
 
   function handleExpandClick(event: MouseEvent): void {
     if (!disabled) {
@@ -81,6 +85,7 @@
 
   {#if expanded && !disabled}
     <div
+      transition:slide={{ duration: reducedMotion.current ? 0 : 200 }}
       class="border-t border-white/20 leading-normal text-white/80
         px-3 py-2"
     >

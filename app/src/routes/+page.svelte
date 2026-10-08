@@ -26,7 +26,6 @@
   const hybridBreakZoom = tileConfig.hybridBreakZoom
 
   let bodyWidth = $state(0)
-  let aboutExpanded = $state(true)
 
   let allowMultipleExpanded = $derived(bodyWidth >= 800)
 
@@ -91,6 +90,7 @@
 >
   <div class="self-end">
     <PanelContainer
+      map={mapState.map}
       {allowMultipleExpanded}
       buildingCount={buildingStats.buildingCount}
       {legendEntries}

@@ -5,8 +5,10 @@
   import NewBuildingsPanel from '$lib/components/Panels/NewBuildingsPanel.svelte'
 
   import type { LegendEntry, SelectedBuildingState } from '$lib/viewer-types.js'
+  import type { Map as MapLibreMap, MapLibreEvent } from 'maplibre-gl'
 
   type Props = {
+    map?: MapLibreMap
     buildingCount: number
     allowMultipleExpanded?: boolean
     legendEntries?: LegendEntry[]
@@ -21,6 +23,7 @@
   }
 
   let {
+    map,
     buildingCount,
     allowMultipleExpanded = true,
     legendEntries = [],
@@ -38,6 +41,30 @@
   let newBuildingsExpanded = $state(false)
   let legendExpanded = $state(false)
   let infoExpanded = $state(false)
+
+  let autoCollapsePending = true
+
+  function handlePanelInteraction(): void {
+    autoCollapsePending = false
+  }
+
+  $effect(() => {
+    if (!map) return
+
+    const currentMap = map
+    function handleMove(event: MapLibreEvent): void {
+      // Ignore initial positioning and other programmatic camera changes.
+      if (!autoCollapsePending || !event.originalEvent) return
+
+      autoCollapsePending = false
+      aboutExpanded = false
+    }
+
+    currentMap.on('move', handleMove)
+    return () => {
+      currentMap.off('move', handleMove)
+    }
+  })
 
   let previousExpandedState = [true, false, false, false]
 
@@ -78,10 +105,15 @@
   })
 </script>
 
+<!-- Capture interactions before panel controls stop propagation. -->
 <div
   class="max-w-full w-full min-[420px]:w-105 max-h-full min-h-0
     flex flex-col overflow-hidden text-white
     gap-0.5 sm:gap-1"
+  onpointerdowncapture={handlePanelInteraction}
+  onclickcapture={handlePanelInteraction}
+  onkeydowncapture={handlePanelInteraction}
+  onwheelcapture={handlePanelInteraction}
 >
   <AboutPanel bind:expanded={aboutExpanded} {buildingCount} />
   <NewBuildingsPanel
