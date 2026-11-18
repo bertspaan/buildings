@@ -1,8 +1,11 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { resolve } from '$app/paths'
 
   import PanelContainer from '$lib/components/PanelContainer.svelte'
   import Glow from '$lib/components/Glow.svelte'
+  import ExportModal from '$lib/components/modals/ExportModal.svelte'
+  import ExportIcon from 'phosphor-svelte/lib/ExportIcon'
 
   import { mapState } from '$lib/map-state.svelte.js'
 
@@ -26,6 +29,7 @@
   const hybridBreakZoom = tileConfig.hybridBreakZoom
 
   let bodyWidth = $state(0)
+  let exportOpen = $state(false)
 
   let allowMultipleExpanded = $derived(bodyWidth >= 800)
 
@@ -120,9 +124,21 @@
       </div>
     {/if}
 
-    <div class="self-end justify-self-start">
-      <Glow enableHover><a href="play" class="block px-4 py-2">Play!</a></Glow>
+    <div class="self-end justify-self-start flex items-center gap-3">
+      <button
+        type="button"
+        class="pointer-events-auto flex items-center gap-2 rounded-xl bg-black/80 px-4 py-2 font-bold text-white ring-1 ring-inset ring-white/20 backdrop-blur-xl hover:bg-white/15 disabled:opacity-40 cursor-pointer"
+        disabled={!mapState.map}
+        onclick={() => (exportOpen = true)}
+        ><ExportIcon size={20} />Export</button
+      >
+      <Glow enableHover
+        ><a href={resolve('/play')} class="block px-4 py-2">Play!</a></Glow
+      >
     </div>
   </div>
 </div>
-<!-- </div> -->
+
+{#if exportOpen && mapState.map}
+  <ExportModal source={mapState.map} onclose={() => (exportOpen = false)} />
+{/if}

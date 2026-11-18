@@ -28,6 +28,15 @@
   const collapsedLegendYear = $derived(
     hoveredBuildingYear ?? selectedBuildingYear
   )
+  const collapsedLegendText = $derived(
+    detailsEnabled && collapsedLegendYear
+      ? String(collapsedLegendYear)
+      : undefined
+  )
+  const hasActiveSwatch = $derived(
+    !!collapsedLegendText &&
+      entries.some((entry) => entry.label === collapsedLegendLabel)
+  )
 
   function getContrastTextColor(backgroundColor: string): string {
     const normalized = backgroundColor.trim().replace('#', '')
@@ -50,14 +59,6 @@
 
     return luminance > 0.62 ? '#111111' : '#ffffff'
   }
-
-  function getCollapsedLegendText(): string | undefined {
-    if (detailsEnabled && collapsedLegendYear) {
-      return String(collapsedLegendYear)
-    }
-
-    return undefined
-  }
 </script>
 
 <Panel bind:expanded>
@@ -67,30 +68,31 @@
 
   {#snippet controls()}
     {#if !expanded}
-      <div
-        class="grid w-full min-w-0 max-w-full auto-cols-auto grid-flow-col items-center gap-1"
-      >
-        {#each entries as entry}
-          {@const isActive = collapsedLegendLabel === entry.label}
-          {@const collapsedLegendText = getCollapsedLegendText()}
-          <div
-            class={[
-              'w-auto flex h-5 items-center justify-center rounded-full border border-white/15 p-1',
-              'transition-all',
-              isActive && collapsedLegendText ? 'px-0' : ''
-            ]}
-            style:background={entry.color}
-          >
-            {#if isActive && collapsedLegendText}
+      <div class="legend-container">
+        <div
+          class="collapsed-legend"
+          class:has-active={hasActiveSwatch}
+          style:--entry-count={entries.length || 1}
+        >
+          {#each entries as entry (entry.label)}
+            {@const isActive =
+              collapsedLegendLabel === entry.label && !!collapsedLegendText}
+            <div
+              class="legend-swatch"
+              class:active={isActive}
+              style:background={entry.color}
+              title={entry.label}
+            >
               <span
-                class="font-medium"
+                class="legend-year"
+                aria-hidden={!isActive}
                 style:color={getContrastTextColor(entry.color)}
               >
-                {collapsedLegendText}
+                {isActive ? collapsedLegendText : ''}
               </span>
-            {/if}
-          </div>
-        {/each}
+            </div>
+          {/each}
+        </div>
       </div>
     {/if}
   {/snippet}
@@ -99,3 +101,70 @@
     <LegendGrid {entries} {selectedLabel} {hoveredLabel} />
   {/snippet}
 </Panel>
+
+<style>
+  .legend-container {
+    container-type: inline-size;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .collapsed-legend {
+    --pill-extra: 0px;
+    --swatch-gap: clamp(
+      4px,
+      calc(
+        (100cqw - var(--entry-count) * 20px - var(--pill-extra)) /
+          max(1, var(--entry-count) - 1)
+      ),
+      8px
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--swatch-gap);
+    min-width: max-content;
+    height: 20px;
+    transition: gap 200ms ease;
+  }
+  .collapsed-legend.has-active {
+    --pill-extra: 28px;
+  }
+  .legend-swatch {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    border: 1px solid #ffffff26;
+    border-radius: 9999px;
+    transition: width 200ms ease;
+  }
+  .legend-swatch.active {
+    width: 48px;
+  }
+  .legend-year {
+    flex: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 120ms ease;
+  }
+  .legend-swatch.active .legend-year {
+    opacity: 1;
+    transition-delay: 70ms;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .collapsed-legend,
+    .legend-swatch,
+    .legend-year {
+      transition: none;
+    }
+  }
+</style>
